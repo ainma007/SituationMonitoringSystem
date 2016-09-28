@@ -1,0 +1,69 @@
+﻿@using SituationMonitoring.Models
+@{
+    ViewBag.Title = "MunicipalityManegment";
+}
+
+<h2>MunicipalityManegment</h2>
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<MunicipalityViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.MunicipalityID).Width(50).Hidden();
+        columns.Bound(p => p.MunicipalityArName).Width(100).HeaderHtmlAttributes(new { @title = "اسم البلدية عربي" }).Width(100).Title("البلدية عربي");
+        columns.Bound(p => p.MunicipalityEnName).Width(100).HeaderHtmlAttributes(new { @title = "اسم البلدية EN" }).Width(100).Title("الاسم الانجليزي");
+
+
+        columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate"], "GovernorateID", "GovernorateArName")
+                   .Title("المحافظة").Width(100);
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة بلدية جديدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية")).TemplateName("MunicipalityEditor"))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.MunicipalityID);
+            model.Field(p => p.MunicipalityID).Editable(false);
+            model.Field(p => p.GovernorateID).DefaultValue(1);
+        })
+        .Read(read => read.Action("Municipalit_Read", "Municipality"))
+        .Update(update => update.Action("Municipality_Update", "Municipality"))
+        .Create(create => create.Action("Municipality_Create", "Municipality"))
+        .Destroy(destroy => destroy.Action("Municipality_Destroy", "Municipality"))
+    )
+)
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>

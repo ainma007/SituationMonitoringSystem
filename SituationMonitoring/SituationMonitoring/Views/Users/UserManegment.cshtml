@@ -1,0 +1,74 @@
+﻿@using SituationMonitoring.Models
+@using System.Net;
+@{
+    ViewBag.Title = "UserManegment";
+}
+
+
+
+@*@if (Session["UserID"] != null)
+{*@
+    <div class="page-title">
+        <i class="icon-custom-left"></i>
+        <h3>إدارة - <span class="semi-bold">المستخدمين</span></h3>
+    </div>
+
+    @(Html.Kendo().Grid<UserViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.UserID).Width(50).Hidden();
+        columns.Bound(p => p.FullName).Width(100).Title("اسم الموظف");
+        columns.Bound(p => p.Username).Width(50).Title("اسم السمتخدم");
+        columns.Bound(p => p.Password).Width(100).Hidden();
+        columns.Bound(p => p.UserType).Width(50).Title("نوع المستخدم"); ;
+        columns.Bound(p => p.userstatus).Width(30).ClientTemplate("<input type='checkbox' disabled='disabled' #= userstatus ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
+
+        columns.Command(command =>
+        {
+            command.Edit().Text("تعديل");
+            command.Destroy().Text("حذف");
+        }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة مستخدم");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات المستخدم").Width(800).Scrollable(true)))
+           .Pageable()
+           .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Model(model =>
+        {
+            model.Id(p => p.UserID);
+            model.Field(p => p.UserID).Editable(false);
+        })
+        .Read(read => read.Action("User_Read", "Users"))
+        .Update(update => update.Action("User_Update", "Users"))
+        .Create(create => create.Action("User_Create", "Users"))
+        .Destroy(destroy => destroy.Action("User_Destroy", "Users"))
+    )
+
+    )
+
+
+@*}*@
+
+
+@*else
+{
+
+    Response.Redirect("~/Account/Login");
+
+
+
+
+}*@

@@ -1,0 +1,58 @@
+﻿@model SituationMonitoring.Models.MunicipalityViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 80%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+
+    <div>
+        @Html.LabelFor(model => model.MunicipalityArName)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.MunicipalityArName)
+        @Html.ValidationMessageFor(model => model.MunicipalityArName)
+    </div>
+
+
+    <div>
+        @Html.LabelFor(model => model.MunicipalityEnName)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.MunicipalityEnName)
+        @Html.ValidationMessageFor(model => model.MunicipalityEnName)
+
+
+    <div>
+        @Html.LabelFor(model => model.GovernorateID)
+    </div>
+    <div>
+
+        @(Html.Kendo().DropDownListFor(model => model.GovernorateID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("GovernorateArName")
+    .DataValueField("GovernorateID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetGovernorate", "Municipality");
+        })
+        .ServerFiltering(false);
+    })
+        )
+
+        @Html.ValidationMessageFor(model => model.GovernorateID)
+    </div>
+</div>
+    </div>

@@ -1,0 +1,121 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>نظام الأرشيف الالكتروني</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link href="@Url.Content("~/Content/assets/plugins/pace/pace-theme-flash.css")" rel="stylesheet" type="text/css" media="screen" />
+    <link href="@Url.Content("~/Content/assets/plugins/jquery-scrollbar/jquery.scrollbar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/plugins/boostrapv3/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/plugins/boostrapv3/css/bootstrap-theme.min.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/assets/plugins/font-awesome/css/font-awesome.css")
+    <link href="@Url.Content("~/Content/assets/css/animate.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/css/rtl/style.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/css/rtl/responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/css/custom-icon-set.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.607/kendo.rtl.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.607/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.607/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.607/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.607/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.607/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.607/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.607/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.607/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.607/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")"></script>
+    <script>
+    kendo.culture("en-GB");
+    </script>
+</head>
+<body class="error-body no-top">
+    <div class="container">
+        <div class="row login-container column-seperation">
+
+            <div class="col-md-6">
+                <br>
+                @model SituationMonitoring.Models.Users_Table
+
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>تسجيل الدخول </h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        <div class="form-group">
+
+
+                            <label for="fullname" class="required">اسم المستخدم</label>
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullname" class="required">كلمة المرور</label>
+
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="موافق" class="k-button k-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <h2>نظام الأرشيف الالكتروني</h2>
+                <p>
+                    المركز الفلسطيني للديمقراطية وحل النزاعات
+                </p>
+                <br>
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN CORE JS FRAMEWORK-->
+    <script src="@Url.Content("~/Content/assets/plugins/jquery-ui/jquery-1.8.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/assets/plugins/boostrapv3/js/bootstrap.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Content/assets/plugins/pace/pace.min.js")" type="text/javascript"></script>
+
+
+    <script src="@Url.Content("~/Content/assets/plugins/jquery-validation/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/assets/js/login.js")" type="text/javascript"></script>
+
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <!-- END CORE TEMPLATE JS -->
+</body>
+
+
+
+</html>
