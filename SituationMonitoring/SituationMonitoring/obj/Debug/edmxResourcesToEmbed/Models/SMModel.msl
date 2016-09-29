@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="SituationMonitoringModelStoreContainer" CdmEntityContainer="SituationMonitoringEntities">
+    <EntitySetMapping Name="Area_Table">
+      <EntityTypeMapping TypeName="SituationMonitoringModel.Area_Table">
+        <MappingFragment StoreEntitySet="Area_Table">
+          <ScalarProperty Name="GovernorateID" ColumnName="GovernorateID" />
+          <ScalarProperty Name="AreaEnName" ColumnName="AreaEnName" />
+          <ScalarProperty Name="AreaArName" ColumnName="AreaArName" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Governorate_Table">
       <EntityTypeMapping TypeName="SituationMonitoringModel.Governorate_Table">
         <MappingFragment StoreEntitySet="Governorate_Table">
@@ -17,6 +27,29 @@
           <ScalarProperty Name="MunicipalityArName" ColumnName="MunicipalityArName" />
           <ScalarProperty Name="MunicipalityEnName" ColumnName="MunicipalityEnName" />
           <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Situation_Table">
+      <EntityTypeMapping TypeName="SituationMonitoringModel.Situation_Table">
+        <MappingFragment StoreEntitySet="Situation_Table">
+          <ScalarProperty Name="Site_Description" ColumnName="Site_Description" />
+          <ScalarProperty Name="CollectiveCenter" ColumnName="CollectiveCenter" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
+          <ScalarProperty Name="GovernorateID" ColumnName="GovernorateID" />
+          <ScalarProperty Name="SituationDate" ColumnName="SituationDate" />
+          <ScalarProperty Name="SituationID" ColumnName="SituationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SituationUser_Table">
+      <EntityTypeMapping TypeName="SituationMonitoringModel.SituationUser_Table">
+        <MappingFragment StoreEntitySet="SituationUser_Table">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SituationID" ColumnName="SituationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

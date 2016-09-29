@@ -12,16 +12,16 @@ namespace SituationMonitoring.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Municipality_Table
+    public partial class Area_Table
     {
-        public Municipality_Table()
+        public Area_Table()
         {
             this.Situation_Table = new HashSet<Situation_Table>();
         }
     
-        public int MunicipalityID { get; set; }
-        public string MunicipalityEnName { get; set; }
-        public string MunicipalityArName { get; set; }
+        public int AreaID { get; set; }
+        public string AreaArName { get; set; }
+        public string AreaEnName { get; set; }
         public Nullable<int> GovernorateID { get; set; }
     
         public virtual Governorate_Table Governorate_Table { get; set; }

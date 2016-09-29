@@ -5,10 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bc7c9834eb44410289d4dcc1b95cbd95" Name="Diagram1">
-        <EntityTypeShape EntityType="SituationMonitoringModel.Governorate_Table" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="SituationMonitoringModel.Municipality_Table" Width="1.5" PointX="3" PointY="0.875" />
-        <EntityTypeShape EntityType="SituationMonitoringModel.Users_Table" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Area_Table" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Governorate_Table" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Municipality_Table" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Situation_Table" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.SituationUser_Table" Width="1.5" PointX="9.75" PointY="0.875" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Users_Table" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_Area_Table_Governorate_Table" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_Situation_Table_Area_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Municipality_Table_Governorate_Table" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_Situation_Table_Governorate_Table" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_Situation_Table_Municipality_Table" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

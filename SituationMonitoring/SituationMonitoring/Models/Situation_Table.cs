@@ -12,20 +12,24 @@ namespace SituationMonitoring.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Users_Table
+    public partial class Situation_Table
     {
-        public Users_Table()
+        public Situation_Table()
         {
             this.SituationUser_Table = new HashSet<SituationUser_Table>();
         }
     
-        public int UserID { get; set; }
-        public string FullName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string UserType { get; set; }
-        public bool Status { get; set; }
+        public int SituationID { get; set; }
+        public Nullable<System.DateTime> SituationDate { get; set; }
+        public Nullable<int> GovernorateID { get; set; }
+        public Nullable<int> MunicipalityID { get; set; }
+        public Nullable<int> AreaID { get; set; }
+        public string CollectiveCenter { get; set; }
+        public string Site_Description { get; set; }
     
+        public virtual Area_Table Area_Table { get; set; }
+        public virtual Governorate_Table Governorate_Table { get; set; }
+        public virtual Municipality_Table Municipality_Table { get; set; }
         public virtual ICollection<SituationUser_Table> SituationUser_Table { get; set; }
     }
 }

@@ -150,9 +150,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipalityController.cs" />
+    <Compile Include="Controllers\SituationController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Area_Table.cs">
+      <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GovernorateViewModel.cs" />
     <Compile Include="Models\Governorate_Table.cs">
@@ -161,6 +165,16 @@
     <Compile Include="Models\MunicipalityService.cs" />
     <Compile Include="Models\MunicipalityViewModel.cs" />
     <Compile Include="Models\Municipality_Table.cs">
+      <DependentUpon>SMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SessionForeignKey\AreaForeingKey.cs" />
+    <Compile Include="Models\SessionForeignKey\MunicipalityForeingKey.cs" />
+    <Compile Include="Models\SituationService.cs" />
+    <Compile Include="Models\SituationUser_Table.cs">
+      <DependentUpon>SMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SituationViewModel.cs" />
+    <Compile Include="Models\Situation_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SMModel.Context.cs">
@@ -1994,6 +2008,7 @@
     <Content Include="Views\Users\EditorTemplates\UserType.cshtml" />
     <Content Include="Views\Municipality\MunicipalityManegment.cshtml" />
     <Content Include="Views\Municipality\EditorTemplates\MunicipalityEditor.cshtml" />
+    <Content Include="Views\Situation\situationManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

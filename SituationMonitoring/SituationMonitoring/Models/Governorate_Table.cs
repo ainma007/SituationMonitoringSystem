@@ -16,13 +16,17 @@ namespace SituationMonitoring.Models
     {
         public Governorate_Table()
         {
+            this.Area_Table = new HashSet<Area_Table>();
             this.Municipality_Table = new HashSet<Municipality_Table>();
+            this.Situation_Table = new HashSet<Situation_Table>();
         }
     
         public int GovernorateID { get; set; }
         public string GovernorateEnName { get; set; }
         public string GovernorateArName { get; set; }
     
+        public virtual ICollection<Area_Table> Area_Table { get; set; }
         public virtual ICollection<Municipality_Table> Municipality_Table { get; set; }
+        public virtual ICollection<Situation_Table> Situation_Table { get; set; }
     }
 }

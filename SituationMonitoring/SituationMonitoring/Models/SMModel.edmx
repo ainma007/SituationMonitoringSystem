@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SituationMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area_Table">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaArName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AreaEnName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GovernorateID" Type="int" />
+        </EntityType>
         <EntityType Name="Governorate_Table">
           <Key>
             <PropertyRef Name="GovernorateID" />
@@ -22,6 +31,27 @@
           <Property Name="MunicipalityArName" Type="nvarchar" MaxLength="50" />
           <Property Name="GovernorateID" Type="int" />
         </EntityType>
+        <EntityType Name="Situation_Table">
+          <Key>
+            <PropertyRef Name="SituationID" />
+          </Key>
+          <Property Name="SituationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SituationDate" Type="datetime" />
+          <Property Name="GovernorateID" Type="int" />
+          <Property Name="MunicipalityID" Type="int" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="CollectiveCenter" Type="nvarchar" MaxLength="100" />
+          <Property Name="Site_Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SituationUser_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SituationID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
         <EntityType Name="Users_Table">
           <Key>
             <PropertyRef Name="UserID" />
@@ -33,6 +63,18 @@
           <Property Name="UserType" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <Association Name="FK_Area_Table_Governorate_Table">
+          <End Role="Governorate_Table" Type="Self.Governorate_Table" Multiplicity="0..1" />
+          <End Role="Area_Table" Type="Self.Area_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Governorate_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Principal>
+            <Dependent Role="Area_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Municipality_Table_Governorate_Table">
           <End Role="Governorate_Table" Type="Self.Governorate_Table" Multiplicity="0..1" />
           <End Role="Municipality_Table" Type="Self.Municipality_Table" Multiplicity="*" />
@@ -45,13 +87,100 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Situation_Table_Area_Table">
+          <End Role="Area_Table" Type="Self.Area_Table" Multiplicity="0..1" />
+          <End Role="Situation_Table" Type="Self.Situation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area_Table">
+              <PropertyRef Name="AreaID" />
+            </Principal>
+            <Dependent Role="Situation_Table">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Situation_Table_Governorate_Table">
+          <End Role="Governorate_Table" Type="Self.Governorate_Table" Multiplicity="0..1" />
+          <End Role="Situation_Table" Type="Self.Situation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Governorate_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Principal>
+            <Dependent Role="Situation_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Situation_Table_Municipality_Table">
+          <End Role="Municipality_Table" Type="Self.Municipality_Table" Multiplicity="0..1" />
+          <End Role="Situation_Table" Type="Self.Situation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipality_Table">
+              <PropertyRef Name="MunicipalityID" />
+            </Principal>
+            <Dependent Role="Situation_Table">
+              <PropertyRef Name="MunicipalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SituationUser_Table_Situation_Table">
+          <End Role="Situation_Table" Type="Self.Situation_Table" Multiplicity="0..1" />
+          <End Role="SituationUser_Table" Type="Self.SituationUser_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Situation_Table">
+              <PropertyRef Name="SituationID" />
+            </Principal>
+            <Dependent Role="SituationUser_Table">
+              <PropertyRef Name="SituationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SituationUser_Table_Users_Table">
+          <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+          <End Role="SituationUser_Table" Type="Self.SituationUser_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SituationUser_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SituationMonitoringModelStoreContainer">
+          <EntitySet Name="Area_Table" EntityType="Self.Area_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Governorate_Table" EntityType="Self.Governorate_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipality_Table" EntityType="Self.Municipality_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Situation_Table" EntityType="Self.Situation_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SituationUser_Table" EntityType="Self.SituationUser_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_Table" EntityType="Self.Users_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Area_Table_Governorate_Table" Association="Self.FK_Area_Table_Governorate_Table">
+            <End Role="Governorate_Table" EntitySet="Governorate_Table" />
+            <End Role="Area_Table" EntitySet="Area_Table" />
+          </AssociationSet>
           <AssociationSet Name="FK_Municipality_Table_Governorate_Table" Association="Self.FK_Municipality_Table_Governorate_Table">
             <End Role="Governorate_Table" EntitySet="Governorate_Table" />
             <End Role="Municipality_Table" EntitySet="Municipality_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Situation_Table_Area_Table" Association="Self.FK_Situation_Table_Area_Table">
+            <End Role="Area_Table" EntitySet="Area_Table" />
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Situation_Table_Governorate_Table" Association="Self.FK_Situation_Table_Governorate_Table">
+            <End Role="Governorate_Table" EntitySet="Governorate_Table" />
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Situation_Table_Municipality_Table" Association="Self.FK_Situation_Table_Municipality_Table">
+            <End Role="Municipality_Table" EntitySet="Municipality_Table" />
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SituationUser_Table_Situation_Table" Association="Self.FK_SituationUser_Table_Situation_Table">
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+            <End Role="SituationUser_Table" EntitySet="SituationUser_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SituationUser_Table_Users_Table" Association="Self.FK_SituationUser_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="SituationUser_Table" EntitySet="SituationUser_Table" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -59,14 +188,52 @@
     <edmx:ConceptualModels>
       <Schema Namespace="SituationMonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SituationMonitoringEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area_Table" EntityType="SituationMonitoringModel.Area_Table" />
           <EntitySet Name="Governorate_Table" EntityType="SituationMonitoringModel.Governorate_Table" />
           <EntitySet Name="Municipality_Table" EntityType="SituationMonitoringModel.Municipality_Table" />
+          <EntitySet Name="Situation_Table" EntityType="SituationMonitoringModel.Situation_Table" />
+          <EntitySet Name="SituationUser_Table" EntityType="SituationMonitoringModel.SituationUser_Table" />
           <EntitySet Name="Users_Table" EntityType="SituationMonitoringModel.Users_Table" />
+          <AssociationSet Name="FK_Area_Table_Governorate_Table" Association="SituationMonitoringModel.FK_Area_Table_Governorate_Table">
+            <End Role="Governorate_Table" EntitySet="Governorate_Table" />
+            <End Role="Area_Table" EntitySet="Area_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Situation_Table_Area_Table" Association="SituationMonitoringModel.FK_Situation_Table_Area_Table">
+            <End Role="Area_Table" EntitySet="Area_Table" />
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+          </AssociationSet>
           <AssociationSet Name="FK_Municipality_Table_Governorate_Table" Association="SituationMonitoringModel.FK_Municipality_Table_Governorate_Table">
             <End Role="Governorate_Table" EntitySet="Governorate_Table" />
             <End Role="Municipality_Table" EntitySet="Municipality_Table" />
           </AssociationSet>
+          <AssociationSet Name="FK_Situation_Table_Governorate_Table" Association="SituationMonitoringModel.FK_Situation_Table_Governorate_Table">
+            <End Role="Governorate_Table" EntitySet="Governorate_Table" />
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Situation_Table_Municipality_Table" Association="SituationMonitoringModel.FK_Situation_Table_Municipality_Table">
+            <End Role="Municipality_Table" EntitySet="Municipality_Table" />
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SituationUser_Table_Situation_Table" Association="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table">
+            <End Role="Situation_Table" EntitySet="Situation_Table" />
+            <End Role="SituationUser_Table" EntitySet="SituationUser_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SituationUser_Table_Users_Table" Association="SituationMonitoringModel.FK_SituationUser_Table_Users_Table">
+            <End Role="Users_Table" EntitySet="Users_Table" />
+            <End Role="SituationUser_Table" EntitySet="SituationUser_Table" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Area_Table">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaEnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GovernorateID" Type="Int32" />
+          <NavigationProperty Name="Governorate_Table" Relationship="SituationMonitoringModel.FK_Area_Table_Governorate_Table" FromRole="Area_Table" ToRole="Governorate_Table" />
+          <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Area_Table" FromRole="Area_Table" ToRole="Situation_Table" />
+        </EntityType>
         <EntityType Name="Governorate_Table">
           <Key>
             <PropertyRef Name="GovernorateID" />
@@ -74,7 +241,9 @@
           <Property Name="GovernorateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GovernorateEnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GovernorateArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Area_Table" Relationship="SituationMonitoringModel.FK_Area_Table_Governorate_Table" FromRole="Governorate_Table" ToRole="Area_Table" />
           <NavigationProperty Name="Municipality_Table" Relationship="SituationMonitoringModel.FK_Municipality_Table_Governorate_Table" FromRole="Governorate_Table" ToRole="Municipality_Table" />
+          <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Governorate_Table" FromRole="Governorate_Table" ToRole="Situation_Table" />
         </EntityType>
         <EntityType Name="Municipality_Table">
           <Key>
@@ -85,6 +254,34 @@
           <Property Name="MunicipalityArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GovernorateID" Type="Int32" />
           <NavigationProperty Name="Governorate_Table" Relationship="SituationMonitoringModel.FK_Municipality_Table_Governorate_Table" FromRole="Municipality_Table" ToRole="Governorate_Table" />
+          <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Municipality_Table" FromRole="Municipality_Table" ToRole="Situation_Table" />
+        </EntityType>
+        <EntityType Name="Situation_Table">
+          <Key>
+            <PropertyRef Name="SituationID" />
+          </Key>
+          <Property Name="SituationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SituationDate" Type="DateTime" Precision="3" />
+          <Property Name="GovernorateID" Type="Int32" />
+          <Property Name="MunicipalityID" Type="Int32" />
+          <Property Name="AreaID" Type="Int32" />
+          <Property Name="CollectiveCenter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Site_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Area_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Area_Table" FromRole="Situation_Table" ToRole="Area_Table" />
+          <NavigationProperty Name="Governorate_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Governorate_Table" FromRole="Situation_Table" ToRole="Governorate_Table" />
+          <NavigationProperty Name="Municipality_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Municipality_Table" FromRole="Situation_Table" ToRole="Municipality_Table" />
+          <NavigationProperty Name="SituationUser_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" FromRole="Situation_Table" ToRole="SituationUser_Table" />
+        </EntityType>
+        <EntityType Name="SituationUser_Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SituationID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" FromRole="SituationUser_Table" ToRole="Situation_Table" />
+          <NavigationProperty Name="Users_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" FromRole="SituationUser_Table" ToRole="Users_Table" />
         </EntityType>
         <EntityType Name="Users_Table">
           <Key>
@@ -96,7 +293,32 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SituationUser_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" FromRole="Users_Table" ToRole="SituationUser_Table" />
         </EntityType>
+        <Association Name="FK_Area_Table_Governorate_Table">
+          <End Type="SituationMonitoringModel.Governorate_Table" Role="Governorate_Table" Multiplicity="0..1" />
+          <End Type="SituationMonitoringModel.Area_Table" Role="Area_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Governorate_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Principal>
+            <Dependent Role="Area_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Situation_Table_Area_Table">
+          <End Type="SituationMonitoringModel.Area_Table" Role="Area_Table" Multiplicity="0..1" />
+          <End Type="SituationMonitoringModel.Situation_Table" Role="Situation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area_Table">
+              <PropertyRef Name="AreaID" />
+            </Principal>
+            <Dependent Role="Situation_Table">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Municipality_Table_Governorate_Table">
           <End Type="SituationMonitoringModel.Governorate_Table" Role="Governorate_Table" Multiplicity="0..1" />
           <End Type="SituationMonitoringModel.Municipality_Table" Role="Municipality_Table" Multiplicity="*" />
@@ -109,12 +331,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Situation_Table_Governorate_Table">
+          <End Type="SituationMonitoringModel.Governorate_Table" Role="Governorate_Table" Multiplicity="0..1" />
+          <End Type="SituationMonitoringModel.Situation_Table" Role="Situation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Governorate_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Principal>
+            <Dependent Role="Situation_Table">
+              <PropertyRef Name="GovernorateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Situation_Table_Municipality_Table">
+          <End Type="SituationMonitoringModel.Municipality_Table" Role="Municipality_Table" Multiplicity="0..1" />
+          <End Type="SituationMonitoringModel.Situation_Table" Role="Situation_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipality_Table">
+              <PropertyRef Name="MunicipalityID" />
+            </Principal>
+            <Dependent Role="Situation_Table">
+              <PropertyRef Name="MunicipalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SituationUser_Table_Situation_Table">
+          <End Type="SituationMonitoringModel.Situation_Table" Role="Situation_Table" Multiplicity="0..1" />
+          <End Type="SituationMonitoringModel.SituationUser_Table" Role="SituationUser_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Situation_Table">
+              <PropertyRef Name="SituationID" />
+            </Principal>
+            <Dependent Role="SituationUser_Table">
+              <PropertyRef Name="SituationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SituationUser_Table_Users_Table">
+          <End Type="SituationMonitoringModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+          <End Type="SituationMonitoringModel.SituationUser_Table" Role="SituationUser_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Table">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SituationUser_Table">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SituationMonitoringModelStoreContainer" CdmEntityContainer="SituationMonitoringEntities">
+          <EntitySetMapping Name="Area_Table">
+            <EntityTypeMapping TypeName="SituationMonitoringModel.Area_Table">
+              <MappingFragment StoreEntitySet="Area_Table">
+                <ScalarProperty Name="GovernorateID" ColumnName="GovernorateID" />
+                <ScalarProperty Name="AreaEnName" ColumnName="AreaEnName" />
+                <ScalarProperty Name="AreaArName" ColumnName="AreaArName" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Governorate_Table">
             <EntityTypeMapping TypeName="SituationMonitoringModel.Governorate_Table">
               <MappingFragment StoreEntitySet="Governorate_Table">
@@ -131,6 +411,29 @@
                 <ScalarProperty Name="MunicipalityArName" ColumnName="MunicipalityArName" />
                 <ScalarProperty Name="MunicipalityEnName" ColumnName="MunicipalityEnName" />
                 <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Situation_Table">
+            <EntityTypeMapping TypeName="SituationMonitoringModel.Situation_Table">
+              <MappingFragment StoreEntitySet="Situation_Table">
+                <ScalarProperty Name="Site_Description" ColumnName="Site_Description" />
+                <ScalarProperty Name="CollectiveCenter" ColumnName="CollectiveCenter" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="MunicipalityID" ColumnName="MunicipalityID" />
+                <ScalarProperty Name="GovernorateID" ColumnName="GovernorateID" />
+                <ScalarProperty Name="SituationDate" ColumnName="SituationDate" />
+                <ScalarProperty Name="SituationID" ColumnName="SituationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SituationUser_Table">
+            <EntityTypeMapping TypeName="SituationMonitoringModel.SituationUser_Table">
+              <MappingFragment StoreEntitySet="SituationUser_Table">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SituationID" ColumnName="SituationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

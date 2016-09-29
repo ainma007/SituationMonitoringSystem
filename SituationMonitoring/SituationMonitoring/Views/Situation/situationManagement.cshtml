@@ -1,0 +1,78 @@
+﻿@using SituationMonitoring.Models
+@{
+    ViewBag.Title = "situationManagement";
+}
+
+<h2>situationManagement</h2>
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<SituationViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.SituationID).Width(50).Hidden();
+        columns.Bound(p => p.SituationDate).Width(100).HeaderHtmlAttributes(new { @title = "التاريخ " }).Width(100).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+
+        columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate"], "GovernorateID", "GovernorateArName")
+                   .Title("المحافظة").Width(100);
+        columns.ForeignKey(p => p.MunicipalityID, (System.Collections.IEnumerable)ViewData["Municipality"], "MunicipalityID", "MunicipalityName")
+                  .Title("البلدية").Width(100);
+
+        columns.ForeignKey(p => p.AreaID, (System.Collections.IEnumerable)ViewData["Area"], "AreaID", "AreaName")
+                  .Title("المنطقة").Width(100);
+
+
+        columns.Bound(p => p.CollectiveCenter).Width(100).HeaderHtmlAttributes(new { @title = "مركز الايواء" }).Width(100).Title("مركز الايواء");
+        columns.Bound(p => p.Site_Description).Width(100).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(100).Title("وصف الموقع");
+
+
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة بلدية جديدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية")).TemplateName("MunicipalityEditor"))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.SituationID);
+            model.Field(p => p.SituationID).Editable(false);
+            model.Field(p => p.SituationID).DefaultValue(1);
+        })
+        .Read(read => read.Action("Situation_Read", "Situation"))
+        .Update(update => update.Action("Situation_Update", "Situation"))
+        .Create(create => create.Action("Situation_Create", "Situation"))
+        .Destroy(destroy => destroy.Action("Situation_Destroy", "Situation"))
+    )
+)
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>
