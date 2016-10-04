@@ -65,5 +65,57 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Questionnaire_Table">
+      <EntityTypeMapping TypeName="SituationMonitoringModel.Questionnaire_Table">
+        <MappingFragment StoreEntitySet="Questionnaire_Table">
+          <ScalarProperty Name="Question1_4_1" ColumnName="Question1_4_1" />
+          <ScalarProperty Name="Question1_4" ColumnName="Question1_4" />
+          <ScalarProperty Name="Question1_3_8Text" ColumnName="Question1_3_8Text" />
+          <ScalarProperty Name="Question1_3_8Other" ColumnName="Question1_3_8Other" />
+          <ScalarProperty Name="Question1_3_7Text" ColumnName="Question1_3_7Text" />
+          <ScalarProperty Name="Question1_3_7No_Access_to_essential_services" ColumnName="Question1_3_7No_Access_to_essential_services" />
+          <ScalarProperty Name="Question1_3_6Text" ColumnName="Question1_3_6Text" />
+          <ScalarProperty Name="Question1_3_6Not_enough_humanitarian_assistance" ColumnName="Question1_3_6Not_enough_humanitarian_assistance" />
+          <ScalarProperty Name="Question1_3_5NotEnoughWater" ColumnName="Question1_3_5NotEnoughWater" />
+          <ScalarProperty Name="Question1_3_5Overcrowding" ColumnName="Question1_3_5Overcrowding" />
+          <ScalarProperty Name="Question1_3_4UnsafeHousing" ColumnName="Question1_3_4UnsafeHousing" />
+          <ScalarProperty Name="Question1_3_3NotEnoughDrinking" ColumnName="Question1_3_3NotEnoughDrinking" />
+          <ScalarProperty Name="Question1_3_2NotEnoughFood" ColumnName="Question1_3_2NotEnoughFood" />
+          <ScalarProperty Name="Question1_3_1Family_CommunityDisputes" ColumnName="Question1_3_1Family_CommunityDisputes" />
+          <ScalarProperty Name="Question1_2_11Text" ColumnName="Question1_2_11Text" />
+          <ScalarProperty Name="Question1_2_11Other" ColumnName="Question1_2_11Other" />
+          <ScalarProperty Name="Question1_2_10Text" ColumnName="Question1_2_10Text" />
+          <ScalarProperty Name="Question1_2_10No_Access_to_essential_services" ColumnName="Question1_2_10No_Access_to_essential_services" />
+          <ScalarProperty Name="Question1_2_9Text" ColumnName="Question1_2_9Text" />
+          <ScalarProperty Name="Question1_2_9Not_enough_humanitarian_assistance" ColumnName="Question1_2_9Not_enough_humanitarian_assistance" />
+          <ScalarProperty Name="Question1_2_8NotEnoughWater" ColumnName="Question1_2_8NotEnoughWater" />
+          <ScalarProperty Name="Question1_2_7InsufficientBedding" ColumnName="Question1_2_7InsufficientBedding" />
+          <ScalarProperty Name="Question1_2_6Overcrowding" ColumnName="Question1_2_6Overcrowding" />
+          <ScalarProperty Name="Question1_2_5UnsafeHousing" ColumnName="Question1_2_5UnsafeHousing" />
+          <ScalarProperty Name="Question1_2_4NotEnoughDrinking" ColumnName="Question1_2_4NotEnoughDrinking" />
+          <ScalarProperty Name="Question1_2_3NotEnoughPrivacy" ColumnName="Question1_2_3NotEnoughPrivacy" />
+          <ScalarProperty Name="Question_1_2_2NotEnoughFood" ColumnName="Question_1_2_2NotEnoughFood" />
+          <ScalarProperty Name="Question1_2_1_Family_CommunityDisputes" ColumnName="Question1_2_1_Family_CommunityDisputes" />
+          <ScalarProperty Name="Question1_1_1" ColumnName="Question1_1_1" />
+          <ScalarProperty Name="Question1_1" ColumnName="Question1_1" />
+          <ScalarProperty Name="Site_Description" ColumnName="Site_Description" />
+          <ScalarProperty Name="Estimated_Number_Of_Families" ColumnName="Estimated_Number_Of_Families" />
+          <ScalarProperty Name="Estimated_Number_Of_Individuals" ColumnName="Estimated_Number_Of_Individuals" />
+          <ScalarProperty Name="PersonMobile" ColumnName="PersonMobile" />
+          <ScalarProperty Name="Place_of_origin" ColumnName="Place_of_origin" />
+          <ScalarProperty Name="RoleInCommunity" ColumnName="RoleInCommunity" />
+          <ScalarProperty Name="PersonGEnder" ColumnName="PersonGEnder" />
+          <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+          <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+          <ScalarProperty Name="EmployeeMail" ColumnName="EmployeeMail" />
+          <ScalarProperty Name="CenterName" ColumnName="CenterName" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="QuestionnaireDate" ColumnName="QuestionnaireDate" />
+          <ScalarProperty Name="SituationID" ColumnName="SituationID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="QuestionnaireID" ColumnName="QuestionnaireID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

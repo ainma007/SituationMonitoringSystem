@@ -1,0 +1,76 @@
+﻿@using SituationMonitoring.Models
+@{
+    ViewBag.Title = "SituationUser";
+}
+
+<div class="page-title">
+    <i class="icon-custom-left"></i>
+    <h3>التحكم - <span class="semi-bold">بمستخدمين المشاريع</span></h3>
+</div>
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<SituationUserViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ID).Width(50).Hidden().HeaderHtmlAttributes(new { @title = "ID" }).Width(100);
+
+        columns.Bound(p => p.SituationID).Width(50).HeaderHtmlAttributes(new { @title = "ID" }).Width(100).Title("رقم النموذج").Width(200);
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "UserFullName")
+        .Title("المستخدم").Width(200);
+
+        columns.Bound(p => p.Status).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Width(50).Title("الحالة");
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة مستخدم لمشروع");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات مستخدم المشروع")))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.ID);
+            model.Field(p => p.ID).Editable(false);
+
+
+            model.Field(p => p.SituationID).DefaultValue(1);
+            model.Field(p => p.UserID).DefaultValue(1);
+        })
+        .Read(read => read.Action("SituationUser_Read", "SituationUser"))
+        .Update(update => update.Action("SituationUser_Update", "SituationUser"))
+        .Create(create => create.Action("Situation_Create", "SituationUser"))
+        .Destroy(destroy => destroy.Action("SituationUser_Destroy", "SituationUser"))
+    )
+)
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>
+

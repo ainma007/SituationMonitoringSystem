@@ -1,56 +1,82 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using SituationMonitoring.Models
+@{
+    ViewBag.Title = "situationManagement";
 }
 
-@section featured {
-    <div class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
-        </div>
-    </div>
-    }
+<h2>situationManagement</h2>
 
-<h3>Telerik UI for ASP.NET MVC PanelBar</h3>
-<br />
-
-@(Html.Kendo().PanelBar()
-    .Name("IntroPanelBar")
-    .Items(items =>
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<SituationViewModel>()
+    .Name("grid")
+    .Columns(columns =>
     {
-        items.Add()
-            .Text("Getting Started")
-            .Selected(true)
-            .Expanded(true)
-            .Content(@<text>
-                <p style="padding:0 1em">ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and that gives you full control over markup
-                for enjoyable, agile development. ASP.NET MVC includes many features that enable
-                fast, TDD-friendly development for creating sophisticated applications that use
-                the latest web standards.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a></p>
-            </text>);
-        items.Add()
-            .Text("Add NuGet packages and jump-start your coding")
-            .Content(@<text>
-                <p style="padding:0 1em">NuGet makes it easy to install and update free libraries and tools.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a></p>
-            </text>);
-        items.Add()
-            .Text("Find Web Hosting")
-            .Content(@<text>
-                <p style="padding:0 1em">You can easily find a web hosting company that offers the right mix of features
-                and price for your applications.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a></p>
-            </text>);
+        columns.Bound(p => p.SituationID).Width(50).Title("رقم النموذج");
+        columns.Bound(p => p.SituationDate).Width(100).HeaderHtmlAttributes(new { @title = "التاريخ " }).Width(100).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+
+        columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate"], "GovernorateID", "GovernorateArName")
+                   .Title("المحافظة").Width(100);
+        columns.ForeignKey(p => p.MunicipalityID, (System.Collections.IEnumerable)ViewData["Municipality"], "MunicipalityID", "MunicipalityName")
+                  .Title("البلدية").Width(100);
+
+        columns.ForeignKey(p => p.AreaID, (System.Collections.IEnumerable)ViewData["Area"], "AreaID", "AreaName")
+                  .Title("المنطقة").Width(100);
+
+
+        columns.Bound(p => p.CollectiveCenter).Width(100).HeaderHtmlAttributes(new { @title = "مركز الايواء" }).Width(100).Title("مركز الايواء");
+        columns.Bound(p => p.Site_Description).Width(100).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(100).Title("وصف الموقع");
+
+
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
     })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة بلدية جديدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية").Width(400).Height(600)).TemplateName("SituationEditor"))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.SituationID);
+            model.Field(p => p.SituationID).Editable(false);
+            model.Field(p => p.GovernorateID).DefaultValue(1);
+            model.Field(p => p.MunicipalityID).DefaultValue(1);
+
+            model.Field(p => p.AreaID).DefaultValue(1);
+
+        })
+        .Read(read => read.Action("Situation_Read", "Situation"))
+        .Update(update => update.Action("Situation_Update", "Situation"))
+        .Create(create => create.Action("Situation_Create", "Situation"))
+        .Destroy(destroy => destroy.Action("Situation_Destroy", "Situation"))
+    )
 )
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>

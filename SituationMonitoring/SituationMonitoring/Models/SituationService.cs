@@ -58,7 +58,7 @@ namespace SituationMonitoring.Models
         {
             var entity = new Situation_Table();
 
-            entity.SituationDate = db.SituationDate;
+            entity.SituationDate = (DateTime)db.SituationDate.Date;
             entity.GovernorateID = db.GovernorateID;
             entity.MunicipalityID = db.MunicipalityID;
             entity.AreaID = db.AreaID;
@@ -77,7 +77,7 @@ namespace SituationMonitoring.Models
             var entity = new Situation_Table();
 
             entity.SituationID = db.SituationID;
-            entity.SituationDate = db.SituationDate;
+            entity.SituationDate = db.SituationDate.Date;
             entity.GovernorateID = db.GovernorateID;
             entity.MunicipalityID = db.MunicipalityID;
             entity.AreaID = db.AreaID;

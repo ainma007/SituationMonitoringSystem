@@ -1,0 +1,123 @@
+﻿@model SituationMonitoring.Models.SituationViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 80%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;" >
+    <div class="grid-body no-border">
+
+        <div class="row">
+            <div class="form-group">
+                
+                    @Html.LabelFor(model => model.SituationDate)
+                                
+                    @Html.Kendo().DatePickerFor(model => model.SituationDate)
+                    @Html.ValidationMessageFor(model => model.SituationDate)
+              
+                                
+                </div>
+  <div class="form-group">
+
+                @Html.LabelFor(model => model.GovernorateID)
+
+                @(Html.Kendo().DropDownListFor(model => model.GovernorateID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("GovernorateArName")
+    .DataValueField("GovernorateID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetGovernorate", "Situation");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.GovernorateID)
+
+
+            </div>
+
+  <div class="form-group">
+
+                @Html.LabelFor(model => model.MunicipalityID)
+
+                @(Html.Kendo().DropDownListFor(model => model.MunicipalityID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("MunicipalityName")
+    .DataValueField("MunicipalityID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetMunicipality", "Situation");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.MunicipalityID)
+
+
+            </div>
+
+
+ <div class="form-group">
+
+                @Html.LabelFor(model => model.AreaID)
+
+                @(Html.Kendo().DropDownListFor(model => model.AreaID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("AreaName")
+    .DataValueField("AreaID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetArea", "Situation");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.AreaID)
+
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CollectiveCenter)
+            
+          
+                @Html.EditorFor(model => model.CollectiveCenter)
+                @Html.ValidationMessageFor(model => model.CollectiveCenter)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Site_Description)
+
+
+                @Html.EditorFor(model => model.Site_Description)
+                @Html.ValidationMessageFor(model => model.Site_Description)
+            </div>
+        </div>
+       
+    </div>
+</div>

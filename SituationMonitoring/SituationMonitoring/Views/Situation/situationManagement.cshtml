@@ -12,7 +12,7 @@
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.SituationID).Width(50).Hidden();
+        columns.Bound(p => p.SituationID).Width(50).Title("رقم النموذج");
         columns.Bound(p => p.SituationDate).Width(100).HeaderHtmlAttributes(new { @title = "التاريخ " }).Width(100).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
 
         columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate"], "GovernorateID", "GovernorateArName")
@@ -35,7 +35,7 @@
     {
         toolBar.Create().Text("اضافة بلدية جديدة");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية")).TemplateName("MunicipalityEditor"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية").Width(400).Height(600)).TemplateName("SituationEditor"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()
@@ -52,7 +52,11 @@
         {
             model.Id(p => p.SituationID);
             model.Field(p => p.SituationID).Editable(false);
-            model.Field(p => p.SituationID).DefaultValue(1);
+            model.Field(p => p.GovernorateID).DefaultValue(1);
+            model.Field(p => p.MunicipalityID).DefaultValue(1);
+
+            model.Field(p => p.AreaID).DefaultValue(1);
+
         })
         .Read(read => read.Action("Situation_Read", "Situation"))
         .Update(update => update.Action("Situation_Update", "Situation"))

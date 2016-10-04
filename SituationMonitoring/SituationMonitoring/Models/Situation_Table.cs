@@ -17,6 +17,7 @@ namespace SituationMonitoring.Models
         public Situation_Table()
         {
             this.SituationUser_Table = new HashSet<SituationUser_Table>();
+            this.Questionnaire_Table = new HashSet<Questionnaire_Table>();
         }
     
         public int SituationID { get; set; }
@@ -31,5 +32,6 @@ namespace SituationMonitoring.Models
         public virtual Governorate_Table Governorate_Table { get; set; }
         public virtual Municipality_Table Municipality_Table { get; set; }
         public virtual ICollection<SituationUser_Table> SituationUser_Table { get; set; }
+        public virtual ICollection<Questionnaire_Table> Questionnaire_Table { get; set; }
     }
 }

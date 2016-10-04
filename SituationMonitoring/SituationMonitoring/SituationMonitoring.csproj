@@ -151,6 +151,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipalityController.cs" />
     <Compile Include="Controllers\SituationController.cs" />
+    <Compile Include="Controllers\SituationUserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,13 +168,21 @@
     <Compile Include="Models\Municipality_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Questionnaire_Table.cs">
+      <DependentUpon>SMModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SessionForeignKey\AreaForeingKey.cs" />
     <Compile Include="Models\SessionForeignKey\MunicipalityForeingKey.cs" />
+    <Compile Include="Models\SessionForeignKey\SituationForeingKey.cs" />
+    <Compile Include="Models\SessionForeignKey\UserForeingKey.cs" />
     <Compile Include="Models\SituationService.cs" />
+    <Compile Include="Models\SituationUserService.cs" />
+    <Compile Include="Models\SituationUserViewModel.cs" />
     <Compile Include="Models\SituationUser_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SituationViewModel.cs" />
+    <Compile Include="Models\SituationViewModelForUsers.cs" />
     <Compile Include="Models\Situation_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
@@ -1715,6 +1724,10 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.en-GB.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.en.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.nl-NL.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.nl.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\kendo.modernizr.custom.js" />
@@ -2009,6 +2022,10 @@
     <Content Include="Views\Municipality\MunicipalityManegment.cshtml" />
     <Content Include="Views\Municipality\EditorTemplates\MunicipalityEditor.cshtml" />
     <Content Include="Views\Situation\situationManagement.cshtml" />
+    <Content Include="Views\Situation\EditorTemplates\SituationEditor.cshtml" />
+    <Content Include="Views\SituationUser\SituationUser.cshtml" />
+    <Content Include="Views\SituationUser\EditorTemplates\SituationID.cshtml" />
+    <Content Include="Views\SituationUser\EditorTemplates\UserID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

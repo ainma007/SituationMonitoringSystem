@@ -1,0 +1,18 @@
+﻿@model int
+
+
+@(Html.Kendo().DropDownListFor(m => m)
+          .HtmlAttributes(new { style = "width: 100%;" })
+          .DataTextField("SituationID")
+          .DataValueField("SituationID")
+          .Filter("contains")
+          .DataSource(source =>
+          {
+              source.Read(read =>
+              {
+                  read.Action("GetSituationID", "SituationUser");
+              })
+              .ServerFiltering(false);
+          })
+)
+@Html.ValidationMessageFor(m => m)

@@ -31,5 +31,6 @@ namespace SituationMonitoring.Models
         public DbSet<Situation_Table> Situation_Table { get; set; }
         public DbSet<SituationUser_Table> SituationUser_Table { get; set; }
         public DbSet<Users_Table> Users_Table { get; set; }
+        public DbSet<Questionnaire_Table> Questionnaire_Table { get; set; }
     }
 }

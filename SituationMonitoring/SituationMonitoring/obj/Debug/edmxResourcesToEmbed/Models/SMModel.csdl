@@ -35,6 +35,15 @@
       <End Role="Users_Table" EntitySet="Users_Table" />
       <End Role="SituationUser_Table" EntitySet="SituationUser_Table" />
     </AssociationSet>
+    <EntitySet Name="Questionnaire_Table" EntityType="SituationMonitoringModel.Questionnaire_Table" />
+    <AssociationSet Name="FK_Questionnaire_Table_Situation_Table" Association="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table">
+      <End Role="Situation_Table" EntitySet="Situation_Table" />
+      <End Role="Questionnaire_Table" EntitySet="Questionnaire_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questionnaire_Table_Users_Table" Association="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table">
+      <End Role="Users_Table" EntitySet="Users_Table" />
+      <End Role="Questionnaire_Table" EntitySet="Questionnaire_Table" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Area_Table">
     <Key>
@@ -84,6 +93,7 @@
     <NavigationProperty Name="Governorate_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Governorate_Table" FromRole="Situation_Table" ToRole="Governorate_Table" />
     <NavigationProperty Name="Municipality_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Municipality_Table" FromRole="Situation_Table" ToRole="Municipality_Table" />
     <NavigationProperty Name="SituationUser_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" FromRole="Situation_Table" ToRole="SituationUser_Table" />
+    <NavigationProperty Name="Questionnaire_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" FromRole="Situation_Table" ToRole="Questionnaire_Table" />
   </EntityType>
   <EntityType Name="SituationUser_Table">
     <Key>
@@ -107,6 +117,7 @@
     <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="SituationUser_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" FromRole="Users_Table" ToRole="SituationUser_Table" />
+    <NavigationProperty Name="Questionnaire_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" FromRole="Users_Table" ToRole="Questionnaire_Table" />
   </EntityType>
   <Association Name="FK_Area_Table_Governorate_Table">
     <End Type="SituationMonitoringModel.Governorate_Table" Role="Governorate_Table" Multiplicity="0..1" />
@@ -188,6 +199,83 @@
         <PropertyRef Name="UserID" />
       </Principal>
       <Dependent Role="SituationUser_Table">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Questionnaire_Table">
+    <Key>
+      <PropertyRef Name="QuestionnaireID" />
+    </Key>
+    <Property Name="QuestionnaireID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="SituationID" Type="Int32" />
+    <Property Name="QuestionnaireDate" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CenterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonGEnder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleInCommunity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Place_of_origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estimated_Number_Of_Individuals" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estimated_Number_Of_Families" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Site_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_1_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_2_1_Family_CommunityDisputes" Type="Boolean" />
+    <Property Name="Question_1_2_2NotEnoughFood" Type="Boolean" />
+    <Property Name="Question1_2_3NotEnoughPrivacy" Type="Boolean" />
+    <Property Name="Question1_2_4NotEnoughDrinking" Type="Boolean" />
+    <Property Name="Question1_2_5UnsafeHousing" Type="Boolean" />
+    <Property Name="Question1_2_6Overcrowding" Type="Boolean" />
+    <Property Name="Question1_2_7InsufficientBedding" Type="Boolean" />
+    <Property Name="Question1_2_8NotEnoughWater" Type="Boolean" />
+    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" Type="Boolean" />
+    <Property Name="Question1_2_9Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_2_10No_Access_to_essential_services" Type="Boolean" />
+    <Property Name="Question1_2_10Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_2_11Other" Type="Boolean" />
+    <Property Name="Question1_2_11Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_3_1Family_CommunityDisputes" Type="Boolean" />
+    <Property Name="Question1_3_2NotEnoughFood" Type="Boolean" />
+    <Property Name="Question1_3_3NotEnoughDrinking" Type="Boolean" />
+    <Property Name="Question1_3_4UnsafeHousing" Type="Boolean" />
+    <Property Name="Question1_3_5Overcrowding" Type="Boolean" />
+    <Property Name="Question1_3_5NotEnoughWater" Type="Boolean" />
+    <Property Name="Question1_3_6Not_enough_humanitarian_assistance" Type="Boolean" />
+    <Property Name="Question1_3_6Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_3_7No_Access_to_essential_services" Type="Boolean" />
+    <Property Name="Question1_3_7Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_3_8Other" Type="Boolean" />
+    <Property Name="Question1_3_8Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Question1_4_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" FromRole="Questionnaire_Table" ToRole="Situation_Table" />
+    <NavigationProperty Name="Users_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" FromRole="Questionnaire_Table" ToRole="Users_Table" />
+  </EntityType>
+  <Association Name="FK_Questionnaire_Table_Situation_Table">
+    <End Type="SituationMonitoringModel.Situation_Table" Role="Situation_Table" Multiplicity="0..1" />
+    <End Type="SituationMonitoringModel.Questionnaire_Table" Role="Questionnaire_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Situation_Table">
+        <PropertyRef Name="SituationID" />
+      </Principal>
+      <Dependent Role="Questionnaire_Table">
+        <PropertyRef Name="SituationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questionnaire_Table_Users_Table">
+    <End Type="SituationMonitoringModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+    <End Type="SituationMonitoringModel.Questionnaire_Table" Role="Questionnaire_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Table">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Questionnaire_Table">
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
