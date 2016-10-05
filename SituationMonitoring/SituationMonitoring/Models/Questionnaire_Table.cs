@@ -27,8 +27,9 @@ namespace SituationMonitoring.Models
         public string RoleInCommunity { get; set; }
         public string Place_of_origin { get; set; }
         public string PersonMobile { get; set; }
-        public string Estimated_Number_Of_Individuals { get; set; }
-        public string Estimated_Number_Of_Families { get; set; }
+        public string CollectiveCenter { get; set; }
+        public Nullable<int> Estimated_Number_Of_Individuals { get; set; }
+        public Nullable<int> Estimated_Number_Of_Families { get; set; }
         public string Site_Description { get; set; }
         public string Question1_1 { get; set; }
         public string Question1_1_1 { get; set; }

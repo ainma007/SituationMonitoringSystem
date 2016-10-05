@@ -10,7 +10,6 @@ namespace SituationMonitoring.Models
 {
     public class SituationViewModel
     {
-        [ScaffoldColumn(false)]
         public int SituationID
         {
             get;

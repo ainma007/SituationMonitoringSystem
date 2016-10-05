@@ -101,6 +101,7 @@
           <ScalarProperty Name="Site_Description" ColumnName="Site_Description" />
           <ScalarProperty Name="Estimated_Number_Of_Families" ColumnName="Estimated_Number_Of_Families" />
           <ScalarProperty Name="Estimated_Number_Of_Individuals" ColumnName="Estimated_Number_Of_Individuals" />
+          <ScalarProperty Name="CollectiveCenter" ColumnName="CollectiveCenter" />
           <ScalarProperty Name="PersonMobile" ColumnName="PersonMobile" />
           <ScalarProperty Name="Place_of_origin" ColumnName="Place_of_origin" />
           <ScalarProperty Name="RoleInCommunity" ColumnName="RoleInCommunity" />

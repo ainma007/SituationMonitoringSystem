@@ -150,6 +150,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipalityController.cs" />
+    <Compile Include="Controllers\QuestionnaireController.cs" />
     <Compile Include="Controllers\SituationController.cs" />
     <Compile Include="Controllers\SituationUserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -168,6 +169,8 @@
     <Compile Include="Models\Municipality_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QuestionnaireService.cs" />
+    <Compile Include="Models\QuestionnaireViewModel.cs" />
     <Compile Include="Models\Questionnaire_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
@@ -2026,6 +2029,8 @@
     <Content Include="Views\SituationUser\SituationUser.cshtml" />
     <Content Include="Views\SituationUser\EditorTemplates\SituationID.cshtml" />
     <Content Include="Views\SituationUser\EditorTemplates\UserID.cshtml" />
+    <Content Include="Views\Shared\_LayoutQuestionnaire.cshtml" />
+    <Content Include="Views\Questionnaire\QuestionnaireManmanagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

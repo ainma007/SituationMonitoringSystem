@@ -1,0 +1,85 @@
+﻿@using SituationMonitoring.Models
+
+@{
+    ViewBag.Title = "QuestionnaireManmanagement";
+    Layout = "~/Views/Shared/_LayoutQuestionnaire.cshtml";
+}
+
+<h2>QuestionnaireManmanagement</h2>
+
+
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<QuestionnaireViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ");
+        columns.Bound(p => p.QuestionnaireDate).Width(100).HeaderHtmlAttributes(new { @title = "التاريخ " }).Width(100).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+        columns.Bound(p => p.EmployeeName).Width(100).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Width(100).Title("اسم الموظف");
+        columns.Bound(p => p.CenterName).Width(100).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Width(100).Title("اسم المؤسسة");
+        columns.Bound(p => p.EmployeeMail).Width(100).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Width(100).Title("البريد الالكتروني");
+        columns.Bound(p => p.EmployeePhone).Width(100).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Width(100).Title("رقم الجوال");
+        columns.Bound(p => p.PersonName).Width(100).HeaderHtmlAttributes(new { @title = "اسم الشخص" }).Width(100).Title("اسم الشخص");
+        columns.Bound(p => p.PersonGEnder).Width(100).HeaderHtmlAttributes(new { @title = "الجنس" }).Width(100).Title("الجنس");
+        columns.Bound(p => p.RoleInCommunity).Width(100).HeaderHtmlAttributes(new { @title = "دوره في المجتمع" }).Width(100).Title("دوره في المجتمع");
+        columns.Bound(p => p.Place_of_origin).Width(100).HeaderHtmlAttributes(new { @title = "مكانه الاصلي" }).Width(100).Title("مكانه الاصلي");
+        columns.Bound(p => p.PersonMobile).Width(100).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Width(100).Title("رقم الجوال");
+        columns.Bound(p => p.CollectiveCenter).Width(100).HeaderHtmlAttributes(new { @title = "المنطقة /مركز الايواء" }).Width(100).Title("المنطقة/ مركز الايواء");
+        columns.Bound(p => p.Estimated_Number_Of_Individuals).Width(100).HeaderHtmlAttributes(new { @title = "العدد التقديري للأفراد" }).Width(100).Title("العدد التقديري للأفراد");
+        columns.Bound(p => p.Estimated_Number_Of_Families).Width(100).HeaderHtmlAttributes(new { @title = "العدد التقديري للعائلات" }).Width(100).Title("العدد التقديري للأفراد");
+
+        columns.Bound(p => p.Site_Description).Width(100).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(100).Title("وصف الموقع");
+        columns.Bound(p => p.Question1_1).Width(100).HeaderHtmlAttributes(new { @title = "1.1 هل أنت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة" }).Width(100).Title("1.1 هل أنت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة");
+        columns.Bound(p => p.Question1_1_1).Width(100).HeaderHtmlAttributes(new { @title = "عدد المجموعات الأسرية التي تقيم مع عائلات مضيفة" }).Width(100).Title("عدد المجموعات الأسرية التي تقيم مع عائلات مضيفة");
+
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة استبانة جديدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(400).Height(600)).TemplateName("SituationEditor"))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.QuestionnaireID);
+            model.Field(p => p.QuestionnaireID).Editable(false);
+
+
+        })
+        .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
+        .Update(update => update.Action("Situation_Update", "Questionnaire"))
+        .Create(create => create.Action("Situation_Create", "Questionnaire"))
+        .Destroy(destroy => destroy.Action("Situation_Destroy", "Questionnaire"))
+    )
+)
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>

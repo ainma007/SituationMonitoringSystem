@@ -220,36 +220,37 @@
     <Property Name="RoleInCommunity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Place_of_origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PersonMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Estimated_Number_Of_Individuals" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Estimated_Number_Of_Families" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CollectiveCenter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estimated_Number_Of_Individuals" Type="Int32" />
+    <Property Name="Estimated_Number_Of_Families" Type="Int32" />
     <Property Name="Site_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Question1_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Question1_1_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Question1_2_1_Family_CommunityDisputes" Type="Boolean" />
-    <Property Name="Question_1_2_2NotEnoughFood" Type="Boolean" />
-    <Property Name="Question1_2_3NotEnoughPrivacy" Type="Boolean" />
-    <Property Name="Question1_2_4NotEnoughDrinking" Type="Boolean" />
-    <Property Name="Question1_2_5UnsafeHousing" Type="Boolean" />
-    <Property Name="Question1_2_6Overcrowding" Type="Boolean" />
-    <Property Name="Question1_2_7InsufficientBedding" Type="Boolean" />
-    <Property Name="Question1_2_8NotEnoughWater" Type="Boolean" />
-    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" Type="Boolean" />
+    <Property Name="Question1_2_1_Family_CommunityDisputes" Type="Boolean" Nullable="false" />
+    <Property Name="Question_1_2_2NotEnoughFood" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_3NotEnoughPrivacy" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_4NotEnoughDrinking" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_5UnsafeHousing" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_6Overcrowding" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_7InsufficientBedding" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_8NotEnoughWater" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_9Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Question1_2_10No_Access_to_essential_services" Type="Boolean" />
+    <Property Name="Question1_2_10No_Access_to_essential_services" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_10Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Question1_2_11Other" Type="Boolean" />
+    <Property Name="Question1_2_11Other" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_11Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Question1_3_1Family_CommunityDisputes" Type="Boolean" />
-    <Property Name="Question1_3_2NotEnoughFood" Type="Boolean" />
-    <Property Name="Question1_3_3NotEnoughDrinking" Type="Boolean" />
-    <Property Name="Question1_3_4UnsafeHousing" Type="Boolean" />
-    <Property Name="Question1_3_5Overcrowding" Type="Boolean" />
-    <Property Name="Question1_3_5NotEnoughWater" Type="Boolean" />
-    <Property Name="Question1_3_6Not_enough_humanitarian_assistance" Type="Boolean" />
+    <Property Name="Question1_3_1Family_CommunityDisputes" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_2NotEnoughFood" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_3NotEnoughDrinking" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_4UnsafeHousing" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_5Overcrowding" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_5NotEnoughWater" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_6Not_enough_humanitarian_assistance" Type="Boolean" Nullable="false" />
     <Property Name="Question1_3_6Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Question1_3_7No_Access_to_essential_services" Type="Boolean" />
+    <Property Name="Question1_3_7No_Access_to_essential_services" Type="Boolean" Nullable="false" />
     <Property Name="Question1_3_7Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Question1_3_8Other" Type="Boolean" />
+    <Property Name="Question1_3_8Other" Type="Boolean" Nullable="false" />
     <Property Name="Question1_3_8Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Question1_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Question1_4_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

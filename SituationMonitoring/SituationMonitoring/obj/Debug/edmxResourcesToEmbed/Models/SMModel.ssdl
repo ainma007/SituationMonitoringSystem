@@ -43,8 +43,9 @@
     <Property Name="RoleInCommunity" Type="nvarchar" MaxLength="50" />
     <Property Name="Place_of_origin" Type="nvarchar" MaxLength="50" />
     <Property Name="PersonMobile" Type="nvarchar" MaxLength="50" />
-    <Property Name="Estimated_Number_Of_Individuals" Type="nvarchar" MaxLength="50" />
-    <Property Name="Estimated_Number_Of_Families" Type="nvarchar" MaxLength="50" />
+    <Property Name="CollectiveCenter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Estimated_Number_Of_Individuals" Type="int" />
+    <Property Name="Estimated_Number_Of_Families" Type="int" />
     <Property Name="Site_Description" Type="nvarchar" MaxLength="50" />
     <Property Name="Question1_1" Type="nvarchar" MaxLength="50" />
     <Property Name="Question1_1_1" Type="nvarchar" MaxLength="50" />

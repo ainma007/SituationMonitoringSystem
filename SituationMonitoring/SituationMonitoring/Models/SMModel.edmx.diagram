@@ -18,7 +18,7 @@
         <AssociationConnector Association="SituationMonitoringModel.FK_Situation_Table_Municipality_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" />
-        <EntityTypeShape EntityType="SituationMonitoringModel.Questionnaire_Table" Width="3.5" PointX="12.625" PointY="0.75" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Questionnaire_Table" Width="3.625" PointX="12.625" PointY="0.75" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" />
       </Diagram>

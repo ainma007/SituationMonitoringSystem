@@ -48,8 +48,9 @@
           <Property Name="RoleInCommunity" Type="nvarchar" MaxLength="50" />
           <Property Name="Place_of_origin" Type="nvarchar" MaxLength="50" />
           <Property Name="PersonMobile" Type="nvarchar" MaxLength="50" />
-          <Property Name="Estimated_Number_Of_Individuals" Type="nvarchar" MaxLength="50" />
-          <Property Name="Estimated_Number_Of_Families" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollectiveCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estimated_Number_Of_Individuals" Type="int" />
+          <Property Name="Estimated_Number_Of_Families" Type="int" />
           <Property Name="Site_Description" Type="nvarchar" MaxLength="50" />
           <Property Name="Question1_1" Type="nvarchar" MaxLength="50" />
           <Property Name="Question1_1_1" Type="nvarchar" MaxLength="50" />
@@ -315,7 +316,7 @@
             <End Role="Users_Table" EntitySet="Users_Table" />
             <End Role="Questionnaire_Table" EntitySet="Questionnaire_Table" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Area_Table">
           <Key>
             <PropertyRef Name="AreaID" />
@@ -491,8 +492,9 @@
           <Property Name="RoleInCommunity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Place_of_origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PersonMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Estimated_Number_Of_Individuals" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Estimated_Number_Of_Families" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollectiveCenter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estimated_Number_Of_Individuals" Type="Int32" />
+          <Property Name="Estimated_Number_Of_Families" Type="Int32" />
           <Property Name="Site_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Question1_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Question1_1_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -657,6 +659,7 @@
                 <ScalarProperty Name="Site_Description" ColumnName="Site_Description" />
                 <ScalarProperty Name="Estimated_Number_Of_Families" ColumnName="Estimated_Number_Of_Families" />
                 <ScalarProperty Name="Estimated_Number_Of_Individuals" ColumnName="Estimated_Number_Of_Individuals" />
+                <ScalarProperty Name="CollectiveCenter" ColumnName="CollectiveCenter" />
                 <ScalarProperty Name="PersonMobile" ColumnName="PersonMobile" />
                 <ScalarProperty Name="Place_of_origin" ColumnName="Place_of_origin" />
                 <ScalarProperty Name="RoleInCommunity" ColumnName="RoleInCommunity" />
