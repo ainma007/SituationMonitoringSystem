@@ -1,0 +1,381 @@
+﻿@model SituationMonitoring.Models.QuestionnaireViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 100%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+
+<div class="k-edit-form-container" style="margin:auto;">
+    <table class="table table-bordered no-more-tables">
+        <thead>
+            
+            <tr>
+                <th colspan=4 class="alert alert-info"><h4>الجزء الأول: المراقبة في حالة الطوارئ/ معلومات فريق التقييم</h4></th>
+            </tr>
+            <tr>
+
+                <th class="text-center" style="width:30%">الاسم</th>
+                <th class="text-center" style="width:30%">المؤسسة</th>
+                <th class="text-center" style="width:22%">البريد الالكتروني</th>
+                <th class="text-center" style="width:22%">رقم الجوال</th>
+
+            </tr>
+        </thead>
+        
+            
+            
+        
+        <tbody>
+            <tr>
+
+                <td><span>@Html.EditorFor(model => model.EmployeeName) @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
+                <td><span>@Html.EditorFor(model => model.CenterName) @Html.ValidationMessageFor(model => model.CenterName)</span>
+                <td><span>@Html.EditorFor(model => model.EmployeeMail) @Html.ValidationMessageFor(model => model.EmployeeMail)</span>
+                <td><span>@Html.EditorFor(model => model.EmployeePhone) @Html.ValidationMessageFor(model => model.EmployeePhone)</span>
+
+
+            </tr>
+        </tbody>
+
+
+        
+    </table>
+
+
+
+    <table class="table table-bordered no-more-tables">
+
+   
+
+        <thead>
+
+            <tr>
+                <th colspan=5 class="alert alert-info"><h4>الجزء الثاني: المراقبة في حالة الطوارئ/ معلومات فريق التقييم</h4></th>
+            </tr>
+            <tr>
+
+                <th class="text-center" style="width:30%">الاسم</th>
+                <th class="text-center" style="width:15%">الجنس</th>
+                <th class="text-center" style="width:20%"> دوره في المجتمع</th>
+                <th class="text-center" style="width:20%">مكانه الاصلي</th>
+                <th class="text-center" style="width:15%">رقم الجوال</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td><span>@Html.EditorFor(model => model.PersonName) @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
+                <td>
+                    <span>
+                        @(Html.Kendo().ComboBoxFor(model => model.PersonGEnder)
+
+          .Placeholder("اختر الجنس")
+          .BindTo(new List<string>() {
+              "ذكر",
+              "أنثى",
+
+          })
+          .SelectedIndex(0)
+          .Suggest(true)
+                        )
+                        @Html.ValidationMessageFor(model => model.PersonGEnder)
+                    </span>
+                </td>
+                <td><span>@Html.EditorFor(model => model.RoleInCommunity) @Html.ValidationMessageFor(model => model.EmployeeMail)</span></td>
+                <td><span>@Html.EditorFor(model => model.Place_of_origin) @Html.ValidationMessageFor(model => model.EmployeePhone)</span></td>
+                <td><span>@Html.EditorFor(model => model.PersonMobile) @Html.ValidationMessageFor(model => model.EmployeePhone)</span></td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <table class="table table-bordered no-more-tables">
+
+
+
+        <thead>
+
+            <tr>
+                <th colspan=4 class="alert alert-info"><h4>الجزء الثالث: مصادر معلومات الموقع</h4></th>
+            </tr>
+            <tr>
+
+                <th class="text-center" style="width:30%">المنطقة/ مركز الايواء</th>
+                <th class="text-center" style="width:15%">العدد التقديري للافراد</th>
+                <th class="text-center" style="width:15%"> العدد التقديري للعائلات</th>
+                <th class="text-center" style="width:40%">وصف الموقع</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td><span>@Html.Kendo().TextBoxFor(model => model.CollectiveCenter) @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
+            
+                <td><span>@Html.Kendo().NumericTextBoxFor(model => model.Estimated_Number_Of_Individuals) @Html.ValidationMessageFor(model => model.Estimated_Number_Of_Individuals)</span></td>
+                <td><span>@Html.Kendo().NumericTextBoxFor(model => model.Estimated_Number_Of_Families) @Html.ValidationMessageFor(model => model.Estimated_Number_Of_Families)</span></td>
+                <td><span>@Html.EditorFor(model => model.Site_Description) @Html.ValidationMessageFor(model => model.Site_Description)</span></td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-info"><h4>1.اهتامات الحماية الواضحة خارج مركز الإيواء</h4></div> 
+
+    <table class="table table-bordered no-more-tables">
+
+
+
+        <thead>
+
+           
+            <tr>
+                <th colspan=4 class="text-right" style="width:30%">1.1 هل انت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة؟</th>
+              
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td colspan=4>
+                    <span>
+                        @(Html.Kendo().ComboBoxFor(model => model.Question1_1)
+
+          .Placeholder("اختر الاجابة")
+          .BindTo(new List<string>() {
+              "نعم",
+              "لا",
+              "غير متأكد",
+          })
+          .SelectedIndex(0)
+          .Suggest(true)
+                        )
+                        @Html.ValidationMessageFor(model => model.Question1_1)
+                    </span>
+                </td>
+
+
+            </tr>
+        </tbody>
+
+        <thead>
+
+
+            <tr>
+                <th colspan=4 class="text-right" style="width:30%">1.1.1 إذا كانت الاجابة بنعم،ما هو عدد المجموعات الاسرية التي تقيم مع عائلات مضيفة</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td colspan=4>
+                    <span>
+                        @(Html.Kendo().ComboBoxFor(model => model.Question1_1_1)
+
+          .Placeholder("اختر الاجابة")
+          .BindTo(new List<string>() {
+              "أقل من 10",
+              "10-50",
+              "100-50",
+              "أكثر من 100",
+          })
+          .SelectedIndex(0)
+          .Suggest(true)
+                        )
+                        @Html.ValidationMessageFor(model => model.Question1_1_1)
+                    </span>
+                </td>
+
+
+            </tr>
+
+
+        </tbody>
+
+
+        <thead>
+
+
+            <tr>
+                <th colspan=4 class="text-right" style="width:30%">1.2 ما هي اهتمامات الحماية لتلك الأسر</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td><span>@Html.LabelFor(model => model.Question1_2_1_Family_CommunityDisputes) @Html.CheckBoxFor(model => model.Question1_2_1_Family_CommunityDisputes) @Html.ValidationMessageFor(model => model.Question1_2_1_Family_CommunityDisputes)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question_1_2_2NotEnoughFood)@Html.CheckBoxFor(model => model.Question_1_2_2NotEnoughFood) @Html.ValidationMessageFor(model => model.Question_1_2_2NotEnoughFood)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_2_3NotEnoughPrivacy)@Html.CheckBoxFor(model => model.Question1_2_3NotEnoughPrivacy) @Html.ValidationMessageFor(model => model.Question1_2_3NotEnoughPrivacy)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_2_4NotEnoughDrinking)@Html.CheckBoxFor(model => model.Question1_2_4NotEnoughDrinking) @Html.ValidationMessageFor(model => model.Question1_2_4NotEnoughDrinking)</span></td>
+
+
+
+            </tr>
+
+            <tr>
+
+                <td><span>@Html.LabelFor(model => model.Question1_2_5UnsafeHousing) @Html.CheckBoxFor(model => model.Question1_2_5UnsafeHousing) @Html.ValidationMessageFor(model => model.Question1_2_5UnsafeHousing)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_2_6Overcrowding)@Html.CheckBoxFor(model => model.Question1_2_6Overcrowding) @Html.ValidationMessageFor(model => model.Question1_2_6Overcrowding)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_2_7InsufficientBedding)@Html.CheckBoxFor(model => model.Question1_2_7InsufficientBedding) @Html.ValidationMessageFor(model => model.Question1_2_7InsufficientBedding)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_2_8NotEnoughWater)@Html.CheckBoxFor(model => model.Question1_2_8NotEnoughWater) @Html.ValidationMessageFor(model => model.Question1_2_8NotEnoughWater)</span></td>
+
+
+
+            </tr>
+
+
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_2_9Not_enough_humanitarian_assistance) @Html.CheckBoxFor(model => model.Question1_2_9Not_enough_humanitarian_assistance) @Html.ValidationMessageFor(model => model.Question1_2_9Not_enough_humanitarian_assistance)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_2_9Text)@Html.EditorFor(model => model.Question1_2_9Text) @Html.ValidationMessageFor(model => model.Question1_2_9Text)</span></td>
+                
+
+            </tr>
+
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_2_10No_Access_to_essential_services) @Html.CheckBoxFor(model => model.Question1_2_10No_Access_to_essential_services) @Html.ValidationMessageFor(model => model.Question1_2_10No_Access_to_essential_services)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_2_10Text)@Html.EditorFor(model => model.Question1_2_10Text) @Html.ValidationMessageFor(model => model.Question1_2_10Text)</span></td>
+
+
+            </tr>
+
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_2_11Other) @Html.CheckBoxFor(model => model.Question1_2_11Other) @Html.ValidationMessageFor(model => model.Question1_2_11Other)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_2_11Text)@Html.EditorFor(model => model.Question1_2_11Text) @Html.ValidationMessageFor(model => model.Question1_2_11Text)</span></td>
+
+
+            </tr>
+        </tbody>
+
+        <thead>
+
+
+            <tr>
+                <th colspan=4 class="text-right" style="width:30%">1.3 ما هي الاهتمامات الرئيسية لأشخاص آخرين في مجتمعك غير الأشخاص الذين يقيمون مع عائلات مضيفة؟</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td><span>@Html.LabelFor(model => model.Question1_3_1Family_CommunityDisputes) @Html.CheckBoxFor(model => model.Question1_3_1Family_CommunityDisputes) @Html.ValidationMessageFor(model => model.Question1_3_1Family_CommunityDisputes)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_3_2NotEnoughFood)@Html.CheckBoxFor(model => model.Question1_3_2NotEnoughFood) @Html.ValidationMessageFor(model => model.Question1_3_2NotEnoughFood)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_3_3NotEnoughDrinking)@Html.CheckBoxFor(model => model.Question1_3_3NotEnoughDrinking) @Html.ValidationMessageFor(model => model.Question1_3_3NotEnoughDrinking)</span></td>
+                <td><span> @Html.LabelFor(model => model.Question1_3_4UnsafeHousing)@Html.CheckBoxFor(model => model.Question1_3_4UnsafeHousing) @Html.ValidationMessageFor(model => model.Question1_3_4UnsafeHousing)</span></td>
+
+
+
+            </tr>
+
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_3_5Overcrowding) @Html.CheckBoxFor(model => model.Question1_3_5Overcrowding) @Html.ValidationMessageFor(model => model.Question1_3_5Overcrowding)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_3_5NotEnoughWater)@Html.CheckBoxFor(model => model.Question1_3_5NotEnoughWater) @Html.ValidationMessageFor(model => model.Question1_3_5NotEnoughWater)</span></td>
+                
+
+
+            </tr>
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_3_6Not_enough_humanitarian_assistance) @Html.CheckBoxFor(model => model.Question1_3_6Not_enough_humanitarian_assistance) @Html.ValidationMessageFor(model => model.Question1_3_6Not_enough_humanitarian_assistance)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_3_6Text)@Html.EditorFor(model => model.Question1_3_6Text) @Html.ValidationMessageFor(model => model.Question1_3_6Text)</span></td>
+
+
+            </tr>
+
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_3_7No_Access_to_essential_services) @Html.CheckBoxFor(model => model.Question1_3_7No_Access_to_essential_services) @Html.ValidationMessageFor(model => model.Question1_3_7No_Access_to_essential_services)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_3_7Text)@Html.EditorFor(model => model.Question1_3_7Text) @Html.ValidationMessageFor(model => model.Question1_3_7Text)</span></td>
+
+
+            </tr>
+
+            <tr>
+
+                <td colspan=2><span>@Html.LabelFor(model => model.Question1_3_8Other) @Html.CheckBoxFor(model => model.Question1_3_8Other) @Html.ValidationMessageFor(model => model.Question1_3_7No_Access_to_essential_services)</span></td>
+                <td colspan=2><span> @Html.LabelFor(model => model.Question1_3_8Text)@Html.EditorFor(model => model.Question1_3_8Text) @Html.ValidationMessageFor(model => model.Question1_3_8Text)</span></td>
+
+
+            </tr>
+            </tbody>
+
+        <thead>
+
+
+            <tr>
+                <th colspan=4 class="text-right" style="width:30%">1.4 هل يعرف الناس في منطقتكم كيفية الوصول إلى المساعدة و/أو المعلومات؟</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td colspan=4>
+                    <span>
+                        @(Html.Kendo().ComboBoxFor(model => model.Question1_4)
+
+          .Placeholder("اختر الاجابة")
+          .BindTo(new List<string>() {
+              "نعم",
+              "لا",
+              "غير متأكد",
+          })
+          .SelectedIndex(0)
+          .Suggest(true)
+                        )
+                        @Html.ValidationMessageFor(model => model.Question1_4)
+                    </span>
+                </td>
+
+
+            </tr>
+        </tbody>
+
+        <thead>
+
+
+            <tr>
+                <th colspan=4 class="text-right" style="width:30%">1.4.1 إذا كانت الإجابة بنعم، أين يطلب الناس المساعدة و/أو المعلومات؟</th>
+
+
+            </tr>
+
+
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan=4><span>@Html.EditorFor(model => model.RoleInCommunity) @Html.ValidationMessageFor(model => model.EmployeeMail)</span></td>
+            </tr>
+        </tbody>
+</table>
+
+
+    </div>

@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "situationManagement";
 }
-<div class="page-header">
-    <h1>Example Page Header</h1>
+
+<div class="alert alert-info">
+   <h2 style="text-align:center;">ادارة النماذج الشاملة</h2>
 </div>
-<h2>situationManagement</h2>
 
 <script>
     kendo.culture("en-GB");
@@ -82,3 +82,128 @@
         }
     }
 </script>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple ">
+            <div class="grid-title no-border">
+                <h4>Table  <span class="semi-bold">Styles</span></h4>
+               
+            </div>
+            <div class="grid-body no-border">
+                <h3>Basic  <span class="semi-bold">Table</span></h3>
+                <table class="table no-more-tables">
+                    <thead>
+                        <tr>
+                           
+                            <th style="width:9%">Project Name</th>
+                          
+                        </tr>
+                        <tr>
+
+                            <th style="width:20%">Project Name</th>
+                            <th style="width:20%">Description</th>
+                            <th style="width:20%">Price</th>
+                            <th style="width:20%">Progress</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                            <td class="v-align-middle">Early Bird</td>
+                            <td class="v-align-middle">
+                                <span class="muted">Redesign project template</span>
+                            </td>
+                            <td>
+                                <span class="muted">$4,500</span>
+                            </td>
+                            <td class="v-align-middle">
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                          
+                            <td>
+                                <div class="inline">Angry Birds</div> <span class="label label-important">ALERT!</span>
+                            </td>
+                            <td>
+                                <span class="muted">Something goes here</span>
+                            </td>
+                            <td>
+                                <span class="muted">$9,000</span>
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div data-percentage="10%" class="progress-bar progress-bar-danger animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                           
+                            <td>PHP Login page</td>
+                            <td class="v-align-middle">
+                                <span class="muted">A project in business and science is typically defined</span>
+                            </td>
+                            <td>
+                                <span class="muted">$5,400</span>
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div data-percentage="65%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                           
+                            <td>Zombies</td>
+                            <td class="v-align-middle">
+                                <span class="muted">frequently involving research or design</span>
+                            </td>
+                            <td>
+                                <span class="muted">$6,000</span>
+                            </td>
+                            <td>
+                                <div class="progress ">
+                                    <div data-percentage="42%" class="progress-bar progress-bar-warning animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class='sortable'>
+    <thead>
+        <tr>
+            <th id="h1" data-defaultsort="asc">h1</th>
+            <th id="h2">h2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="az">
+            <td id="a">a</td>
+            <td id="z">z</td>
+        </tr>
+        <tr id="by">
+            <td id="b">b</td>
+            <td id="y">y</td>
+        </tr>
+        <tr id="cx">
+            <td id="c">c</td>
+            <td id="x">x</td>
+        </tr>
+        <tr id="dw">
+            <td id="d">d</td>
+            <td id="w">w</td>
+        </tr>
+    </tbody>
+</table>

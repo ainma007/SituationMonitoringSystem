@@ -2031,6 +2031,7 @@
     <Content Include="Views\SituationUser\EditorTemplates\UserID.cshtml" />
     <Content Include="Views\Shared\_LayoutQuestionnaire.cshtml" />
     <Content Include="Views\Questionnaire\QuestionnaireManmanagement.cshtml" />
+    <Content Include="Views\Questionnaire\EditorTemplates\QuestionnaireEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

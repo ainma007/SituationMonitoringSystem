@@ -41,7 +41,7 @@
     {
         toolBar.Create().Text("اضافة استبانة جديدة");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(400).Height(600)).TemplateName("SituationEditor"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(1000).Height(600)).TemplateName("QuestionnaireEditor"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()
@@ -58,6 +58,9 @@
         {
             model.Id(p => p.QuestionnaireID);
             model.Field(p => p.QuestionnaireID).Editable(false);
+            model.Field(p => p.PersonGEnder).DefaultValue("ذكر");
+
+            
 
 
         })
