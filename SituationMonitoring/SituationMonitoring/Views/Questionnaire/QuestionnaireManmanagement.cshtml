@@ -17,117 +17,20 @@
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ").Locked(true).Lockable(false); 
-        columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ").Locked(true);
-        columns.Group(group => group
-        .Title("الجزء الأول: المراقبة في حالة الطواريء / معلومات الفريق التقييم").Locked(true)
-        .Columns(info =>
-        {
-            info.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
-            info.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
-            info.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
-            info.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
-        })
-);
-        columns.Group(group => group
-       .Title("الجزء الثاني: مصادر المعلومات الأساسية")
-       .Columns(info =>
-       {
-           info.Bound(p => p.PersonName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الشخص" }).Title("اسم الشخص");
-           info.Bound(p => p.PersonGEnder).Width(100).HeaderHtmlAttributes(new { @title = "الجنس" }).Title("الجنس");
-           info.Bound(p => p.RoleInCommunity).Width(170).HeaderHtmlAttributes(new { @title = "دوره في المجتمع" }).Title("دوره في المجتمع");
-           info.Bound(p => p.Place_of_origin).Width(170).HeaderHtmlAttributes(new { @title = "مكانه الاصلي" }).Title("مكانه الاصلي");
-           info.Bound(p => p.PersonMobile).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
-       })
-);
-        columns.Group(group => group
-        .Title("الجزء الثالث: مصادر معلومات الموقع")
-        .Columns(info =>
-        {
-            info.Bound(p => p.CollectiveCenter).Width(170).HeaderHtmlAttributes(new { @title = "المنطقة /مركز الايواء" }).Title("المنطقة/ مركز الايواء");
-            info.Bound(p => p.Estimated_Number_Of_Individuals).Width(150).HeaderHtmlAttributes(new { @title = "العدد التقديري للأفراد" }).Title("العدد التقديري للأفراد");
-            info.Bound(p => p.Estimated_Number_Of_Families).Width(150).HeaderHtmlAttributes(new { @title = "العدد التقديري للعائلات" }).Title("العدد التقديري للأفراد");
-
-            info.Bound(p => p.Site_Description).Width(200).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Title("وصف الموقع");
-        })
-);
-        columns.Group(group => group
-        .Title("1. اهتمامات الحماية الواضحة خارج مركز الإيواء")
-        .Columns(info =>
-        {
-            info.Bound(p => p.Question1_1).Width(200).HeaderHtmlAttributes(new { @title = "1.1 هل أنت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة" }).Title("1.1 هل أنت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة");
-            info.Bound(p => p.Question1_1_1).Width(200).HeaderHtmlAttributes(new { @title = "عدد المجموعات الأسرية التي تقيم مع عائلات مضيفة" }).Title("عدد المجموعات الأسرية التي تقيم مع عائلات مضيفة");
-            info.Group(g => g.Title("1.2 ما هي اهتمامات الحماية الرئيسية لتلك الأسر؟")
-                  .Columns(q1_2 =>
-                  {
-                      q1_2.Bound(p => p.Question1_2_1_Family_CommunityDisputes).Width(170).HeaderHtmlAttributes(new { @title = "خلافات عائلية / مجتمعية " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_1_Family_CommunityDisputes ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("خلافات عائلية / مجتمعية ");
-                      q1_2.Bound(p => p.Question_1_2_2NotEnoughFood).Width(170).HeaderHtmlAttributes(new { @title = "غذاء غير كافي " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question_1_2_2NotEnoughFood ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("غذاء غير كافي ");
-                      q1_2.Bound(p => p.Question1_2_3NotEnoughPrivacy).Width(170).HeaderHtmlAttributes(new { @title = "خصوصية غير كافية " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_3NotEnoughPrivacy ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("خصوصية غير كافية ");
-                      q1_2.Bound(p => p.Question1_2_4NotEnoughDrinking).Width(170).HeaderHtmlAttributes(new { @title = "مياه شرب غير كافية " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_4NotEnoughDrinking ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("مياه شرب غير كافية ");
-                      q1_2.Bound(p => p.Question1_2_5UnsafeHousing).Width(170).HeaderHtmlAttributes(new { @title = "سكن غير آمن " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_5UnsafeHousing ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("سكن غير آمن ");
-                      q1_2.Bound(p => p.Question1_2_6Overcrowding).Width(170).HeaderHtmlAttributes(new { @title = "اكتظاظ في المسكن " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_6Overcrowding ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("اكتظاظ في المسكن ");
-                      q1_2.Bound(p => p.Question1_2_7InsufficientBedding).Width(170).HeaderHtmlAttributes(new { @title = "فراش غير كافي " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_7InsufficientBedding ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("فراش غير كافي ");
-                      q1_2.Bound(p => p.Question1_2_8NotEnoughWater).Width(170).HeaderHtmlAttributes(new { @title = " مياه قليلة (غير مياه الشرب) " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_8NotEnoughWater ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("مياه قليلة (غير مياه الشرب) ");
-                      q1_2.Bound(p => p.Question1_2_9Not_enough_humanitarian_assistance).Width(170).HeaderHtmlAttributes(new { @title = " المساعدة الإنسانية غير كافية للأشخاص المحتاجين  " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_9Not_enough_humanitarian_assistance ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("المساعدة الإنسانية غير كافية للأشخاص المحتاجين");
-                      q1_2.Bound(p => p.Question1_2_9Text).Width(200).HeaderHtmlAttributes(new { @title = "حدد نوع المساعدة الإنسانية المعدومة" }).Width(100).Title("حدد نوع المساعدة الإنسانية المعدومة");
-                      q1_2.Bound(p => p.Question1_2_10No_Access_to_essential_services).Width(170).HeaderHtmlAttributes(new { @title = " عدم القدرة على الوصول إلى الخدمات الأساسية   " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_10No_Access_to_essential_services ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("عدم القدرة على الوصول إلى الخدمات الأساسية ");
-                      q1_2.Bound(p => p.Question1_2_10Text).Width(200).HeaderHtmlAttributes(new { @title = "ذكر الخدمات الأساسية " }).Width(100).Title("ذكر الخدمات الأساسية");
-                      q1_2.Bound(p => p.Question1_2_11Other).Width(170).HeaderHtmlAttributes(new { @title = " أخرى   " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_2_11Other ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("أخرى ");
-                      q1_2.Bound(p => p.Question1_2_11Text).Width(200).HeaderHtmlAttributes(new { @title = "اذكرها " }).Title("اذكرها");
-
-
-
-
-
-                  })
-              );
-
-            info.Group(g => g.Title("1.3 ما هي الاهتمامات الرئيسية لأشخاص آخرين في مجتمعك غير الأشخاص الذين يقيمون مع عائلات مضيفة؟")
-            .Columns(q1_3 =>
-            {
-                q1_3.Bound(p => p.Question1_3_1Family_CommunityDisputes).Width(170).HeaderHtmlAttributes(new { @title = "خلافات عائلية / مجتمعية " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_1Family_CommunityDisputes ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("خلافات عائلية / مجتمعية ");
-                q1_3.Bound(p => p.Question1_3_2NotEnoughFood).Width(170).HeaderHtmlAttributes(new { @title = "غذاء غير كافي " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_2NotEnoughFood ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("غذاء غير كافي ");
-                q1_3.Bound(p => p.Question1_3_3NotEnoughDrinking).Width(170).HeaderHtmlAttributes(new { @title = "مياه شرب غير كافية " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_3NotEnoughDrinking ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("مياه شرب غير كافية ");
-                q1_3.Bound(p => p.Question1_3_4UnsafeHousing).Width(170).HeaderHtmlAttributes(new { @title = "سكن غير آمن " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_4UnsafeHousing ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Width(100).Title("سكن غير آمن ");
-                q1_3.Bound(p => p.Question1_3_5Overcrowding).Width(170).HeaderHtmlAttributes(new { @title = "اكتظاظ في المسكن " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_5Overcrowding ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("اكتظاظ في المسكن ");
-                q1_3.Bound(p => p.Question1_3_5NotEnoughWater).Width(170).HeaderHtmlAttributes(new { @title = " مياه قليلة (غير مياه الشرب) " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_5NotEnoughWater ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("مياه قليلة (غير مياه الشرب) ");
-                q1_3.Bound(p => p.Question1_3_6Not_enough_humanitarian_assistance).Width(170).HeaderHtmlAttributes(new { @title = " المساعدة الإنسانية غير كافية للأشخاص المحتاجين  " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_6Not_enough_humanitarian_assistance ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("المساعدة الإنسانية غير كافية للأشخاص المحتاجين");
-                q1_3.Bound(p => p.Question1_3_6Text).Width(170).HeaderHtmlAttributes(new { @title = "حدد نوع المساعدة الإنسانية المعدومة" }).Width(100).Title("حدد نوع المساعدة الإنسانية المعدومة");
-                q1_3.Bound(p => p.Question1_3_7No_Access_to_essential_services).Width(100).HeaderHtmlAttributes(new { @title = " عدم القدرة على الوصول إلى الخدمات الأساسية   " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_7No_Access_to_essential_services ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("عدم القدرة على الوصول إلى الخدمات الأساسية ");
-                q1_3.Bound(p => p.Question1_3_7Text).Width(170).HeaderHtmlAttributes(new { @title = "ذكر الخدمات الأساسية " }).Width(100).Title("ذكر الخدمات الأساسية");
-                q1_3.Bound(p => p.Question1_3_8Other).Width(170).HeaderHtmlAttributes(new { @title = " أخرى   " }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Question1_3_8Other ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("أخرى ");
-                q1_3.Bound(p => p.Question1_3_8Text).Width(170).HeaderHtmlAttributes(new { @title = "اذكرها " }).Title("اذكرها");
-
-
-
-
+        columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ");
+        columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+       
+            columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
+            columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
+            columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
+            columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
+         columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
             })
-   );
 
-            info.Group(g => g
-            .Columns(q1_4 =>
-            {
-                q1_4.Bound(p => p.Question1_4).Width(150).HeaderHtmlAttributes(new { @title = "1.4 هل يعرف الناس في منطقتكم كيفية الوصول إلى المساعدة و/أو المعلومات؟ " }).Title("1.4 هل يعرف الناس في منطقتكم كيفية الوصول إلى المساعدة و/أو المعلومات؟");
-                q1_4.Bound(p => p.Question1_4_1).Width(150).HeaderHtmlAttributes(new { @title = "1.4.1 إذا كانت الإجابة بنعم، أين يطلب الناس المساعدة و/أو المعلومات؟ " }).Title("1.4.1 إذا كانت الإجابة بنعم، أين يطلب الناس المساعدة و/أو المعلومات؟ ").Lockable(false);
-
-
-            })
-);
-
-        })
-);
-
-        columns.Group(g => g
-        .Columns(cmd =>
-        {
-            cmd.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200).Locked(true);
-        })
-);
-    })
     .ToolBar(toolBar =>
     {
-        toolBar.Create().Text("اضافة استبانة جديدة");
-    })
+            toolBar.Create().Text("اضافة استبانة جديدة");
+        })
     .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(1000).Height(600)).TemplateName("QuestionnaireEditor"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
@@ -146,13 +49,13 @@
         .Events(events => events.Error("errorHandler"))
         .Model(model =>
         {
-            model.Id(p => p.QuestionnaireID);
-            model.Field(p => p.QuestionnaireID).Editable(false);
+        model.Id(p => p.QuestionnaireID);
+        model.Field(p => p.QuestionnaireID).Editable(false);
 
 
 
 
-        })
+    })
         .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
         .Update(update => update.Action("Questionnair_Update", "Questionnaire"))
         .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
