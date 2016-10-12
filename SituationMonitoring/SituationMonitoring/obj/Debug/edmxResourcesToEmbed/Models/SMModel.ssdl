@@ -17,6 +17,13 @@
     <Property Name="GovernorateEnName" Type="nvarchar" MaxLength="50" />
     <Property Name="GovernorateArName" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Key_concernTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key_concern" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Municipality_Table">
     <Key>
       <PropertyRef Name="MunicipalityID" />
@@ -25,6 +32,20 @@
     <Property Name="MunicipalityEnName" Type="nvarchar" MaxLength="50" />
     <Property Name="MunicipalityArName" Type="nvarchar" MaxLength="50" />
     <Property Name="GovernorateID" Type="int" />
+  </EntityType>
+  <EntityType Name="PersonInNeed_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_of_Person_In_Need" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact_Details" Type="nvarchar(max)" />
+    <Property Name="KeyConcernID" Type="int" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="ActionsTakenSoFar" Type="nvarchar(max)" />
+    <Property Name="FollowUpRequired" Type="nvarchar(max)" />
+    <Property Name="SituationID" Type="int" />
   </EntityType>
   <EntityType Name="Questionnaire_Table">
     <Key>
@@ -77,6 +98,96 @@
     <Property Name="Question1_3_8Text" Type="nvarchar(max)" />
     <Property Name="Question1_4" Type="nvarchar" MaxLength="50" />
     <Property Name="Question1_4_1" Type="nvarchar(max)" />
+    <Property Name="Question2_1_1Family_CommunityDisputes" Type="bit" />
+    <Property Name="Question2_1_2NotEnoughFood" Type="bit" />
+    <Property Name="Question2_1_3NotEnoughPrivacy" Type="bit" />
+    <Property Name="Question2_1_4NotDrinkingEnoughWater" Type="bit" />
+    <Property Name="Question2_1_5UnsafeHousing" Type="bit" />
+    <Property Name="Question2_1_6Overcrowding" Type="bit" />
+    <Property Name="Question2_1_7InsufficientBedding" Type="bit" />
+    <Property Name="Question2_1_8NotEnoughWater" Type="bit" />
+    <Property Name="Question2_1_9NotEnoughHumanitarianAssistance" Type="bit" />
+    <Property Name="Question2_1_9Text" Type="nvarchar(max)" />
+    <Property Name="Question2_1_10NoAccessToEssentialServices" Type="bit" />
+    <Property Name="Question2_1_10Text" Type="nvarchar(max)" />
+    <Property Name="Question2_1_11DistributionOfAssistanceExcludesChild_headedFamilies" Type="bit" />
+    <Property Name="Question2_1_12DistributionOfAssistanceExcludesWomen_headedFamilies" Type="bit" />
+    <Property Name="Question2_1_13LackOfSafeSpacesForWomenAndGirlsToGather" Type="bit" />
+    <Property Name="Question2_1_14LackOfSafeSpacesForChildrenToPlay" Type="bit" />
+    <Property Name="Question2_1_15LackOfAdequateLightingForToilets" Type="bit" />
+    <Property Name="Question2_1_16LackOfGenderSegregatedToilets" Type="bit" />
+    <Property Name="Question2_1_17LackOfGenderSegregatedBathingFacilities" Type="bit" />
+    <Property Name="Question2_1_18Other" Type="bit" />
+    <Property Name="Question2_1_18text" Type="nvarchar(max)" />
+    <Property Name="Question2_2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question2_2_1" Type="nvarchar(max)" />
+    <Property Name="Question2_3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question2_3_1" Type="nvarchar(max)" />
+    <Property Name="Question3_1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_1Male" Type="int" />
+    <Property Name="Question3_1Femal" Type="int" />
+    <Property Name="Question3_2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_2Male" Type="int" />
+    <Property Name="Question3_2Femal" Type="int" />
+    <Property Name="Question3_3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_3Male" Type="int" />
+    <Property Name="Question3_3Femal" Type="int" />
+    <Property Name="Question3_4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_4Male" Type="int" />
+    <Property Name="Question3_4Femal" Type="int" />
+    <Property Name="Question3_5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_5Male" Type="int" />
+    <Property Name="Question3_5Femal" Type="int" />
+    <Property Name="Question3_6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_6Male" Type="int" />
+    <Property Name="Question3_6Femal" Type="int" />
+    <Property Name="Question3_7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_7Male" Type="int" />
+    <Property Name="Question3_7Femal" Type="int" />
+    <Property Name="Question3_8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_8Male" Type="int" />
+    <Property Name="Question3_8Femal" Type="int" />
+    <Property Name="Question3_9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_9Male" Type="int" />
+    <Property Name="Question3_9Femal" Type="int" />
+    <Property Name="Question3_10" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_10Male" Type="int" />
+    <Property Name="Question3_10Femal" Type="int" />
+    <Property Name="Question3_11" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_11Male" Type="int" />
+    <Property Name="Question3_11Femal" Type="int" />
+    <Property Name="Question3_12" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_12Male" Type="int" />
+    <Property Name="Question3_12Femal" Type="int" />
+    <Property Name="Question3_13" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_13Male" Type="int" />
+    <Property Name="Question3_13Femal" Type="int" />
+    <Property Name="Question3_14" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_14Male" Type="int" />
+    <Property Name="Question3_14Femal" Type="int" />
+    <Property Name="Question3_15" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_15_1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_15_1Male" Type="int" />
+    <Property Name="Question3_15_1Femal" Type="int" />
+    <Property Name="Question3_15_2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_15_2No" Type="int" />
+    <Property Name="Question3_15_3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_15_3No" Type="int" />
+    <Property Name="Question3_16" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_16Text" Type="nvarchar(max)" />
+    <Property Name="Question3_16Male" Type="int" />
+    <Property Name="Question3_16Femal" Type="int" />
+    <Property Name="Question4_1_1" Type="bit" />
+    <Property Name="Question4_1_2" Type="bit" />
+    <Property Name="Question4_1_3" Type="bit" />
+    <Property Name="Question4_1_4" Type="bit" />
+    <Property Name="Question4_1_5" Type="bit" />
+    <Property Name="Question4_1_6" Type="bit" />
+    <Property Name="Question4_1_7" Type="bit" />
+    <Property Name="Question4_1_8" Type="bit" />
+    <Property Name="Question4_1_9" Type="bit" />
+    <Property Name="Question4_1_9Text" Type="nvarchar(max)" />
+    <Property Name="Question4_1_10" Type="bit" />
   </EntityType>
   <EntityType Name="Situation_Table">
     <Key>
@@ -131,6 +242,30 @@
       </Principal>
       <Dependent Role="Municipality_Table">
         <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonInNeed_table_Key_concernTable">
+    <End Role="Key_concernTable" Type="Self.Key_concernTable" Multiplicity="0..1" />
+    <End Role="PersonInNeed_table" Type="Self.PersonInNeed_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Key_concernTable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonInNeed_table">
+        <PropertyRef Name="KeyConcernID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonInNeed_table_Situation_Table">
+    <End Role="Situation_Table" Type="Self.Situation_Table" Multiplicity="0..1" />
+    <End Role="PersonInNeed_table" Type="Self.PersonInNeed_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Situation_Table">
+        <PropertyRef Name="SituationID" />
+      </Principal>
+      <Dependent Role="PersonInNeed_table">
+        <PropertyRef Name="SituationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -221,7 +356,9 @@
   <EntityContainer Name="SituationMonitoringModelStoreContainer">
     <EntitySet Name="Area_Table" EntityType="Self.Area_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Governorate_Table" EntityType="Self.Governorate_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Key_concernTable" EntityType="Self.Key_concernTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Municipality_Table" EntityType="Self.Municipality_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonInNeed_table" EntityType="Self.PersonInNeed_table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Questionnaire_Table" EntityType="Self.Questionnaire_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Situation_Table" EntityType="Self.Situation_Table" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SituationUser_Table" EntityType="Self.SituationUser_Table" Schema="dbo" store:Type="Tables" />
@@ -233,6 +370,14 @@
     <AssociationSet Name="FK_Municipality_Table_Governorate_Table" Association="Self.FK_Municipality_Table_Governorate_Table">
       <End Role="Governorate_Table" EntitySet="Governorate_Table" />
       <End Role="Municipality_Table" EntitySet="Municipality_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonInNeed_table_Key_concernTable" Association="Self.FK_PersonInNeed_table_Key_concernTable">
+      <End Role="Key_concernTable" EntitySet="Key_concernTable" />
+      <End Role="PersonInNeed_table" EntitySet="PersonInNeed_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonInNeed_table_Situation_Table" Association="Self.FK_PersonInNeed_table_Situation_Table">
+      <End Role="Situation_Table" EntitySet="Situation_Table" />
+      <End Role="PersonInNeed_table" EntitySet="PersonInNeed_table" />
     </AssociationSet>
     <AssociationSet Name="FK_Questionnaire_Table_Situation_Table" Association="Self.FK_Questionnaire_Table_Situation_Table">
       <End Role="Situation_Table" EntitySet="Situation_Table" />

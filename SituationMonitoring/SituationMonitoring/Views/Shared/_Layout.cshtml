@@ -212,14 +212,14 @@
                     <!-- BEGIN BADGE LINK -->
                     <li class="">
                         <a href="@Url.Action("UserManegment", "Users")" class="elements">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-users"></i>
                             <span class="title">إدارة المستخدمين</span>
                         </a>
                     </li>
 
                     <li class="">
                         <a href="javascript:;">
-                            <i class="icon-custom-ui"></i>
+                            <i class="fa fa-folder"></i>
                             <span class="title"> النماذج الشاملة</span>
                             <span class="arrow"></span>
                         </a>
@@ -233,13 +233,18 @@
 
                     <li class="">
                         <a href="@Url.Action("MunicipalityManegment", "Municipality")" class="elements">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-building-o"></i>
                             <span class="title">إدارة البلديات</span>
                         </a>
                     </li>
 
 
-
+                    <li class="">
+                        <a href="@Url.Action("AreaManagment", "Area")" class="elements">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="title">إدارة المناطق</span>
+                        </a>
+                    </li>
 
 
                     <!-- END ONE LEVEL MENU -->
@@ -300,7 +305,8 @@
             <div class="content">
                 <!-- BEGIN PAGE TITLE -->
 
-
+@if (Session["UserId"] != null)
+{
                 <div class="k-rtl">
                     @RenderSection("featured", required: false)
                     <section class="content-wrapper main-content clear-fix">
@@ -310,7 +316,14 @@
 
 
                 </div>
+}
+else {
 
+    Response.Redirect("~/Account/Login");
+
+
+
+}
                 <!-- END PAGE TITLE -->
                 <!-- BEGIN PlACE PAGE CONTENT HERE -->
                 <!-- END PLACE PAGE CONTENT HERE -->

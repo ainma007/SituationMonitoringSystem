@@ -1,0 +1,57 @@
+﻿@model SituationMonitoring.Models.AreaViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 80%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+          
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+
+    <div>
+        @Html.LabelFor(model => model.AreaArName)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.AreaArName)
+        @Html.ValidationMessageFor(model => model.AreaArName)
+    </div>
+
+
+    <div>
+        @Html.LabelFor(model => model.AreaEnName)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.AreaEnName)
+        @Html.ValidationMessageFor(model => model.AreaEnName)
+
+
+        <div>
+            @Html.LabelFor(model => model.GovernorateID)
+        </div>
+        <div>
+
+            @(Html.Kendo().DropDownListFor(model => model.GovernorateID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("GovernorateArName")
+    .DataValueField("GovernorateID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetGovernorate", "Area");
+        })
+        .ServerFiltering(false);
+    })
+            )
+
+            @Html.ValidationMessageFor(model => model.GovernorateID)
+        </div>
+    </div>
+</div>

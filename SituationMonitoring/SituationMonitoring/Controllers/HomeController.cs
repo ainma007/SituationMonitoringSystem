@@ -1,9 +1,12 @@
-﻿using SituationMonitoring.Models;
+﻿using Kendo.Mvc.UI;
+using SituationMonitoring.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using SituationMonitoring.Models.SessionForeignKey;
 
 namespace SituationMonitoring.Controllers
 {
@@ -64,6 +67,23 @@ namespace SituationMonitoring.Controllers
             ViewData["defaultArea"] = Area.First();
         }
 
+
+        private SituationUserService SituationUserService;
+
+
+        public HomeController()
+        {
+
+            SituationUserService = new SituationUserService(new SituationMonitoringEntities());
+
+
+        }
+
+
+        public ActionResult SituationMainUser_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(SituationUserService.ReadSituationForUser().ToDataSourceResult(request));
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";

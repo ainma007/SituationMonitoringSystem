@@ -1,0 +1,80 @@
+﻿@using SituationMonitoring.Models
+
+@{
+    ViewBag.Title = "PersonInNeedManage";
+    Layout = "~/Views/Shared/_LayoutQuestionnaire.cshtml";
+}
+
+
+<div class="page-title">
+    <i class="icon-custom-left"></i>
+    <h3>إدارة - <span class="semi-bold">  حالات الافراد ذوي الهشاشة</span></h3>
+</div>
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<PersonInNeedViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.ID).Width(50).Hidden();
+        columns.Bound(p => p.Name_of_Person_In_Need).Width(200).HeaderHtmlAttributes(new { @title = "اسم الشخص ذوي الاحتياج" }).Title("اسم الشخص ذوي الاحتياج");
+        columns.Bound(p => p.Contact_Details).Width(200).HeaderHtmlAttributes(new { @title = "معلومات الاتصال" }).Title("معلومات الاتصال");
+
+
+        columns.ForeignKey(p => p.KeyConcernID, (System.Collections.IEnumerable)ViewData["key_concern"], "ID", "Key_concern")
+                   .Title("الاهتمام الرئيسي").Width(350);
+        columns.Bound(p => p.Gender).Width(150).HeaderHtmlAttributes(new { @title = "الجنس" }).Title("الجنس");
+        columns.Bound(p => p.Age).Width(150).HeaderHtmlAttributes(new { @title = "العمر" }).Title("العمر");
+        columns.Bound(p => p.ActionsTakenSoFar).Width(200).HeaderHtmlAttributes(new { @title = "الإجراءات المتخذة حتى الآن" }).Title("الإجراءات المتخذة حتى الآن");
+        columns.Bound(p => p.FollowUpRequired).Width(200).HeaderHtmlAttributes(new { @title = "المتابعة المطلوبة" }).Title("المتابعة المطلوبة");
+
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة شخص جديد");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات الشخص")).TemplateName("PersonEditor"))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+     .Reorderable(reorderable => reorderable.Columns(true))
+    .Resizable(resizable => resizable.Columns(true))
+    .Scrollable(scrollable => scrollable.Height(540)).Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.ID);
+            model.Field(p => p.ID).Editable(false);
+            model.Field(p => p.KeyConcernID).DefaultValue(1);
+        })
+        .Read(read => read.Action("PersonInNeed_Read", "PersonInNeed"))
+        .Update(update => update.Action("PersonInNeed_Update", "PersonInNeed"))
+        .Create(create => create.Action("PersonInNeed_Create", "PersonInNeed"))
+        .Destroy(destroy => destroy.Action("PersonInNeed_Destroy", "PersonInNeed"))
+    )
+)
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>

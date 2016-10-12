@@ -68,6 +68,96 @@
     <EntitySetMapping Name="Questionnaire_Table">
       <EntityTypeMapping TypeName="SituationMonitoringModel.Questionnaire_Table">
         <MappingFragment StoreEntitySet="Questionnaire_Table">
+          <ScalarProperty Name="Question3_15" ColumnName="Question3_15" />
+          <ScalarProperty Name="Question4_1_10" ColumnName="Question4_1_10" />
+          <ScalarProperty Name="Question4_1_9Text" ColumnName="Question4_1_9Text" />
+          <ScalarProperty Name="Question4_1_9" ColumnName="Question4_1_9" />
+          <ScalarProperty Name="Question4_1_8" ColumnName="Question4_1_8" />
+          <ScalarProperty Name="Question4_1_7" ColumnName="Question4_1_7" />
+          <ScalarProperty Name="Question4_1_6" ColumnName="Question4_1_6" />
+          <ScalarProperty Name="Question4_1_5" ColumnName="Question4_1_5" />
+          <ScalarProperty Name="Question4_1_4" ColumnName="Question4_1_4" />
+          <ScalarProperty Name="Question4_1_3" ColumnName="Question4_1_3" />
+          <ScalarProperty Name="Question4_1_2" ColumnName="Question4_1_2" />
+          <ScalarProperty Name="Question4_1_1" ColumnName="Question4_1_1" />
+          <ScalarProperty Name="Question3_16Femal" ColumnName="Question3_16Femal" />
+          <ScalarProperty Name="Question3_16Male" ColumnName="Question3_16Male" />
+          <ScalarProperty Name="Question3_16Text" ColumnName="Question3_16Text" />
+          <ScalarProperty Name="Question3_16" ColumnName="Question3_16" />
+          <ScalarProperty Name="Question3_15_3No" ColumnName="Question3_15_3No" />
+          <ScalarProperty Name="Question3_15_3" ColumnName="Question3_15_3" />
+          <ScalarProperty Name="Question3_15_2No" ColumnName="Question3_15_2No" />
+          <ScalarProperty Name="Question3_15_2" ColumnName="Question3_15_2" />
+          <ScalarProperty Name="Question3_15_1Femal" ColumnName="Question3_15_1Femal" />
+          <ScalarProperty Name="Question3_15_1Male" ColumnName="Question3_15_1Male" />
+          <ScalarProperty Name="Question3_15_1" ColumnName="Question3_15_1" />
+          <ScalarProperty Name="Question3_14Femal" ColumnName="Question3_14Femal" />
+          <ScalarProperty Name="Question3_14Male" ColumnName="Question3_14Male" />
+          <ScalarProperty Name="Question3_14" ColumnName="Question3_14" />
+          <ScalarProperty Name="Question3_13Femal" ColumnName="Question3_13Femal" />
+          <ScalarProperty Name="Question3_13Male" ColumnName="Question3_13Male" />
+          <ScalarProperty Name="Question3_13" ColumnName="Question3_13" />
+          <ScalarProperty Name="Question3_12Femal" ColumnName="Question3_12Femal" />
+          <ScalarProperty Name="Question3_12Male" ColumnName="Question3_12Male" />
+          <ScalarProperty Name="Question3_12" ColumnName="Question3_12" />
+          <ScalarProperty Name="Question3_11Femal" ColumnName="Question3_11Femal" />
+          <ScalarProperty Name="Question3_11Male" ColumnName="Question3_11Male" />
+          <ScalarProperty Name="Question3_11" ColumnName="Question3_11" />
+          <ScalarProperty Name="Question3_10Femal" ColumnName="Question3_10Femal" />
+          <ScalarProperty Name="Question3_10Male" ColumnName="Question3_10Male" />
+          <ScalarProperty Name="Question3_10" ColumnName="Question3_10" />
+          <ScalarProperty Name="Question3_9Femal" ColumnName="Question3_9Femal" />
+          <ScalarProperty Name="Question3_9Male" ColumnName="Question3_9Male" />
+          <ScalarProperty Name="Question3_9" ColumnName="Question3_9" />
+          <ScalarProperty Name="Question3_8Femal" ColumnName="Question3_8Femal" />
+          <ScalarProperty Name="Question3_8Male" ColumnName="Question3_8Male" />
+          <ScalarProperty Name="Question3_8" ColumnName="Question3_8" />
+          <ScalarProperty Name="Question3_7Femal" ColumnName="Question3_7Femal" />
+          <ScalarProperty Name="Question3_7Male" ColumnName="Question3_7Male" />
+          <ScalarProperty Name="Question3_7" ColumnName="Question3_7" />
+          <ScalarProperty Name="Question3_6Femal" ColumnName="Question3_6Femal" />
+          <ScalarProperty Name="Question3_6Male" ColumnName="Question3_6Male" />
+          <ScalarProperty Name="Question3_6" ColumnName="Question3_6" />
+          <ScalarProperty Name="Question3_5Femal" ColumnName="Question3_5Femal" />
+          <ScalarProperty Name="Question3_5Male" ColumnName="Question3_5Male" />
+          <ScalarProperty Name="Question3_5" ColumnName="Question3_5" />
+          <ScalarProperty Name="Question3_4Femal" ColumnName="Question3_4Femal" />
+          <ScalarProperty Name="Question3_4Male" ColumnName="Question3_4Male" />
+          <ScalarProperty Name="Question3_4" ColumnName="Question3_4" />
+          <ScalarProperty Name="Question3_3Femal" ColumnName="Question3_3Femal" />
+          <ScalarProperty Name="Question3_3Male" ColumnName="Question3_3Male" />
+          <ScalarProperty Name="Question3_3" ColumnName="Question3_3" />
+          <ScalarProperty Name="Question3_2Femal" ColumnName="Question3_2Femal" />
+          <ScalarProperty Name="Question3_2Male" ColumnName="Question3_2Male" />
+          <ScalarProperty Name="Question3_2" ColumnName="Question3_2" />
+          <ScalarProperty Name="Question3_1Femal" ColumnName="Question3_1Femal" />
+          <ScalarProperty Name="Question3_1Male" ColumnName="Question3_1Male" />
+          <ScalarProperty Name="Question3_1" ColumnName="Question3_1" />
+          <ScalarProperty Name="Question2_3_1" ColumnName="Question2_3_1" />
+          <ScalarProperty Name="Question2_3" ColumnName="Question2_3" />
+          <ScalarProperty Name="Question2_2_1" ColumnName="Question2_2_1" />
+          <ScalarProperty Name="Question2_2" ColumnName="Question2_2" />
+          <ScalarProperty Name="Question2_1_18text" ColumnName="Question2_1_18text" />
+          <ScalarProperty Name="Question2_1_18Other" ColumnName="Question2_1_18Other" />
+          <ScalarProperty Name="Question2_1_17LackOfGenderSegregatedBathingFacilities" ColumnName="Question2_1_17LackOfGenderSegregatedBathingFacilities" />
+          <ScalarProperty Name="Question2_1_16LackOfGenderSegregatedToilets" ColumnName="Question2_1_16LackOfGenderSegregatedToilets" />
+          <ScalarProperty Name="Question2_1_15LackOfAdequateLightingForToilets" ColumnName="Question2_1_15LackOfAdequateLightingForToilets" />
+          <ScalarProperty Name="Question2_1_14LackOfSafeSpacesForChildrenToPlay" ColumnName="Question2_1_14LackOfSafeSpacesForChildrenToPlay" />
+          <ScalarProperty Name="Question2_1_13LackOfSafeSpacesForWomenAndGirlsToGather" ColumnName="Question2_1_13LackOfSafeSpacesForWomenAndGirlsToGather" />
+          <ScalarProperty Name="Question2_1_12DistributionOfAssistanceExcludesWomen_headedFamilies" ColumnName="Question2_1_12DistributionOfAssistanceExcludesWomen_headedFamilies" />
+          <ScalarProperty Name="Question2_1_11DistributionOfAssistanceExcludesChild_headedFamilies" ColumnName="Question2_1_11DistributionOfAssistanceExcludesChild_headedFamilies" />
+          <ScalarProperty Name="Question2_1_10Text" ColumnName="Question2_1_10Text" />
+          <ScalarProperty Name="Question2_1_10NoAccessToEssentialServices" ColumnName="Question2_1_10NoAccessToEssentialServices" />
+          <ScalarProperty Name="Question2_1_9Text" ColumnName="Question2_1_9Text" />
+          <ScalarProperty Name="Question2_1_9NotEnoughHumanitarianAssistance" ColumnName="Question2_1_9NotEnoughHumanitarianAssistance" />
+          <ScalarProperty Name="Question2_1_8NotEnoughWater" ColumnName="Question2_1_8NotEnoughWater" />
+          <ScalarProperty Name="Question2_1_7InsufficientBedding" ColumnName="Question2_1_7InsufficientBedding" />
+          <ScalarProperty Name="Question2_1_6Overcrowding" ColumnName="Question2_1_6Overcrowding" />
+          <ScalarProperty Name="Question2_1_5UnsafeHousing" ColumnName="Question2_1_5UnsafeHousing" />
+          <ScalarProperty Name="Question2_1_4NotDrinkingEnoughWater" ColumnName="Question2_1_4NotDrinkingEnoughWater" />
+          <ScalarProperty Name="Question2_1_3NotEnoughPrivacy" ColumnName="Question2_1_3NotEnoughPrivacy" />
+          <ScalarProperty Name="Question2_1_2NotEnoughFood" ColumnName="Question2_1_2NotEnoughFood" />
+          <ScalarProperty Name="Question2_1_1Family_CommunityDisputes" ColumnName="Question2_1_1Family_CommunityDisputes" />
           <ScalarProperty Name="Question1_4_1" ColumnName="Question1_4_1" />
           <ScalarProperty Name="Question1_4" ColumnName="Question1_4" />
           <ScalarProperty Name="Question1_3_8Text" ColumnName="Question1_3_8Text" />
@@ -115,6 +205,29 @@
           <ScalarProperty Name="SituationID" ColumnName="SituationID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="QuestionnaireID" ColumnName="QuestionnaireID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Key_concernTable">
+      <EntityTypeMapping TypeName="SituationMonitoringModel.Key_concernTable">
+        <MappingFragment StoreEntitySet="Key_concernTable">
+          <ScalarProperty Name="Key_concern" ColumnName="Key_concern" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonInNeed_table">
+      <EntityTypeMapping TypeName="SituationMonitoringModel.PersonInNeed_table">
+        <MappingFragment StoreEntitySet="PersonInNeed_table">
+          <ScalarProperty Name="SituationID" ColumnName="SituationID" />
+          <ScalarProperty Name="FollowUpRequired" ColumnName="FollowUpRequired" />
+          <ScalarProperty Name="ActionsTakenSoFar" ColumnName="ActionsTakenSoFar" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="KeyConcernID" ColumnName="KeyConcernID" />
+          <ScalarProperty Name="Contact_Details" ColumnName="Contact_Details" />
+          <ScalarProperty Name="Name_of_Person_In_Need" ColumnName="Name_of_Person_In_Need" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

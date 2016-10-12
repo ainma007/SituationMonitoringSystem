@@ -49,8 +49,12 @@ namespace SituationMonitoring.Models
                      {
                          UserSituationID = control.ID,
                          SituationtID = control.SituationID,
-                         MYUserID = control.UserID,
+                         GovernorateArName=control.Situation_Table.Governorate_Table.GovernorateArName,
+                         AreaName=control.Situation_Table.Area_Table.AreaArName,
+                         MunicipalityName=control.Situation_Table.Municipality_Table.MunicipalityArName,
                          SituationStartDate = control.Situation_Table.SituationDate.HasValue ? control.Situation_Table.SituationDate.Value : default(DateTime),
+                         CollectiveCenter=control.Situation_Table.CollectiveCenter,
+                         Site_Description=control.Situation_Table.Site_Description,
                          Status = control.Status,
 
 

@@ -1,0 +1,73 @@
+﻿@using SituationMonitoring.Models
+
+@{
+    ViewBag.Title = "AreaManagment";
+}
+
+<div class="page-title">
+    <i class="icon-custom-left"></i>
+    <h3>إدارة - <span class="semi-bold">  المناطق</span></h3>
+</div>
+<script>
+<script>
+    kendo.culture("en-GB");
+</script>
+@(Html.Kendo().Grid<AreaViewModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.AreaID).Width(50).Hidden();
+        columns.Bound(p => p.AreaArName).Width(100).HeaderHtmlAttributes(new { @title = "اسم البلدية عربي" }).Width(100).Title("البلدية عربي");
+        columns.Bound(p => p.AreaEnName).Width(100).HeaderHtmlAttributes(new { @title = "اسم البلدية EN" }).Width(100).Title("الاسم الانجليزي");
+
+
+        columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate1"], "GovernorateID", "GovernorateArName")
+                   .Title("المحافظة").Width(100);
+
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Create().Text("اضافة بلدية جديدة");
+    })
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية")).TemplateName("AreaEditor"))
+     .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Multiple))
+           .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+        .Events(events => events.Error("errorHandler"))
+        .Model(model =>
+        {
+            model.Id(p => p.AreaID);
+            model.Field(p => p.AreaID).Editable(false);
+            model.Field(p => p.GovernorateID).DefaultValue(1);
+        })
+        .Read(read => read.Action("Area_Read", "Area"))
+        .Update(update => update.Action("Area_Update", "Area"))
+        .Create(create => create.Action("Area_Create", "Area"))
+        .Destroy(destroy => destroy.Action("Area_Destroy", "Area"))
+    )
+)
+
+<script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>

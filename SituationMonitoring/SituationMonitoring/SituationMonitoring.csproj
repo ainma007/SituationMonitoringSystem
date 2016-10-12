@@ -148,15 +148,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipalityController.cs" />
+    <Compile Include="Controllers\PersonInNeedController.cs" />
     <Compile Include="Controllers\QuestionnaireController.cs" />
+    <Compile Include="Controllers\ReoprtController.cs" />
     <Compile Include="Controllers\SituationController.cs" />
     <Compile Include="Controllers\SituationUserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AreaService.cs" />
+    <Compile Include="Models\AreaViewModel.cs" />
     <Compile Include="Models\Area_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
@@ -164,9 +169,17 @@
     <Compile Include="Models\Governorate_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Key_concernTable.cs">
+      <DependentUpon>SMModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MunicipalityService.cs" />
     <Compile Include="Models\MunicipalityViewModel.cs" />
     <Compile Include="Models\Municipality_Table.cs">
+      <DependentUpon>SMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonInNeedService.cs" />
+    <Compile Include="Models\PersonInNeedViewModel.cs" />
+    <Compile Include="Models\PersonInNeed_table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QuestionnaireService.cs" />
@@ -175,6 +188,7 @@
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionForeignKey\AreaForeingKey.cs" />
+    <Compile Include="Models\SessionForeignKey\Key_concernForeingKey.cs" />
     <Compile Include="Models\SessionForeignKey\MunicipalityForeingKey.cs" />
     <Compile Include="Models\SessionForeignKey\SituationForeingKey.cs" />
     <Compile Include="Models\SessionForeignKey\UserForeingKey.cs" />
@@ -2032,6 +2046,12 @@
     <Content Include="Views\Shared\_LayoutQuestionnaire.cshtml" />
     <Content Include="Views\Questionnaire\QuestionnaireManmanagement.cshtml" />
     <Content Include="Views\Questionnaire\EditorTemplates\QuestionnaireEditor.cshtml" />
+    <Content Include="Views\PersonInNeed\PersonInNeedManage.cshtml" />
+    <Content Include="Views\PersonInNeed\EditorTemplates\PersonEditor.cshtml" />
+    <Content Include="Views\Users\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Area\AreaManagment.cshtml" />
+    <Content Include="Views\Area\EditorTemplates\AreaEditor.cshtml" />
+    <Content Include="Views\Reoprt\SituationMonitoringReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

@@ -1,0 +1,876 @@
+﻿
+@{
+    ViewBag.Title = "SituationMonitoringReport";
+    Layout = "~/Views/Shared/_LayoutQuestionnaire.cshtml";
+}
+
+<h2>SituationMonitoringReport</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple ">
+            <div class="grid-title no-border">
+                <h4>Table <span class="semi-bold">Styles</span></h4>
+              
+            </div>
+            <div class="grid-body no-border">
+                <table class="table table-bordered no-more-tables">
+
+                    <tbody>
+                        <tr>
+                            <td colspan=4 class="alert alert-info"><h4>االتاريخ</h4></td>
+                            <td colspan=4>هنا يوضع التاريخ</td>
+
+                        </tr>
+
+                        <tr>
+                            <th colspan=8><h4> القسم الأول: مصادر/ مزودي المعلومات</h4></th>
+                        </tr>
+                        <tr>
+                            <td colspan=5 class="alert alert-success"><h5>عدد مزودي المعلومات الذين تم مقابلتهم</h5></td>
+                            <td colspan=3 class="alert alert-warning">هنا يوضع عدد الاستبانات المبعئة</td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=2 class="alert alert-success"><h5>عدد الذكور</h5></td>
+                            <td colspan=2 class="alert alert-warning">هنا يوضع عدد الذكور</td>
+                            <td colspan=2 class="alert alert-success"> <h5>عدد الاناث</h5></td>
+                            <td colspan=2 class="alert alert-warning">هنا يوضع عدد الاناث</td>
+                        </tr>
+
+                        <tr>
+                            <th colspan=8><h4> القسم الثاني: مصادر/ معلومات الموقع</h4></th>
+                        </tr>
+                        <tr>
+                            <td colspan=1 class="alert alert-success"><h5> المحافظة</h5></td>
+                            <td colspan=1 class="alert alert-warning">هنا يوضع المحافظة</td>
+                            <td colspan=1 class="alert alert-success"> <h5>المنطقة</h5></td>
+                            <td colspan=1 class="alert alert-warning">هنا يوضع المنطقة</td>
+                            <td colspan=2 class="alert alert-success"> <h5>اسم مركز الايواء</h5></td>
+                            <td colspan=2 class="alert alert-warning">هنا يوضع اسم مركز الايواء</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan=2 class="alert alert-success"><h5>العدد التقديري الاجمالي للاشخاص</h5></td>
+                            <td colspan=2 class="alert alert-success">العدد التقديري الاجمالي للعائلات</td>
+                            <td colspan=4 class="alert alert-success"> <h5>وصف الموقع</h5></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2 class="alert alert-warning"><h5>وضع رقم الاشخاص</h5></td>
+                            <td colspan=2 class="alert alert-warning">وضع رقم العائلات</td>
+                            <td colspan=4 class="alert alert-warning"> <h5>وصف الموقع</h5></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan=8><h4> اهتمامات الحماية الواضحة خارج مركز الايواء</h4></th>
+                        </tr>
+
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>1.1 هل أنت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة؟</h5></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-success"><h5>نعم</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة نعم</h5></td>
+                            <td colspan=1 class="alert alert-success"><h5>لا</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة لا</h5></td>
+                            <td colspan=2 class="alert alert-success"><h5>غير متأكد</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>نسبة غير متأكد</h5></td>
+
+
+                        </tr>
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>1.1.1 إذا كانت الإجابة بنعم، ما هو عدد المجموعات الأسرية التي تقيم مع عائلات مضيفة؟</h5></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-success"><h5>اقل من 10</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة الاقل من 10 </h5></td>
+                            <td colspan=1 class="alert alert-success"><h5>10 – 50</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>10 – 50نسبة </h5></td>
+                            <td colspan=1 class="alert alert-success"><h5>50 – 100</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة 50 – 100</h5></td>
+                            <td colspan=1 class="alert alert-success"><h5>أكثر من 100</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة فوق 100</h5></td>
+
+
+                        </tr>
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>1.2 ما هي اهتمامات الحماية الرئيسية لتلك الأسر؟</h5></td>
+                        </tr>
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.1</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>خلافات عائلية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=2>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.2</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>غذاء غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.3</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>خصوصية غير كافية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.4</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>مياه شرب غير كافية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.5</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>سكن غير آمن</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.6</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>اكتظاظ في المسكن</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=2>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.7</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>فراش غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.8</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>مياه قليلة (غير مياه الشرب)</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.9</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>المساعدة الإنسانية غير كافية للأشخاص المحتاجين </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+
+                            <td colspan=3><h5> حدد نوع المساعدة:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.10</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>عدم القدرة على الوصول إلى الخدمات الأساسية </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+
+                        <tr>
+
+                            <td colspan=3><h5> حدد نوع الخدمات:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.2.11</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>غير ذلك  </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+                        <tr>
+
+                            <td colspan=3><h5> أذكرها:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>1.3 ما هي الاهتمامات الرئيسية لأشخاص آخرين في مجتمعك غير الأشخاص الذين يقيمون مع عائلات مضيفة؟</h5></td>
+                        </tr>
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.1</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>خلافات عائلية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=2>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.2</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>غذاء غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.4</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>مياه شرب غير كافية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.5</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>سكن غير آمن</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.5</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>مياه قليلة (غير مياه الشرب)</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.6</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>المساعدة الإنسانية غير كافية للأشخاص المحتاجين </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+
+                            <td colspan=3><h5> حدد نوع المساعدة:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.7</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>عدم القدرة على الوصول إلى الخدمات الأساسية </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+
+                        <tr>
+
+                            <td colspan=3><h5> حدد نوع الخدمات:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.8</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>غير ذلك  </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+                        <tr>
+
+                            <td colspan=3><h5> أذكرها:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <th colspan=8><h4> 2 اهتمامات الحماية الواضحة داخل مركز الايواء</h4></th>
+                        </tr>
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>2.1 حسب علمك، ما هي اهتمامات الحماية الرئيسية داخل مراكز الإيواء؟</h5></td>
+                        </tr>
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.1</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>خلافات عائلية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=2>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.2</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>غذاء غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.3</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>خصوصية غير كافية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.4</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>مياه شرب غير كافية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.5</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>سكن غير آمن</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.6</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>اكتظاظ في المسكن</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=2>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.7</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>فراش غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.8</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>مياه قليلة (غير مياه الشرب)</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.9</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>المساعدة الإنسانية غير كافية للأشخاص المحتاجين </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+
+                            <td colspan=3><h5> حدد نوع المساعدة:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.10</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>عدم القدرة على الوصول إلى الخدمات الأساسية </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+
+                            <td colspan=3><h5> أذكر الخدمات</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.11</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>توزيع المساعدات يستثني الأسر التي يعيلها الأطفال </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.12</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>توزيع المساعدات يستثني الأسر التي تعيلها النساء </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.13</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>نقص الأماكن الآمنة لجمع النساء والفتيات معاً </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.14</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>نقص الأماكن الآمنة للعب الأطفال </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.15</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>نقص الإضاءة المناسبة في المراحيض </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.16</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>نقص المراحيض المخصصة لكلا الجنسين </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.17</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>نقص أماكن الاستحمام المخصصة لكلا الجنسين </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>2.2.18</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>غير ذلك  </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        <tr>
+
+                            <td colspan=3><h5> أذكرها</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>2.2 هل يشعر الناس بعدم الأمان داخل مركز الإيواء؟</h5></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-success"><h5>نعم</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة نعم</h5></td>
+                            <td colspan=1 class="alert alert-success"><h5>لا</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة لا</h5></td>
+                            <td colspan=2 class="alert alert-success"><h5>غير متأكد</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>نسبة غير متأكد</h5></td>
+
+
+                        </tr>
+
+                        <tr>
+
+                            <td colspan=8><h5> 2.2.1 إذا كانت الإجابة بنعم، بأي طريقة (فسّر)؟</h5></td>
+
+                        </tr>
+                        <tr>
+
+                            <td colspan=8></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=8 class="alert alert-info"><h5>2.3 هل يعرف الناس داخل مراكز الإيواء كيفية الوصول إلى المساعدة و/أو المعلومات؟</h5></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-success"><h5>نعم</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة نعم</h5></td>
+                            <td colspan=1 class="alert alert-success"><h5>لا</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5>نسبة لا</h5></td>
+                            <td colspan=2 class="alert alert-success"><h5>غير متأكد</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>نسبة غير متأكد</h5></td>
+
+
+                        </tr>
+
+                        <tr>
+
+                            <td colspan=8><h5> 2.3.1 إذا كانت الإجابة بنعم، أين يطلب الناس المساعدة و/أو المعلومات؟</h5></td>
+
+                        </tr>
+                        <tr>
+
+                            <td colspan=8></td>
+
+                        </tr>
+
+                        <tr>
+                            <th colspan=8><h4> اهتمامات الحماية المحددة خارج والتي تم تحديدها</h4></th>
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-info"><h5>رقم</h5></td>
+                            <td colspan=5 class="alert alert-info"><h5>البيان</h5></td>
+                            <td colspan=1 class="alert alert-info"><h5>تقدير الذكور</h5></td>
+                            <td colspan=1 class="alert alert-info"><h5>تقدير الاناث</h5></td>
+
+
+                        </tr>
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.1</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أطفال منفصلين عن والديهم أو مقدمي الرعاية، ولكن ليس من الضرورة أن يكونوا منفصلين عن أسرهم الممتدة </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.2</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أطفال منفصلين عن والديهم أو مقدمي الرعاية، ويعيشون إما وحدهم أو من دون مقدم الرعاية المناسب</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.3</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أطفال يعانون من إصابات جسدية وبحاجة إلى المساعدة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.4</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أشخاص بالغين يعانون من إصابات جسدية وبحاجة إلى المساعدة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.5</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أطفال تضرروا نتيجة العنف الأسري أو المجتمعي</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.6</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أشخاص بالغين تضرروا نتيجة العنف الأسري أو المجتمعي</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.7</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5> أطفال متضررين بشدة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.8</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أشخاص بالغين متضررين بشدة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.9</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أطفال مشاركين بأعمال التسول أو أشكال الاستغلال لعمالة الأطفال</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.10</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أطفال ذوي إعاقة بحاجة لمساعدة خاصة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.11</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أشخاص بالغين ذوي إعاقة بحاجة لمساعدة خاصة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.12</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>حوادث عنف منزلي</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.13</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>كبار سن بحاجة لمساعدة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.14</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>أشخاص متضررين بحاجة لمساعدة قانونية</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.15.1</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>العنف الذي تم التبليغ عنه قد ارتكب ضد طفل/أطفال تحت سن 18 سنة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.15.2</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>ارتكب عنف ضد المرأة</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.15.3</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>العنف المبلّغ عنه قد ارتكب ضد الرجال</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>3.16</h5></td>
+
+                            <td colspan=5 class="alert alert-success"><h5>اهتمامات حماية أخرى</h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+                            <td colspan=1 class="alert alert-warning"><h5> </h5></td>
+
+
+                        </tr>
+                    
+</tbody>
+                </table>
+                </div>
+          
+            </div>
+    </div>
+    </div>
+                

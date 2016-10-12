@@ -56,6 +56,8 @@ namespace SituationMonitoring.Controllers
         {
             return Json(SituationUserService.Read().ToDataSourceResult(request));
         }
+
+      
         [AcceptVerbs(HttpVerbs.Post)]
 
         public ActionResult Situation_Create([DataSourceRequest] DataSourceRequest request, SituationUserViewModel db)

@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc7c9834eb44410289d4dcc1b95cbd95" Name="Diagram1" ZoomLevel="83">
+      <Diagram DiagramId="bc7c9834eb44410289d4dcc1b95cbd95" Name="Diagram1" ZoomLevel="62">
         <EntityTypeShape EntityType="SituationMonitoringModel.Area_Table" Width="1.5" PointX="3" PointY="6.25" />
         <EntityTypeShape EntityType="SituationMonitoringModel.Governorate_Table" Width="1.5" PointX="0.75" PointY="4.875" />
         <EntityTypeShape EntityType="SituationMonitoringModel.Municipality_Table" Width="1.5" PointX="3" PointY="3.375" />
-        <EntityTypeShape EntityType="SituationMonitoringModel.Situation_Table" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SituationMonitoringModel.SituationUser_Table" Width="1.5" PointX="9.75" PointY="0.875" />
-        <EntityTypeShape EntityType="SituationMonitoringModel.Users_Table" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Situation_Table" Width="1.5" PointX="7.625" PointY="1.375" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.SituationUser_Table" Width="1.5" PointX="10" PointY="1.25" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Users_Table" Width="1.5" PointX="5" PointY="1" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Area_Table_Governorate_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Situation_Table_Area_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Municipality_Table_Governorate_Table" />
@@ -21,6 +21,10 @@
         <EntityTypeShape EntityType="SituationMonitoringModel.Questionnaire_Table" Width="3.625" PointX="12.625" PointY="0.75" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" />
         <AssociationConnector Association="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.Key_concernTable" Width="1.5" PointX="5.375" PointY="6.5" />
+        <EntityTypeShape EntityType="SituationMonitoringModel.PersonInNeed_table" Width="1.5" PointX="7.625" PointY="6" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_PersonInNeed_table_Key_concernTable" />
+        <AssociationConnector Association="SituationMonitoringModel.FK_PersonInNeed_table_Situation_Table" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

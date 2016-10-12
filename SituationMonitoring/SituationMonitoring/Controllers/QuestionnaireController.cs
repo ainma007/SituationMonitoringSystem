@@ -38,5 +38,42 @@ namespace SituationMonitoring.Controllers
         {
             return Json(QuestionnaireService.Read().ToDataSourceResult(request));
         }
+
+        // Insert New
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        {
+            if (db != null && ModelState.IsValid)
+            {
+                QuestionnaireService.Create(db);
+            }
+
+            return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult Questionnair_Update([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        {
+            if (db != null && ModelState.IsValid)
+            {
+                QuestionnaireService.Update(db);
+            }
+
+            return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        public ActionResult Municipality_Destroy([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        {
+            if (db != null)
+            {
+                QuestionnaireService.Destroy(db);
+            }
+
+            return Json(new[] { db }.ToDataSourceResult(request, ModelState));
+        }
     }
 }

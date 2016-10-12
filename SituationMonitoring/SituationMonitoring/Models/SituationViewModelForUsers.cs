@@ -27,8 +27,43 @@ namespace SituationMonitoring.Models
             get;
             set;
         }
+        [DisplayName("المحافظة :")]
 
+        public string GovernorateArName
+        {
+            get;
+            set;
+        }
+        [DisplayName("المنطقة :")]
 
+        public string AreaName
+        {
+            get;
+            set;
+        }
+        [DisplayName("البلدية :")]
+
+        public string MunicipalityName
+        {
+            get;
+            set;
+        }
+
+        [DisplayName("مركز الايواء :")]
+
+        public string CollectiveCenter
+        {
+            get;
+            set;
+        }
+
+        [DisplayName("وصف الموقع :")]
+
+        public string Site_Description
+        {
+            get;
+            set;
+        }
 
         [DisplayName("التاريخ :")]
         [DataType(DataType.Date)]

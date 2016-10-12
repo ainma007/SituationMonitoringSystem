@@ -64,7 +64,7 @@
 
 
                             <label for="fullname" class="required">اسم المستخدم</label>
-                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.TextBoxFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
                         </div>
@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="fullname" class="required">كلمة المرور</label>
 
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder= "password" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
                         </div>

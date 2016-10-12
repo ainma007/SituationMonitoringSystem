@@ -210,7 +210,7 @@
                     <!-- BEGIN BADGE LINK -->
                     <li class="">
                         <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire")" class="elements">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-edit"></i>
                             <span class="title">ادارة الاستبانات</span>
                         </a>
                     </li>
@@ -218,7 +218,7 @@
             
                     <li class="">
                         <a href="@Url.Action("MunicipalityManegment", "Municipality")" class="elements">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-bar-chart-o"></i>
                             <span class="title">تقرير النموذج الشامل </span>
                         </a>
                     </li>
@@ -227,8 +227,8 @@
 
 
                     <li class="">
-                        <a href="@Url.Action("MunicipalityManegment", "Municipality")" class="elements">
-                            <i class="fa fa-user"></i>
+                        <a href="@Url.Action("PersonInNeedManage", "PersonInNeed")" class="elements">
+                            <i class="fa fa-male"></i>
                             <span class="title">حالات الافراد ذوي الهشاشة </span>
                         </a>
                     </li>
@@ -272,7 +272,8 @@
             <div class="content">
                 <!-- BEGIN PAGE TITLE -->
 
-
+@if (Session["UserId"] != null)
+{
                 <div class="k-rtl">
                     @RenderSection("featured", required: false)
                     <section class="content-wrapper main-content clear-fix">
@@ -282,6 +283,11 @@
 
 
                 </div>
+}
+else
+{
+    Response.Redirect("~/Account/Login");
+}
 
                 <!-- END PAGE TITLE -->
                 <!-- BEGIN PlACE PAGE CONTENT HERE -->

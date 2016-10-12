@@ -1,0 +1,94 @@
+﻿@model SituationMonitoring.Models.PersonInNeedViewModel
+
+<style type="text/css">
+    div.k-edit-form-container {
+        width: 80%;
+    }
+
+        div.k-edit-form-container div.editor-field textarea, input.k-textbox {
+            width: 100%;
+            max-width: none;
+        }
+</style>
+<div class="k-edit-form-container" style="margin:auto;">
+
+    <div>
+        @Html.LabelFor(model => model.Name_of_Person_In_Need)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Name_of_Person_In_Need)
+        @Html.ValidationMessageFor(model => model.Name_of_Person_In_Need)
+    </div>
+
+
+    <div>
+        @Html.LabelFor(model => model.Contact_Details)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Contact_Details)
+        @Html.ValidationMessageFor(model => model.Contact_Details)
+
+
+        <div>
+            @Html.LabelFor(model => model.KeyConcernID)
+        </div>
+        <div>
+
+            @(Html.Kendo().DropDownListFor(model => model.KeyConcernID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+    .DataTextField("Key_concern")
+    .DataValueField("ID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetKey_concern", "PersonInNeed");
+        })
+        .ServerFiltering(false);
+    })
+            )
+
+            @Html.ValidationMessageFor(model => model.KeyConcernID)
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Gender)
+        </div>
+        <div>
+            @(Html.Kendo().DropDownListFor(model => model.Gender)
+          .Name("Gender")
+          .BindTo(new List<string>() {
+              "ذكر",
+             "أنثى",
+          })
+            )            @Html.ValidationMessageFor(model => model.Gender)
+        </div>
+
+
+        <div>
+            @Html.LabelFor(model => model.Age)
+        </div>
+        <div>
+            @Html.Kendo().NumericTextBoxFor(model => model.Age)
+            @Html.ValidationMessageFor(model => model.Age)
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.ActionsTakenSoFar)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.ActionsTakenSoFar)
+            @Html.ValidationMessageFor(model => model.ActionsTakenSoFar)
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.FollowUpRequired)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.FollowUpRequired)
+            @Html.ValidationMessageFor(model => model.FollowUpRequired)
+        </div>
+    </div>
+</div>
