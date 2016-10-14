@@ -13,24 +13,29 @@
 <script>
     kendo.culture("en-GB");
 </script>
+<h1> @Session["situationId"]</h1>
 @(Html.Kendo().Grid<QuestionnaireViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
         columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ");
+        columns.Bound(p => p.UserID).Width(50).Title("رقم ");
+
+        columns.Bound(p => p.SituationID).Width(50).Title("رقم ");
+
         columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
-       
-            columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
-            columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
-            columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
-            columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
-         columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
-            })
+
+        columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
+        columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
+        columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
+        columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
+    })
 
     .ToolBar(toolBar =>
     {
-            toolBar.Create().Text("اضافة استبانة جديدة");
-        })
+        toolBar.Create().Text("اضافة استبانة جديدة");
+    })
     .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(1000).Height(600)).TemplateName("QuestionnaireEditor"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
@@ -49,13 +54,15 @@
         .Events(events => events.Error("errorHandler"))
         .Model(model =>
         {
-        model.Id(p => p.QuestionnaireID);
-        model.Field(p => p.QuestionnaireID).Editable(false);
+            model.Id(p => p.QuestionnaireID);
+            model.Field(p => p.QuestionnaireID).Editable(false);
+            model.Field(p => p.UserID).Editable(false);
+            model.Field(p => p.SituationID).Editable(false);
 
 
 
 
-    })
+        })
         .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
         .Update(update => update.Action("Questionnair_Update", "Questionnaire"))
         .Create(create => create.Action("Questionnair_Create", "Questionnaire"))

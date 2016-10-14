@@ -128,17 +128,23 @@ namespace SituationMonitoring.Models
         public string Question3_14 { get; set; }
         public Nullable<int> Question3_14Male { get; set; }
         public Nullable<int> Question3_14Femal { get; set; }
-        public string Question3_15_1 { get; set; }
-        public Nullable<int> Question3_15_1Male { get; set; }
-        public Nullable<int> Question3_15_1Femal { get; set; }
-        public string Question3_15_2 { get; set; }
-        public Nullable<int> Question3_15_2No { get; set; }
-        public string Question3_15_3 { get; set; }
-        public Nullable<int> Question3_15_3No { get; set; }
+        public string Question3_15 { get; set; }
+        public Nullable<int> Question3_15Male { get; set; }
+        public Nullable<int> Question3_15Femal { get; set; }
         public string Question3_16 { get; set; }
-        public string Question3_16Text { get; set; }
         public Nullable<int> Question3_16Male { get; set; }
         public Nullable<int> Question3_16Femal { get; set; }
+        public string Question3_17 { get; set; }
+        public Nullable<int> Question3_17Male { get; set; }
+        public Nullable<int> Question3_17Femal { get; set; }
+        public string Question3_18 { get; set; }
+        public Nullable<int> Question3_18Male { get; set; }
+        public Nullable<int> Question3_18Femal { get; set; }
+        public string Question3_19 { get; set; }
+        public string Question3_20 { get; set; }
+        public string Question3_20Text { get; set; }
+        public Nullable<int> Question3_20Male { get; set; }
+        public Nullable<int> Question3_20Femal { get; set; }
         public bool Question4_1_1 { get; set; }
         public bool Question4_1_2 { get; set; }
         public bool Question4_1_3 { get; set; }
@@ -150,7 +156,7 @@ namespace SituationMonitoring.Models
         public bool Question4_1_9 { get; set; }
         public string Question4_1_9Text { get; set; }
         public bool Question4_1_10 { get; set; }
-        public string Question3_15 { get; set; }
+        public string Question_5 { get; set; }
     
         public virtual Situation_Table Situation_Table { get; set; }
         public virtual Users_Table Users_Table { get; set; }

@@ -321,7 +321,7 @@ namespace SituationMonitoring.Models
         public int? Question3_2Femal
         { get; set; }
 
-        [DisplayName(" 3.3 هل يوجد أطفال يعانون من إصابات جسدية وبحاجة إلى المساعدة؟")]
+        [DisplayName(" 3.3 هل يوجد موجه منزلي للأطفال")]
         public string Question3_3
         { get; set; }
         [DisplayName("ذكور")]
@@ -333,7 +333,7 @@ namespace SituationMonitoring.Models
         public int? Question3_3Femal
         { get; set; }
 
-        [DisplayName(" 3.4 هل يوجد أشخاص بالغين يعانون من إصابات جسدية وبحاجة إلى المساعدة؟")]
+        [DisplayName(" 3.4 هل يوجد أطفال يعانون من إصابات جسدية وبحاجة إلى المساعدة؟")]
         public string Question3_4
         { get; set; }
         [DisplayName("ذكور")]
@@ -345,7 +345,7 @@ namespace SituationMonitoring.Models
         public int? Question3_4Femal
         { get; set; }
 
-        [DisplayName(" 3.5 هل يوجد أطفال تضرروا نتيجة العنف الأسري أو المجتمعي؟")]
+        [DisplayName(" 3.5 هل يوجد أشخاص بالغين يعانون من إصابات جسدية وبحاجة إلى المساعدة؟")]
         public string Question3_5
         { get; set; }
         [DisplayName("ذكور")]
@@ -357,7 +357,7 @@ namespace SituationMonitoring.Models
         public int? Question3_5Femal
         { get; set; }
 
-        [DisplayName(" 3.6 هل يوجد أشخاص بالغين تضرروا نتيجة العنف الأسري أو المجتمعي؟")]
+        [DisplayName(" 3.6 هل يوجد أطفال تضرروا نتيجة العنف الأسري أو المجتمعي؟")]
         public string Question3_6
         { get; set; }
         [DisplayName("ذكور")]
@@ -369,7 +369,7 @@ namespace SituationMonitoring.Models
         public int? Question3_6Femal
         { get; set; }
 
-        [DisplayName(" 3.7 هل يوجد أطفال متضررين بشدة؟")]
+        [DisplayName(" 3.7 هل يوجد أشخاص بالغين تضرروا نتيجة العنف الأسري أو المجتمعي؟")]
         public string Question3_7
         { get; set; }
         [DisplayName("ذكور")]
@@ -381,8 +381,7 @@ namespace SituationMonitoring.Models
         public int? Question3_7Femal
         { get; set; }
 
-
-        [DisplayName(" 3.8 هل يوجد أشخاص بالغين متضررين بشدة؟")]
+        [DisplayName(" 3.8 هل يوجد أطفال متضررين بشدة؟")]
         public string Question3_8
         { get; set; }
         [DisplayName("ذكور")]
@@ -395,7 +394,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName(" 3.9 هل يوجد أطفال مشاركين بأعمال التسول أو أشكال الاستغلال لعمالة الأطفال؟")]
+        [DisplayName(" 3.9 هل يوجد أشخاص بالغين متضررين بشدة؟")]
         public string Question3_9
         { get; set; }
         [DisplayName("ذكور")]
@@ -407,7 +406,8 @@ namespace SituationMonitoring.Models
         public int? Question3_9Femal
         { get; set; }
 
-        [DisplayName(" 3.10 هل يوجد أطفال ذوي إعاقة بحاجة لمساعدة خاصة؟")]
+
+        [DisplayName(" 3.10 هل يوجد أطفال مشاركين بأعمال التسول أو أشكال الاستغلال لعمالة الأطفال؟")]
         public string Question3_10
         { get; set; }
         [DisplayName("ذكور")]
@@ -419,8 +419,7 @@ namespace SituationMonitoring.Models
         public int? Question3_10Femal
         { get; set; }
 
-
-        [DisplayName("3.11 هل يوجد أشخاص بالغين ذوي إعاقة بحاجة لمساعدة خاصة؟")]
+        [DisplayName(" 3.11 هل يوجد أطفال ذوي إعاقة بحاجة لمساعدة خاصة؟")]
         public string Question3_11
         { get; set; }
         [DisplayName("ذكور")]
@@ -433,7 +432,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName("3.12 هل يوجد حوادث عنف منزلي؟")]
+        [DisplayName("3.12 هل يوجد أشخاص بالغين ذوي إعاقة بحاجة لمساعدة خاصة؟")]
         public string Question3_12
         { get; set; }
         [DisplayName("ذكور")]
@@ -445,7 +444,8 @@ namespace SituationMonitoring.Models
         public int? Question3_12Femal
         { get; set; }
 
-        [DisplayName("3.13 هل يوجد كبار سن بحاجة لمساعدة؟")]
+
+        [DisplayName("3.13 هل يوجد حوادث عنف منزلي؟")]
         public string Question3_13
         { get; set; }
         [DisplayName("ذكور")]
@@ -458,7 +458,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName("3.14 هل يوجد أشخاص متضررين بحاجة لمساعدة قانونية؟")]
+        [DisplayName("3.14 Are there unaccompanied single women?")]
         public string Question3_14
         { get; set; }
         [DisplayName("ذكور")]
@@ -470,48 +470,20 @@ namespace SituationMonitoring.Models
         public int? Question3_14Femal
         { get; set; }
 
-
-        [DisplayName("3.15 هل يوجد أي حوادث معروفة لعنف جنسي؟")]
+        [DisplayName("3.15 Are there female widows as a result of the emergency؟")]
         public string Question3_15
-        { get; set; }
-
-        [DisplayName("3.15.1 هل العنف الذي تم التبليغ عنه قد ارتكب ضد طفل/أطفال تحت سن 18 سنة؟ ")]
-        public string Question3_15_1
         { get; set; }
         [DisplayName("ذكور")]
 
-        public int? Question3_15_1Male
+        public int? Question3_15Male
         { get; set; }
 
         [DisplayName("اثناث")]
-        public int? Question3_15_1Femal
+        public int? Question3_15Femal
         { get; set; }
 
-
-
-        [DisplayName("3.15.2 هل ارتكب عنف ضد المرأة؟")]
-        public string Question3_15_2
-        { get; set; }
-        [DisplayName("العدد التقديري")]
-
-        public int? Question3_15_2No
-        { get; set; }
-
-        [DisplayName("3.15.3 هل العنف المبلّغ عنه قد ارتكب ضد الرجال؟")]
-        public string Question3_15_3
-        { get; set; }
-        [DisplayName("العدد التقديري")]
-
-        public int? Question3_15_3No
-        { get; set; }
-
-
-        [DisplayName("3.16 اهتمامات حماية أخرى: ")]
+        [DisplayName("3.16 Are there persons with chronic illness/untreated mental health issue?")]
         public string Question3_16
-        { get; set; }
-
-        [DisplayName("3.16.1 يرجى وصف اهتمامات الحماية التي تم تحديدها: ")]
-        public string Question3_16Text
         { get; set; }
         [DisplayName("ذكور")]
 
@@ -520,6 +492,53 @@ namespace SituationMonitoring.Models
 
         [DisplayName("اثناث")]
         public int? Question3_16Femal
+        { get; set; }
+
+        [DisplayName("3.17 هل يوجد كبار سن بحاجة لمساعدة؟")]
+        public string Question3_17
+        { get; set; }
+        [DisplayName("ذكور")]
+
+        public int? Question3_17Male
+        { get; set; }
+
+        [DisplayName("اثناث")]
+        public int? Question3_17Femal
+        { get; set; }
+
+        [DisplayName("3.18 هل يوجد أشخاص متضررين بحاجة لمساعدة قانونية؟")]
+        public string Question3_18
+        { get; set; }
+        [DisplayName("ذكور")]
+
+        public int? Question3_18Male
+        { get; set; }
+
+        [DisplayName("اثناث")]
+        public int? Question3_18Femal
+        { get; set; }
+
+
+        [DisplayName("3.19 هل يوجد أي حوادث معروفة لعنف جنسي؟")]
+        public string Question3_19
+        { get; set; }
+
+       
+
+        [DisplayName("3.20 اهتمامات حماية أخرى: ")]
+        public string Question3_20
+        { get; set; }
+
+        [DisplayName("3.20.1 يرجى وصف اهتمامات الحماية التي تم تحديدها: ")]
+        public string Question3_20Text
+        { get; set; }
+        [DisplayName("ذكور")]
+
+        public int? Question3_20Male
+        { get; set; }
+
+        [DisplayName("اثناث")]
+        public int? Question3_20Femal
         { get; set; }
 
         #endregion
@@ -570,8 +589,9 @@ namespace SituationMonitoring.Models
         public bool Question4_1_10
         { get; set; }
 
-  
-
+        [DisplayName("قم بتحديد أي من المخاوف، حيث أنه من الممكن ألا تتوفر لدينا الإمكانية أو الموارد للاستجابة والتدخل بشكل مباشر، يمكننا على الأقل أن ننتواصل بخصوص الحالة مع وزارة الشئون الاجتماعية ومع العاملين ذوي العلاقة في المجال الإنساني")]
+        public string Question_5
+        { get; set; }
 
         #endregion
     }

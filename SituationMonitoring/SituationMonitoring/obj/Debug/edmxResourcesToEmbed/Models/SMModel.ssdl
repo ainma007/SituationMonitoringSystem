@@ -166,17 +166,22 @@
     <Property Name="Question3_14Male" Type="int" />
     <Property Name="Question3_14Femal" Type="int" />
     <Property Name="Question3_15" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_15_1" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_15_1Male" Type="int" />
-    <Property Name="Question3_15_1Femal" Type="int" />
-    <Property Name="Question3_15_2" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_15_2No" Type="int" />
-    <Property Name="Question3_15_3" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_15_3No" Type="int" />
+    <Property Name="Question3_15Male" Type="int" />
+    <Property Name="Question3_15Femal" Type="int" />
     <Property Name="Question3_16" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_16Text" Type="nvarchar(max)" />
     <Property Name="Question3_16Male" Type="int" />
     <Property Name="Question3_16Femal" Type="int" />
+    <Property Name="Question3_17" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_17Male" Type="int" />
+    <Property Name="Question3_17Femal" Type="int" />
+    <Property Name="Question3_18" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_18Male" Type="int" />
+    <Property Name="Question3_18Femal" Type="int" />
+    <Property Name="Question3_19" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_20" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_20Text" Type="nvarchar(max)" />
+    <Property Name="Question3_20Male" Type="int" />
+    <Property Name="Question3_20Femal" Type="int" />
     <Property Name="Question4_1_1" Type="bit" />
     <Property Name="Question4_1_2" Type="bit" />
     <Property Name="Question4_1_3" Type="bit" />
@@ -188,6 +193,7 @@
     <Property Name="Question4_1_9" Type="bit" />
     <Property Name="Question4_1_9Text" Type="nvarchar(max)" />
     <Property Name="Question4_1_10" Type="bit" />
+    <Property Name="Question_5" Type="text" />
   </EntityType>
   <EntityType Name="Situation_Table">
     <Key>

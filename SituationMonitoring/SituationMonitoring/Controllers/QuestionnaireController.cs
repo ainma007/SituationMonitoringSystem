@@ -36,7 +36,7 @@ namespace SituationMonitoring.Controllers
 
         public ActionResult Questionnair_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(QuestionnaireService.Read().ToDataSourceResult(request));
+            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(Session["SituationID"].ToString())).ToDataSourceResult(request));
         }
 
         // Insert New

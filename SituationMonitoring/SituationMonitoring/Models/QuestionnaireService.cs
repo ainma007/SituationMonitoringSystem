@@ -19,8 +19,11 @@ namespace SituationMonitoring.Models
         public IEnumerable<QuestionnaireViewModel> Read()
         {
             return entities.Questionnaire_Table.Select(db => new QuestionnaireViewModel
-            {
-                QuestionnaireID = db.QuestionnaireID,
+{
+    QuestionnaireID = db.QuestionnaireID,
+    UserID = db.UserID,
+    SituationID=db.SituationID,
+
                 QuestionnaireDate = db.QuestionnaireDate.HasValue ? db.QuestionnaireDate.Value : default(DateTime),
                 EmployeeName = db.EmployeeName,
                 CenterName = db.CenterName,
@@ -133,17 +136,23 @@ namespace SituationMonitoring.Models
             Question3_14Male = db.Question3_14Male,
             Question3_14Femal = db.Question3_14Femal,
             Question3_15 = db.Question3_15,
-            Question3_15_1 = db.Question3_15_1,
-            Question3_15_1Male = db.Question3_15_1Male,
-            Question3_15_1Femal = db.Question3_15_1Femal,
-            Question3_15_2 = db.Question3_15_2,
-            Question3_15_2No = db.Question3_15_2No,
-            Question3_15_3 = db.Question3_15_3,
-            Question3_15_3No = db.Question3_15_3No,
-            Question3_16 = db.Question3_16,
-            Question3_16Text = db.Question3_16Text,
-            Question3_16Male = db.Question3_16Male,
-            Question3_16Femal = db.Question3_16Femal,
+            Question3_15Male = db.Question3_15Male,
+            Question3_15Femal = db.Question3_15Femal,
+                Question3_16 = db.Question3_16,
+                Question3_16Male = db.Question3_16Male,
+                Question3_16Femal = db.Question3_16Femal,
+
+                Question3_17 = db.Question3_17,
+                Question3_17Male = db.Question3_17Male,
+                Question3_17Femal = db.Question3_17Femal,
+                Question3_18 = db.Question3_18,
+                Question3_18Male = db.Question3_18Male,
+                Question3_18Femal = db.Question3_18Femal,
+                Question3_19 = db.Question3_19,
+                Question3_20 = db.Question3_20,
+                Question3_20Text = db.Question3_20Text,
+                Question3_20Male = db.Question3_20Male,
+                Question3_20Femal = db.Question3_20Femal,
             Question4_1_1 = db.Question4_1_1,
             Question4_1_2 = db.Question4_1_2,
             Question4_1_3 = db.Question4_1_3,
@@ -155,7 +164,8 @@ namespace SituationMonitoring.Models
             Question4_1_9 = db.Question4_1_9,
             Question4_1_9Text = db.Question4_1_9Text,
             Question4_1_10 = db.Question4_1_10,
-        });
+                Question_5=db.Question_5
+            });
         }
 
 
@@ -277,17 +287,22 @@ namespace SituationMonitoring.Models
             entity.Question3_14Male = db.Question3_14Male;
             entity.Question3_14Femal = db.Question3_14Femal;
             entity.Question3_15 = db.Question3_15;
-            entity.Question3_15_1 = db.Question3_15_1;
-            entity.Question3_15_1Male = db.Question3_15_1Male;
-            entity.Question3_15_1Femal = db.Question3_15_1Femal;
-            entity.Question3_15_2 = db.Question3_15_2;
-            entity.Question3_15_2No = db.Question3_15_2No;
-            entity.Question3_15_3 = db.Question3_15_3;
-            entity.Question3_15_3No = db.Question3_15_3No;
+            entity.Question3_15Male = db.Question3_15Male;
+            entity.Question3_15Femal = db.Question3_15Femal;
             entity.Question3_16 = db.Question3_16;
-            entity.Question3_16Text = db.Question3_16Text;
             entity.Question3_16Male = db.Question3_16Male;
             entity.Question3_16Femal = db.Question3_16Femal;
+            entity.Question3_17 = db.Question3_17;
+            entity.Question3_17Male = db.Question3_17Male;
+            entity.Question3_17Femal = db.Question3_17Femal;
+            entity.Question3_18 = db.Question3_18;
+            entity.Question3_18Male = db.Question3_18Male;
+            entity.Question3_18Femal = db.Question3_18Femal;
+            entity.Question3_19 = db.Question3_19;           
+            entity.Question3_20 = db.Question3_20;
+            entity.Question3_20Text = db.Question3_20Text;
+            entity.Question3_20Male = db.Question3_20Male;
+            entity.Question3_20Femal = db.Question3_20Femal;
             entity.Question4_1_1 = db.Question4_1_1;
             entity.Question4_1_2 = db.Question4_1_2;
             entity.Question4_1_3 = db.Question4_1_3;
@@ -299,7 +314,9 @@ namespace SituationMonitoring.Models
             entity.Question4_1_9 = db.Question4_1_9;
             entity.Question4_1_9Text = db.Question4_1_9Text;
             entity.Question4_1_10 = db.Question4_1_10;
-         
+            entity.Question_5 = db.Question_5;
+
+
 
             entities.Questionnaire_Table.Add(entity);
             entities.SaveChanges();
@@ -312,6 +329,10 @@ namespace SituationMonitoring.Models
             
             var entity = new Questionnaire_Table();
             entity.QuestionnaireID = db.QuestionnaireID;
+            entity.UserID = db.UserID;
+
+            entity.SituationID = db.SituationID;
+
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
            
             entity.EmployeeName = db.EmployeeName;
@@ -425,17 +446,22 @@ namespace SituationMonitoring.Models
             entity.Question3_14Male = db.Question3_14Male;
             entity.Question3_14Femal = db.Question3_14Femal;
             entity.Question3_15 = db.Question3_15;
-            entity.Question3_15_1 = db.Question3_15_1;
-            entity.Question3_15_1Male = db.Question3_15_1Male;
-            entity.Question3_15_1Femal = db.Question3_15_1Femal;
-            entity.Question3_15_2 = db.Question3_15_2;
-            entity.Question3_15_2No = db.Question3_15_2No;
-            entity.Question3_15_3 = db.Question3_15_3;
-            entity.Question3_15_3No = db.Question3_15_3No;
+            entity.Question3_15Male = db.Question3_15Male;
+            entity.Question3_15Femal = db.Question3_15Femal;
             entity.Question3_16 = db.Question3_16;
-            entity.Question3_16Text = db.Question3_16Text;
             entity.Question3_16Male = db.Question3_16Male;
             entity.Question3_16Femal = db.Question3_16Femal;
+            entity.Question3_17 = db.Question3_17;
+            entity.Question3_17Male = db.Question3_17Male;
+            entity.Question3_17Femal = db.Question3_17Femal;
+            entity.Question3_18 = db.Question3_18;
+            entity.Question3_18Male = db.Question3_18Male;
+            entity.Question3_18Femal = db.Question3_18Femal;
+            entity.Question3_19 = db.Question3_19;
+            entity.Question3_20 = db.Question3_20;
+            entity.Question3_20Text = db.Question3_20Text;
+            entity.Question3_20Male = db.Question3_20Male;
+            entity.Question3_20Femal = db.Question3_20Femal;
             entity.Question4_1_1 = db.Question4_1_1;
             entity.Question4_1_2 = db.Question4_1_2;
             entity.Question4_1_3 = db.Question4_1_3;
@@ -447,7 +473,7 @@ namespace SituationMonitoring.Models
             entity.Question4_1_9 = db.Question4_1_9;
             entity.Question4_1_9Text = db.Question4_1_9Text;
             entity.Question4_1_10 = db.Question4_1_10;
-
+            entity.Question_5 = db.Question_5;
             entities.Questionnaire_Table.Attach(entity);
             entities.Entry(entity).State = EntityState.Modified;
             entities.SaveChanges();
