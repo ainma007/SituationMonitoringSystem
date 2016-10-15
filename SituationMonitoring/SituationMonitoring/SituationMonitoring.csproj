@@ -182,6 +182,7 @@
     <Compile Include="Models\PersonInNeed_table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QueriesService.cs" />
     <Compile Include="Models\QuestionnaireService.cs" />
     <Compile Include="Models\QuestionnaireViewModel.cs" />
     <Compile Include="Models\Questionnaire_Table.cs">

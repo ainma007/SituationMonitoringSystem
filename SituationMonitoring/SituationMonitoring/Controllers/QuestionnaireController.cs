@@ -16,7 +16,7 @@ namespace SituationMonitoring.Controllers
         {
             if (situationId != null)
             {
-
+                QueriesService.situationId = situationId;
                 Session["situationId"] = situationId;
             }
             return View();

@@ -408,7 +408,7 @@
     <Property Name="Question4_1_9" Type="Boolean" Nullable="false" />
     <Property Name="Question4_1_9Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Question4_1_10" Type="Boolean" Nullable="false" />
-    <Property Name="Question_5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Question_5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" FromRole="Questionnaire_Table" ToRole="Situation_Table" />
     <NavigationProperty Name="Users_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" FromRole="Questionnaire_Table" ToRole="Users_Table" />
   </EntityType>
