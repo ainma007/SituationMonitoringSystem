@@ -22,28 +22,29 @@ namespace SituationMonitoring.Models
         /// <summary>
         /// This Parameter Holding Session[situationId] value 
         /// </summary>
-        public static string situationId { get; set; } 
+        public static string situationId { get; set; }
 
 
 
 
         #region " Get  Final Sum"
-        public int GetSum_Estimated_Number_Of_Individuals()
+        public  double GetSum_Estimated_Number_Of_Individuals()
         {
-            int Sm = 0;
+            double Sm = 0;
             Sm = entities.Questionnaire_Table.Where(c => c.SituationID == int.Parse(situationId))
-                             .Select(i => i.Estimated_Number_Of_Individuals.Value).Sum();
+                             .Select(i => i.Estimated_Number_Of_Individuals.Value).Average();
 
             return Sm;
         }
-        public int GetSum_Estimated_Number_Of_Families()
+        public double GetSum_Estimated_Number_Of_Families()
         {
-            int Sm = 0;
+            double Sm = 0;
             Sm = entities.Questionnaire_Table.Where(c => c.SituationID == int.Parse(situationId))
-                             .Select(i => i.Estimated_Number_Of_Families.Value).Sum();
+                             .Select(i => i.Estimated_Number_Of_Families.Value).Average();
 
             return Sm;
         }
+
 
         public int GetSum_Question3_1Male()
         {
@@ -140,6 +141,9 @@ namespace SituationMonitoring.Models
         #endregion
 
 
+
+
+
         #region " Queries  {   Get Final Count  }"
 
         /// <summary>
@@ -174,10 +178,7 @@ namespace SituationMonitoring.Models
         }
 
 
-
-
-
-
+        #endregion
 
 
 
@@ -200,5 +201,5 @@ namespace SituationMonitoring.Models
         {
             entities.Dispose();
         }
-    } 
+    }
 }

@@ -74,12 +74,12 @@ namespace SituationMonitoring.Models
 
         #endregion
 
-        #region(اهتمامات الحماية الواضحة خارج مركز الايواء)
+        #region(. مخاوف حماية عامة خارج مركز الإيواء الجماعي)
         //Question1_1
         [DisplayName("1.1 هل أنت على علم بأي مجموعات أسرية تعيش مع عائلات مضيفة؟")]
         public string Question1_1 { get; set; }
      
-       [DisplayName("1.1.1 إذا كانت الإجابة بنعم، ما هو عدد المجموعات الأسرية التي تقيم مع عائلات مضيفة؟")]
+       [DisplayName("1.1.1	إذا كانت الإجابة نعم، فكم عدد المجموعات العائلية التي تقطن مع عائلات مضيفة؟ ")]
         public string Question1_1_1 { get; set; }
 
 
@@ -108,13 +108,13 @@ namespace SituationMonitoring.Models
         [DisplayName("مياه قليلة (غير مياه الشرب)")]
         public bool Question1_2_8NotEnoughWater { get; set; }
 
-        [DisplayName("المساعدة الإنسانية غير كافية للأشخاص المحتاجين ")]
+        [DisplayName("لا يوجد مساعدة إغاثية لجميع المحتاجين  ")]
         public bool Question1_2_9Not_enough_humanitarian_assistance { get; set; }
 
-        [DisplayName("حدد نوع المساعدة الإنسانية المعدومة")]
+        [DisplayName("اذكر أي المساعدات الإغاثية الناقصة")]
         public string Question1_2_9Text { get; set; }
 
-        [DisplayName("عدم القدرة على الوصول إلى الخدمات الأساسية ")]
+        [DisplayName("لا إمكانية وصول إلى الخدمات  ")]
         public bool Question1_2_10No_Access_to_essential_services
         { get; set; }
         
@@ -131,47 +131,53 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        //Question1_3
+        //Question1_2
         [DisplayName("خلافات عائلية / مجتمعية")]
         public bool Question1_3_1Family_CommunityDisputes { get; set; }
 
         [DisplayName("غذاء غير كافي")]
         public bool Question1_3_2NotEnoughFood { get; set; }
-     
+
+        [DisplayName("خصوصية غير كافية")]
+        public bool Question1_3_3NotEnoughPrivacy { get; set; }
+
         [DisplayName("مياه شرب غير كافية")]
-        public bool Question1_3_3NotEnoughDrinking { get; set; }
+        public bool Question1_3_4NotenoughDrinkingWater { get; set; }
 
         [DisplayName("سكن غير آمن")]
-        public bool Question1_3_4UnsafeHousing { get; set; }
+        public bool Question1_3_5UnsafeHousing { get; set; }
 
         [DisplayName("اكتظاظ في المسكن")]
-        public bool Question1_3_5Overcrowding { get; set; }
+        public bool Question1_3_6Overcrowding { get; set; }
 
-       
+        [DisplayName("فراش غير كافي")]
+        public bool Question1_3_7InsufficientBedding { get; set; }
+
         [DisplayName("مياه قليلة (غير مياه الشرب)")]
-        public bool Question1_3_5NotEnoughWater { get; set; }
+        public bool Question1_3_8NotEnoughWater_otherThanDrinking { get; set; }
 
-        [DisplayName("المساعدة الإنسانية غير كافية للأشخاص المحتاجين ")]
-        public bool Question1_3_6Not_enough_humanitarian_assistance { get; set; }
+        [DisplayName("لا يوجد مساعدة إغاثية لجميع المحتاجين  ")]
+        public bool Question1_3_9Not_enough_humanitarian_assistance { get; set; }
 
-        [DisplayName("حدد نوع المساعدة الإنسانية المعدومة")]
-        public string Question1_3_6Text { get; set; }
+        [DisplayName("اذكر أي المساعدات الإغاثية الناقصة")]
+        public string Question1_3_9Text { get; set; }
 
-        [DisplayName("عدم القدرة على الوصول إلى الخدمات الأساسية ")]
-        public bool Question1_3_7No_Access_to_essential_services
+        [DisplayName("لا إمكانية وصول إلى الخدمات  ")]
+        public bool Question1_3_10No_Access_to_essential_services
         { get; set; }
 
         [DisplayName("اذكر الخدمات ")]
-        public string Question1_3_7Text
+        public string Question1_3_10Text
         { get; set; }
 
         [DisplayName("اخرى ")]
-        public bool Question1_3_8Other
+        public bool Question1_3_11Other
         { get; set; }
 
         [DisplayName("اذكرها: ")]
-        public string Question1_3_8Text
+        public string Question1_3_11Text
         { get; set; }
+
 
         //Question1_4
         [DisplayName("1.4 هل يعرف الناس في منطقتكم كيفية الوصول إلى المساعدة و/أو المعلومات؟")]
@@ -190,91 +196,116 @@ namespace SituationMonitoring.Models
         public bool Question2_1_2NotEnoughFood
         { get; set; }
 
-        [DisplayName("خصوصية غير كافية  ")]
-        public bool Question2_1_3NotEnoughPrivacy
+        [DisplayName("خصوصية غير كافية في المراحيض ومرافق الاستحمام")]
+        public bool Question2_1_3enough_privacy_in_DES_rooms
         { get; set; }
 
 
-        [DisplayName("مياه شرب غير كافية  ")]
-        public bool Question2_1_4NotDrinkingEnoughWater
+        [DisplayName("خصوصية غير كافية في مركز الإيواء الجماعي ")]
+        public bool Question2_1_4NotEnoughPrivacy
         { get; set; }
 
 
-        [DisplayName("سكن غير آمن  ")]
-        public bool Question2_1_5UnsafeHousing
+        [DisplayName("ماء شرب غير كافي ")]
+        public bool Question2_1_5NotDrinkingEnoughWater
         { get; set; }
 
 
-        [DisplayName("اكتظاظ في المسكن  ")]
-        public bool Question2_1_6Overcrowding
+        [DisplayName("سكن غير آمن")]
+        public bool Question2_1_6Unsafe_housing
         { get; set; }
 
+
+      
+        [DisplayName("إزدحام")]
+        public bool Question2_1_7IOvercrowding
+        { get; set; }
 
         [DisplayName("فراش غير كافي  ")]
-        public bool Question2_1_7InsufficientBedding
+        public bool Question2_1_8Insufficient_bedding
         { get; set; }
 
 
         [DisplayName("مياه قليلة (غير مياه الشرب)  ")]
-        public bool Question2_1_8NotEnoughWater
+        public bool Question2_1_9NotEnoughWater_OtherThanDrinking
         { get; set; }
 
 
-        [DisplayName("المساعدة الإنسانية غير كافية للأشخاص المحتاجين")]
-        public bool Question2_1_9NotEnoughHumanitarianAssistance
+        [DisplayName("لا يوجد مساعدة إغاثية لجميع المحتاجين ")]
+        public bool Question2_1_10NotEnoughHumanitarianAssistanceForPeopleInNeed
         { get; set; }
 
 
-        [DisplayName("حدد نوع المساعدة الإنسانية المعدومة  ")]
-        public string Question2_1_9Text
-        { get; set; }
-
-
-        [DisplayName("عدم القدرة على الوصول إلى الخدمات الأساسية ")]
-        public bool Question2_1_10NoAccessToEssentialServices
-        { get; set; }
-
-
-        [DisplayName("اذكر هذه الخدمات  ")]
+        [DisplayName("حدد نوع الاغاثة    ")]
         public string Question2_1_10Text
         { get; set; }
 
 
+        [DisplayName("لا إمكانية وصول إلى الخدمات الضرورية ")]
+        public bool Question2_1_11NoAccessToEssentialServices
+        { get; set; }
+
+
+        [DisplayName("اذكر هذه الخدمات  ")]
+        public string Question2_1_11Text
+        { get; set; }
+
+
         [DisplayName("توزيع المساعدات يستثني الأسر التي يعيلها الأطفال  ")]
-        public bool Question2_1_11DistributionOfAssistanceExcludesChild_headedFamilies
+        public bool Question2_1_12DistributionOfAssistanceExcludesChild_HeadedFamilies
         { get; set; }
 
 
         [DisplayName("توزيع المساعدات يستثني الأسر التي تعيلها النساء  ")]
-        public bool Question2_1_12DistributionOfAssistanceExcludesWomen_headedFamilies
+        public bool Question2_1_13DistributionOfAssistanceExcludesWomen_HeadedFamilies
         { get; set; }
 
         [DisplayName("نقص الأماكن الآمنة لجمع النساء والفتيات معاً  ")]
-        public bool Question2_1_13LackOfSafeSpacesForWomenAndGirlsToGather
+        public bool Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather
         { get; set; }
 
-        [DisplayName("نقص الأماكن الآمنة للعب الأطفال  ")]
-        public bool Question2_1_14LackOfSafeSpacesForChildrenToPlay
+        [DisplayName("عدم وجود مساحات آمنة للعب الأطفال ")]
+        public bool Question2_1_15LackOfSafeSpacesForChildrenToPlay
         { get; set; }
 
-        [DisplayName("نقص الإضاءة المناسبة في المراحيض  ")]
-        public bool Question2_1_15LackOfAdequateLightingForToilets
+        [DisplayName("عدم وجود إضاءة آمنة للحمامات ")]
+        public bool Question2_1_16LackOfAdequatelightingForToilets
         { get; set; }
 
-        [DisplayName("نقص المراحيض المخصصة لكلا الجنسين  ")]
-        public bool Question2_1_16LackOfGenderSegregatedToilets
+        [DisplayName("عدم وجود حمامات منفصلة للجنسين ")]
+        public bool Question2_1_17LackOfGenderSegregatedToilets
         { get; set; }
 
         [DisplayName("نقص أماكن الاستحمام المخصصة لكلا الجنسين  ")]
         public bool Question2_1_17LackOfGenderSegregatedBathingFacilities
         { get; set; }
 
+        [DisplayName("عدم وجود مرافق استحمام منفصلة للجنسين")]
+        public bool Question2_1_18LackOfGenderSegregatedBathingFacilitites
+        { get; set; }
+
+        [DisplayName("عدم وجود حمامات يمكن الوصول إليها")]
+        public bool Question2_1_19LackOfAccessibleBathrooms
+        { get; set; }
+
+        [DisplayName("توزيع المساعدة يستثنى الأشخاص ذوي الإعاقة وأسرهم  ")]
+        public bool Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies
+        { get; set; }
+
+        [DisplayName("عدم وجود أجهزة مساعدة ")]
+        public bool Question2_1_21LackOfAssistiveDevices
+        { get; set; }
+
+        [DisplayName("قلق على أفراد مفقودين   ")]
+        public bool Question2_1_22ConcernOverFamilyMemberMissing
+        { get; set; }
+
         [DisplayName("غير ذلك  ")]
-        public bool Question2_1_18Other
+        public bool Question2_1_23Other
         { get; set; }
 
         [DisplayName("اذكرها  ")]
-        public string Question2_1_18text
+        public string Question2_1_23Text
         { get; set; }
 
 
@@ -297,7 +328,7 @@ namespace SituationMonitoring.Models
         #endregion
         #region(اهتمامات حماية محددة (للتذكير الأطفال هم الأشخاص ما دون سن 18 سنة)
 
-        [DisplayName("3.1 هل يوجد أطفال منفصلين عن والديهم أو مقدمي الرعاية، ولكن ليس من الضرورة أن يكونوا منفصلين عن أسرهم الممتدة؟")]
+        [DisplayName("3.1 هل هناك أطفال منفصلين عن ذويهم من كلا من الوالدين أو مقدمي الرعاية المعتادة ولكن ليس بالضرورة من الأسرة الموسعة؟")]
         public string Question3_1
         { get; set; }
 
@@ -309,7 +340,7 @@ namespace SituationMonitoring.Models
         public int? Question3_1Femal
         { get; set; }
 
-        [DisplayName(" 3.2 هل يوجد أطفال منفصلين عن والديهم أو مقدمي الرعاية، ويعيشون إما وحدهم أو من دون مقدم الرعاية المناسب؟")]
+        [DisplayName(" 3.2 هل هنالك أي أطفال منفصلين عن كلا ذويهم أو مقدمي الرعاية الاعتياديين وهم إما لوحدهم أو دون مقدم رعاية ملائم؟ ")]
         public string Question3_2
         { get; set; }
         [DisplayName("ذكور")]
@@ -321,7 +352,7 @@ namespace SituationMonitoring.Models
         public int? Question3_2Femal
         { get; set; }
 
-        [DisplayName(" 3.3 هل يوجد موجه منزلي للأطفال")]
+        [DisplayName(" 3.3 هل يوجد هناك أي طفل يعيل أسرته؟")]
         public string Question3_3
         { get; set; }
         [DisplayName("ذكور")]
@@ -333,7 +364,7 @@ namespace SituationMonitoring.Models
         public int? Question3_3Femal
         { get; set; }
 
-        [DisplayName(" 3.4 هل يوجد أطفال يعانون من إصابات جسدية وبحاجة إلى المساعدة؟")]
+        [DisplayName(" 3.4 هل يوجد هناك أطفال يعانون من إصابات جسدية ويحتاجون إلى المساعدة؟")]
         public string Question3_4
         { get; set; }
         [DisplayName("ذكور")]
@@ -381,7 +412,7 @@ namespace SituationMonitoring.Models
         public int? Question3_7Femal
         { get; set; }
 
-        [DisplayName(" 3.8 هل يوجد أطفال متضررين بشدة؟")]
+        [DisplayName(" 3.8 هل هناك أطفال مصابين بالكرب الشديد؟")]
         public string Question3_8
         { get; set; }
         [DisplayName("ذكور")]
@@ -394,7 +425,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName(" 3.9 هل يوجد أشخاص بالغين متضررين بشدة؟")]
+        [DisplayName(" 3.9 هل هناك بالغين مصابين بالكرب الشديد؟")]
         public string Question3_9
         { get; set; }
         [DisplayName("ذكور")]
@@ -407,7 +438,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName(" 3.10 هل يوجد أطفال مشاركين بأعمال التسول أو أشكال الاستغلال لعمالة الأطفال؟")]
+        [DisplayName(" 3.10 هل هناك الأطفال المشتركين في أشكال الاستغلال لعمالة الأطفال أو التسول؟")]
         public string Question3_10
         { get; set; }
         [DisplayName("ذكور")]
@@ -419,7 +450,7 @@ namespace SituationMonitoring.Models
         public int? Question3_10Femal
         { get; set; }
 
-        [DisplayName(" 3.11 هل يوجد أطفال ذوي إعاقة بحاجة لمساعدة خاصة؟")]
+        [DisplayName(" 3.11 هل هناك اي أطفال ذوي إعاقة بحاجة لمساعدة خاصة؟")]
         public string Question3_11
         { get; set; }
         [DisplayName("ذكور")]
@@ -432,7 +463,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName("3.12 هل يوجد أشخاص بالغين ذوي إعاقة بحاجة لمساعدة خاصة؟")]
+        [DisplayName("3.12  هل هناك بالغين من ذوي الإعاقة الذين بحاجة إلى مساعدة خاصة؟")]
         public string Question3_12
         { get; set; }
         [DisplayName("ذكور")]
@@ -445,7 +476,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName("3.13 هل يوجد حوادث عنف منزلي؟")]
+        [DisplayName("3.13  هل هناك حوادث عنف منزلي؟")]
         public string Question3_13
         { get; set; }
         [DisplayName("ذكور")]
@@ -458,7 +489,7 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName("3.14 Are there unaccompanied single women?")]
+        [DisplayName("3.14 هل هناك نساء غير مصحوبات (مطلقة/منفصلة)؟")]
         public string Question3_14
         { get; set; }
         [DisplayName("ذكور")]
@@ -470,19 +501,16 @@ namespace SituationMonitoring.Models
         public int? Question3_14Femal
         { get; set; }
 
-        [DisplayName("3.15 Are there female widows as a result of the emergency؟")]
+        [DisplayName("3.15 هل هناك نساء أرامل نتيجة لحالة الطواريء؟ ")]
         public string Question3_15
         { get; set; }
-        [DisplayName("ذكور")]
-
-        public int? Question3_15Male
-        { get; set; }
+    
 
         [DisplayName("اثناث")]
         public int? Question3_15Femal
         { get; set; }
 
-        [DisplayName("3.16 Are there persons with chronic illness/untreated mental health issue?")]
+        [DisplayName("3.16 هل هناك أشخاص يعانون من أمراض مزمنة/حالات صحة نفسية من دون علاج؟")]
         public string Question3_16
         { get; set; }
         [DisplayName("ذكور")]
@@ -494,7 +522,7 @@ namespace SituationMonitoring.Models
         public int? Question3_16Femal
         { get; set; }
 
-        [DisplayName("3.17 هل يوجد كبار سن بحاجة لمساعدة؟")]
+        [DisplayName("3.17  هل هناك من كبار السن الذين يحتاجون إلى المساعدة؟")]
         public string Question3_17
         { get; set; }
         [DisplayName("ذكور")]
@@ -506,7 +534,7 @@ namespace SituationMonitoring.Models
         public int? Question3_17Femal
         { get; set; }
 
-        [DisplayName("3.18 هل يوجد أشخاص متضررين بحاجة لمساعدة قانونية؟")]
+        [DisplayName("3.18  هل هناك أشخاص متأثرين يحتاجون إلى المساعدة القانونية؟")]
         public string Question3_18
         { get; set; }
         [DisplayName("ذكور")]
@@ -519,26 +547,37 @@ namespace SituationMonitoring.Models
         { get; set; }
 
 
-        [DisplayName("3.19 هل يوجد أي حوادث معروفة لعنف جنسي؟")]
+        [DisplayName("3.19 هل هناك نساء حوامل وأمهات مرضعات بحاجة لبرامج تغذية علاجية تكميلية؟")]
         public string Question3_19
-        { get; set; }
-
-       
-
-        [DisplayName("3.20 اهتمامات حماية أخرى: ")]
-        public string Question3_20
-        { get; set; }
-
-        [DisplayName("3.20.1 يرجى وصف اهتمامات الحماية التي تم تحديدها: ")]
-        public string Question3_20Text
         { get; set; }
         [DisplayName("ذكور")]
 
-        public int? Question3_20Male
+        public int? Question3_19Male
         { get; set; }
 
         [DisplayName("اثناث")]
-        public int? Question3_20Femal
+        public int? Question3_19Femal
+        { get; set; }
+
+
+        [DisplayName("3.20  هل هناك أي حوادث عنف جنسي معروفة؟")]
+        public string Question3_20
+        { get; set; }
+
+        [DisplayName(" 3.21 مخاوف حماية أخرى ")]
+        public string Question3_21
+        { get; set; }
+
+        [DisplayName("3.20.1 يرجى وصف مخاوف الحماية التي تم تحديدها: ")]
+        public string Question3_21Text
+        { get; set; }
+        [DisplayName("ذكور")]
+
+        public int? Question3_21Male
+        { get; set; }
+
+        [DisplayName("اثناث")]
+        public int? Question3_21Femal
         { get; set; }
 
         #endregion

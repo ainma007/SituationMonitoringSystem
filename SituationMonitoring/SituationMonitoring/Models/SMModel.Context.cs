@@ -27,12 +27,12 @@ namespace SituationMonitoring.Models
     
         public DbSet<Area_Table> Area_Table { get; set; }
         public DbSet<Governorate_Table> Governorate_Table { get; set; }
+        public DbSet<Key_concernTable> Key_concernTable { get; set; }
         public DbSet<Municipality_Table> Municipality_Table { get; set; }
+        public DbSet<PersonInNeed_table> PersonInNeed_table { get; set; }
+        public DbSet<Questionnaire_Table> Questionnaire_Table { get; set; }
         public DbSet<Situation_Table> Situation_Table { get; set; }
         public DbSet<SituationUser_Table> SituationUser_Table { get; set; }
         public DbSet<Users_Table> Users_Table { get; set; }
-        public DbSet<Key_concernTable> Key_concernTable { get; set; }
-        public DbSet<PersonInNeed_table> PersonInNeed_table { get; set; }
-        public DbSet<Questionnaire_Table> Questionnaire_Table { get; set; }
     }
 }

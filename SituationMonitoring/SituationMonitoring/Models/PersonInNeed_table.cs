@@ -23,8 +23,10 @@ namespace SituationMonitoring.Models
         public string ActionsTakenSoFar { get; set; }
         public string FollowUpRequired { get; set; }
         public Nullable<int> SituationID { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         public virtual Key_concernTable Key_concernTable { get; set; }
         public virtual Situation_Table Situation_Table { get; set; }
+        public virtual Users_Table Users_Table { get; set; }
     }
 }

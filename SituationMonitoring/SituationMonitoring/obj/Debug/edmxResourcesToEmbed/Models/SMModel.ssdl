@@ -46,6 +46,7 @@
     <Property Name="ActionsTakenSoFar" Type="nvarchar(max)" />
     <Property Name="FollowUpRequired" Type="nvarchar(max)" />
     <Property Name="SituationID" Type="int" />
+    <Property Name="UserID" Type="int" />
   </EntityType>
   <EntityType Name="Questionnaire_Table">
     <Key>
@@ -70,55 +71,62 @@
     <Property Name="Site_Description" Type="nvarchar" MaxLength="50" />
     <Property Name="Question1_1" Type="nvarchar" MaxLength="50" />
     <Property Name="Question1_1_1" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question1_2_1_Family_CommunityDisputes" Type="bit" />
-    <Property Name="Question_1_2_2NotEnoughFood" Type="bit" />
-    <Property Name="Question1_2_3NotEnoughPrivacy" Type="bit" />
-    <Property Name="Question1_2_4NotEnoughDrinking" Type="bit" />
-    <Property Name="Question1_2_5UnsafeHousing" Type="bit" />
-    <Property Name="Question1_2_6Overcrowding" Type="bit" />
-    <Property Name="Question1_2_7InsufficientBedding" Type="bit" />
-    <Property Name="Question1_2_8NotEnoughWater" Type="bit" />
-    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" Type="bit" />
+    <Property Name="Question1_2_1_Family_CommunityDisputes" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question_1_2_2NotEnoughFood" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_3NotEnoughPrivacy" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_4NotEnoughDrinking" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_5UnsafeHousing" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_6Overcrowding" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_7InsufficientBedding" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_8NotEnoughWater" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" Type="bit" StoreGeneratedPattern="None" />
     <Property Name="Question1_2_9Text" Type="nvarchar(max)" />
-    <Property Name="Question1_2_10No_Access_to_essential_services" Type="bit" />
+    <Property Name="Question1_2_10No_Access_to_essential_services" Type="bit" StoreGeneratedPattern="None" />
     <Property Name="Question1_2_10Text" Type="nvarchar(max)" />
-    <Property Name="Question1_2_11Other" Type="bit" />
+    <Property Name="Question1_2_11Other" Type="bit" StoreGeneratedPattern="None" />
     <Property Name="Question1_2_11Text" Type="nvarchar(max)" />
-    <Property Name="Question1_3_1Family_CommunityDisputes" Type="bit" />
-    <Property Name="Question1_3_2NotEnoughFood" Type="bit" />
-    <Property Name="Question1_3_3NotEnoughDrinking" Type="bit" />
-    <Property Name="Question1_3_4UnsafeHousing" Type="bit" />
-    <Property Name="Question1_3_5Overcrowding" Type="bit" />
-    <Property Name="Question1_3_5NotEnoughWater" Type="bit" />
-    <Property Name="Question1_3_6Not_enough_humanitarian_assistance" Type="bit" />
-    <Property Name="Question1_3_6Text" Type="nvarchar(max)" />
-    <Property Name="Question1_3_7No_Access_to_essential_services" Type="bit" />
-    <Property Name="Question1_3_7Text" Type="nvarchar(max)" />
-    <Property Name="Question1_3_8Other" Type="bit" />
-    <Property Name="Question1_3_8Text" Type="nvarchar(max)" />
+    <Property Name="Question1_3_1Family_CommunityDisputes" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_2NotEnoughFood" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_3NotEnoughPrivacy" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_4NotenoughDrinkingWater" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_5UnsafeHousing" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_6Overcrowding" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_7InsufficientBedding" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_8NotEnoughWater_otherThanDrinking" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_9Not_enough_humanitarian_assistance" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_9Text" Type="nvarchar(max)" />
+    <Property Name="Question1_3_10No_Access_to_essential_services" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_10Text" Type="nvarchar(max)" />
+    <Property Name="Question1_3_11Other" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question1_3_11Text" Type="nvarchar(max)" />
     <Property Name="Question1_4" Type="nvarchar" MaxLength="50" />
     <Property Name="Question1_4_1" Type="nvarchar(max)" />
-    <Property Name="Question2_1_1Family_CommunityDisputes" Type="bit" />
-    <Property Name="Question2_1_2NotEnoughFood" Type="bit" />
-    <Property Name="Question2_1_3NotEnoughPrivacy" Type="bit" />
-    <Property Name="Question2_1_4NotDrinkingEnoughWater" Type="bit" />
-    <Property Name="Question2_1_5UnsafeHousing" Type="bit" />
-    <Property Name="Question2_1_6Overcrowding" Type="bit" />
-    <Property Name="Question2_1_7InsufficientBedding" Type="bit" />
-    <Property Name="Question2_1_8NotEnoughWater" Type="bit" />
-    <Property Name="Question2_1_9NotEnoughHumanitarianAssistance" Type="bit" />
-    <Property Name="Question2_1_9Text" Type="nvarchar(max)" />
-    <Property Name="Question2_1_10NoAccessToEssentialServices" Type="bit" />
+    <Property Name="Question2_1_1Family_CommunityDisputes" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_2NotEnoughFood" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_3enough_privacy_in_DES_rooms" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_4NotEnoughPrivacy" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_5NotDrinkingEnoughWater" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_6Unsafe_housing" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_7IOvercrowding" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_8Insufficient_bedding" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_9NotEnoughWater_OtherThanDrinking" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_10NotEnoughHumanitarianAssistanceForPeopleInNeed" Type="bit" StoreGeneratedPattern="None" />
     <Property Name="Question2_1_10Text" Type="nvarchar(max)" />
-    <Property Name="Question2_1_11DistributionOfAssistanceExcludesChild_headedFamilies" Type="bit" />
-    <Property Name="Question2_1_12DistributionOfAssistanceExcludesWomen_headedFamilies" Type="bit" />
-    <Property Name="Question2_1_13LackOfSafeSpacesForWomenAndGirlsToGather" Type="bit" />
-    <Property Name="Question2_1_14LackOfSafeSpacesForChildrenToPlay" Type="bit" />
-    <Property Name="Question2_1_15LackOfAdequateLightingForToilets" Type="bit" />
-    <Property Name="Question2_1_16LackOfGenderSegregatedToilets" Type="bit" />
-    <Property Name="Question2_1_17LackOfGenderSegregatedBathingFacilities" Type="bit" />
-    <Property Name="Question2_1_18Other" Type="bit" />
-    <Property Name="Question2_1_18text" Type="nvarchar(max)" />
+    <Property Name="Question2_1_11NoAccessToEssentialServices" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_11Text" Type="nvarchar(max)" />
+    <Property Name="Question2_1_12DistributionOfAssistanceExcludesChild_HeadedFamilies" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_13DistributionOfAssistanceExcludesWomen_HeadedFamilies" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_15LackOfSafeSpacesForChildrenToPlay" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_16LackOfAdequatelightingForToilets" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_17LackOfGenderSegregatedToilets" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_18LackOfGenderSegregatedBathingFacilitites" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_19LackOfAccessibleBathrooms" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_21LackOfAssistiveDevices" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_22ConcernOverFamilyMemberMissing" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_23Other" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question2_1_23Text" Type="nvarchar(max)" />
     <Property Name="Question2_2" Type="nvarchar" MaxLength="50" />
     <Property Name="Question2_2_1" Type="nvarchar(max)" />
     <Property Name="Question2_3" Type="nvarchar" MaxLength="50" />
@@ -163,10 +171,8 @@
     <Property Name="Question3_13Male" Type="int" />
     <Property Name="Question3_13Femal" Type="int" />
     <Property Name="Question3_14" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_14Male" Type="int" />
     <Property Name="Question3_14Femal" Type="int" />
     <Property Name="Question3_15" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_15Male" Type="int" />
     <Property Name="Question3_15Femal" Type="int" />
     <Property Name="Question3_16" Type="nvarchar" MaxLength="50" />
     <Property Name="Question3_16Male" Type="int" />
@@ -178,22 +184,25 @@
     <Property Name="Question3_18Male" Type="int" />
     <Property Name="Question3_18Femal" Type="int" />
     <Property Name="Question3_19" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_19Male" Type="int" />
+    <Property Name="Question3_19Femal" Type="int" />
     <Property Name="Question3_20" Type="nvarchar" MaxLength="50" />
-    <Property Name="Question3_20Text" Type="nvarchar(max)" />
-    <Property Name="Question3_20Male" Type="int" />
-    <Property Name="Question3_20Femal" Type="int" />
-    <Property Name="Question4_1_1" Type="bit" />
-    <Property Name="Question4_1_2" Type="bit" />
-    <Property Name="Question4_1_3" Type="bit" />
-    <Property Name="Question4_1_4" Type="bit" />
-    <Property Name="Question4_1_5" Type="bit" />
-    <Property Name="Question4_1_6" Type="bit" />
-    <Property Name="Question4_1_7" Type="bit" />
-    <Property Name="Question4_1_8" Type="bit" />
-    <Property Name="Question4_1_9" Type="bit" />
+    <Property Name="Question3_21" Type="nvarchar" MaxLength="50" />
+    <Property Name="Question3_21Text" Type="nvarchar(max)" />
+    <Property Name="Question3_21Male" Type="int" />
+    <Property Name="Question3_21Femal" Type="int" />
+    <Property Name="Question4_1_1" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_2" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_3" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_4" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_5" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_6" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_7" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_8" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question4_1_9" Type="bit" StoreGeneratedPattern="None" />
     <Property Name="Question4_1_9Text" Type="nvarchar(max)" />
-    <Property Name="Question4_1_10" Type="bit" />
-    <Property Name="Question_5" Type="text" />
+    <Property Name="Question4_1_10" Type="bit" StoreGeneratedPattern="None" />
+    <Property Name="Question_5" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Situation_Table">
     <Key>
@@ -272,6 +281,18 @@
       </Principal>
       <Dependent Role="PersonInNeed_table">
         <PropertyRef Name="SituationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonInNeed_table_Users_Table">
+    <End Role="Users_Table" Type="Self.Users_Table" Multiplicity="0..1" />
+    <End Role="PersonInNeed_table" Type="Self.PersonInNeed_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Table">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PersonInNeed_table">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -383,6 +404,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_PersonInNeed_table_Situation_Table" Association="Self.FK_PersonInNeed_table_Situation_Table">
       <End Role="Situation_Table" EntitySet="Situation_Table" />
+      <End Role="PersonInNeed_table" EntitySet="PersonInNeed_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonInNeed_table_Users_Table" Association="Self.FK_PersonInNeed_table_Users_Table">
+      <End Role="Users_Table" EntitySet="Users_Table" />
       <End Role="PersonInNeed_table" EntitySet="PersonInNeed_table" />
     </AssociationSet>
     <AssociationSet Name="FK_Questionnaire_Table_Situation_Table" Association="Self.FK_Questionnaire_Table_Situation_Table">

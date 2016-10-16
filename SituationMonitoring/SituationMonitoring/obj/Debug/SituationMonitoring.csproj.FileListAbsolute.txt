@@ -59,7 +59,6 @@ C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitori
 C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.pdb
 C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\EntityFramework.dll
 C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\EntityFramework.xml
-C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.csprojResolveAssemblyReference.cache
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\ApplicationInsights.config
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\SituationMonitoring.dll.config
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\SituationMonitoring.dll
@@ -122,3 +121,4 @@ C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMoni
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.csprojResolveAssemblyReference.cache
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.dll
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.pdb
+C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.csprojResolveAssemblyReference.cache

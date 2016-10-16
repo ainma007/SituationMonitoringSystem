@@ -49,39 +49,46 @@ namespace SituationMonitoring.Models
         public string Question1_2_11Text { get; set; }
         public bool Question1_3_1Family_CommunityDisputes { get; set; }
         public bool Question1_3_2NotEnoughFood { get; set; }
-        public bool Question1_3_3NotEnoughDrinking { get; set; }
-        public bool Question1_3_4UnsafeHousing { get; set; }
-        public bool Question1_3_5Overcrowding { get; set; }
-        public bool Question1_3_5NotEnoughWater { get; set; }
-        public bool Question1_3_6Not_enough_humanitarian_assistance { get; set; }
-        public string Question1_3_6Text { get; set; }
-        public bool Question1_3_7No_Access_to_essential_services { get; set; }
-        public string Question1_3_7Text { get; set; }
-        public bool Question1_3_8Other { get; set; }
-        public string Question1_3_8Text { get; set; }
+        public bool Question1_3_3NotEnoughPrivacy { get; set; }
+        public bool Question1_3_4NotenoughDrinkingWater { get; set; }
+        public bool Question1_3_5UnsafeHousing { get; set; }
+        public bool Question1_3_6Overcrowding { get; set; }
+        public bool Question1_3_7InsufficientBedding { get; set; }
+        public bool Question1_3_8NotEnoughWater_otherThanDrinking { get; set; }
+        public bool Question1_3_9Not_enough_humanitarian_assistance { get; set; }
+        public string Question1_3_9Text { get; set; }
+        public bool Question1_3_10No_Access_to_essential_services { get; set; }
+        public string Question1_3_10Text { get; set; }
+        public bool Question1_3_11Other { get; set; }
+        public string Question1_3_11Text { get; set; }
         public string Question1_4 { get; set; }
         public string Question1_4_1 { get; set; }
         public bool Question2_1_1Family_CommunityDisputes { get; set; }
         public bool Question2_1_2NotEnoughFood { get; set; }
-        public bool Question2_1_3NotEnoughPrivacy { get; set; }
-        public bool Question2_1_4NotDrinkingEnoughWater { get; set; }
-        public bool Question2_1_5UnsafeHousing { get; set; }
-        public bool Question2_1_6Overcrowding { get; set; }
-        public bool Question2_1_7InsufficientBedding { get; set; }
-        public bool Question2_1_8NotEnoughWater { get; set; }
-        public bool Question2_1_9NotEnoughHumanitarianAssistance { get; set; }
-        public string Question2_1_9Text { get; set; }
-        public bool Question2_1_10NoAccessToEssentialServices { get; set; }
+        public bool Question2_1_3enough_privacy_in_DES_rooms { get; set; }
+        public bool Question2_1_4NotEnoughPrivacy { get; set; }
+        public bool Question2_1_5NotDrinkingEnoughWater { get; set; }
+        public bool Question2_1_6Unsafe_housing { get; set; }
+        public bool Question2_1_7IOvercrowding { get; set; }
+        public bool Question2_1_8Insufficient_bedding { get; set; }
+        public bool Question2_1_9NotEnoughWater_OtherThanDrinking { get; set; }
+        public bool Question2_1_10NotEnoughHumanitarianAssistanceForPeopleInNeed { get; set; }
         public string Question2_1_10Text { get; set; }
-        public bool Question2_1_11DistributionOfAssistanceExcludesChild_headedFamilies { get; set; }
-        public bool Question2_1_12DistributionOfAssistanceExcludesWomen_headedFamilies { get; set; }
-        public bool Question2_1_13LackOfSafeSpacesForWomenAndGirlsToGather { get; set; }
-        public bool Question2_1_14LackOfSafeSpacesForChildrenToPlay { get; set; }
-        public bool Question2_1_15LackOfAdequateLightingForToilets { get; set; }
-        public bool Question2_1_16LackOfGenderSegregatedToilets { get; set; }
-        public bool Question2_1_17LackOfGenderSegregatedBathingFacilities { get; set; }
-        public bool Question2_1_18Other { get; set; }
-        public string Question2_1_18text { get; set; }
+        public bool Question2_1_11NoAccessToEssentialServices { get; set; }
+        public string Question2_1_11Text { get; set; }
+        public bool Question2_1_12DistributionOfAssistanceExcludesChild_HeadedFamilies { get; set; }
+        public bool Question2_1_13DistributionOfAssistanceExcludesWomen_HeadedFamilies { get; set; }
+        public bool Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather { get; set; }
+        public bool Question2_1_15LackOfSafeSpacesForChildrenToPlay { get; set; }
+        public bool Question2_1_16LackOfAdequatelightingForToilets { get; set; }
+        public bool Question2_1_17LackOfGenderSegregatedToilets { get; set; }
+        public bool Question2_1_18LackOfGenderSegregatedBathingFacilitites { get; set; }
+        public bool Question2_1_19LackOfAccessibleBathrooms { get; set; }
+        public bool Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies { get; set; }
+        public bool Question2_1_21LackOfAssistiveDevices { get; set; }
+        public bool Question2_1_22ConcernOverFamilyMemberMissing { get; set; }
+        public bool Question2_1_23Other { get; set; }
+        public string Question2_1_23Text { get; set; }
         public string Question2_2 { get; set; }
         public string Question2_2_1 { get; set; }
         public string Question2_3 { get; set; }
@@ -126,10 +133,8 @@ namespace SituationMonitoring.Models
         public Nullable<int> Question3_13Male { get; set; }
         public Nullable<int> Question3_13Femal { get; set; }
         public string Question3_14 { get; set; }
-        public Nullable<int> Question3_14Male { get; set; }
         public Nullable<int> Question3_14Femal { get; set; }
         public string Question3_15 { get; set; }
-        public Nullable<int> Question3_15Male { get; set; }
         public Nullable<int> Question3_15Femal { get; set; }
         public string Question3_16 { get; set; }
         public Nullable<int> Question3_16Male { get; set; }
@@ -141,10 +146,13 @@ namespace SituationMonitoring.Models
         public Nullable<int> Question3_18Male { get; set; }
         public Nullable<int> Question3_18Femal { get; set; }
         public string Question3_19 { get; set; }
+        public Nullable<int> Question3_19Male { get; set; }
+        public Nullable<int> Question3_19Femal { get; set; }
         public string Question3_20 { get; set; }
-        public string Question3_20Text { get; set; }
-        public Nullable<int> Question3_20Male { get; set; }
-        public Nullable<int> Question3_20Femal { get; set; }
+        public string Question3_21 { get; set; }
+        public string Question3_21Text { get; set; }
+        public Nullable<int> Question3_21Male { get; set; }
+        public Nullable<int> Question3_21Femal { get; set; }
         public bool Question4_1_1 { get; set; }
         public bool Question4_1_2 { get; set; }
         public bool Question4_1_3 { get; set; }
