@@ -7,72 +7,78 @@
 @functions {
 
 
-        public double GetSum_Estimated_Number_Of_Individuals()
+    //  This Holding SitutionId Value  
+    int SessionValue = int.Parse(HoldingDataClass.situationId);
+
+
+
+    public double GetSum_Estimated_Number_Of_Individuals()
+    {
+
+
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
+            double avrg = 0;
+            avrg = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue )
+                         .Select(i => i.Estimated_Number_Of_Individuals.Value).Average();
+
+            return avrg;
 
 
-            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
-            {
-                double avrg = 0;
-                avrg = entities.Questionnaire_Table.Where(c => c.SituationID == 10)
-                             .Select(i => i.Estimated_Number_Of_Individuals.Value).Average();
-
-                return avrg;
-
-
-            }
         }
+    }
 
 
-        public double GetSum_Estimated_Number_Of_Families()
+    public double GetSum_Estimated_Number_Of_Families()
+    {
+
+
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
+            double avrg = 0;
+            avrg = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                         .Select(i => i.Estimated_Number_Of_Families.Value).Average();
+
+            return avrg;
 
 
-            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
-            {
-                double avrg = 0;
-                avrg = entities.Questionnaire_Table.Where(c => c.SituationID == 10)
-                             .Select(i => i.Estimated_Number_Of_Families.Value).Average();
-
-                return avrg;
-
-
-            }
         }
+    }
 
-        public double GetPer_Question1_2_1_Family_CommunityDisputes()
+
+
+
+
+
+    public  double     GetPer_Question1_2_1_Family_CommunityDisputes()
+    {
+        double   FinalResult  =   0  ;
+        int count = 0;
+        int truecount = 0;
+
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
+            Func<int, int , double> ComputeIt = (x, y) => (x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
 
 
-            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
-            {
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_1_Family_CommunityDisputes == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = ComputeIt(truecount, count);
+        };
+
+        return FinalResult;
+    }
 
 
-
-
-                int truecount = 0;
-                truecount = entities.Questionnaire_Table.Where(c => c.SituationID == 10 && c.Question1_2_1_Family_CommunityDisputes==true)
-                         .Select(i => i.QuestionnaireID).Count();
-
-                int count = 0;
-                count = entities.Questionnaire_Table.Where(c => c.SituationID == 10)
-                             .Select(i => i.QuestionnaireID).Count();
-
-
-                double finalresult = (truecount / count);
-
-
+}
 
 
 
-                return finalresult;
-
-
-            }
-        }
-
-
-       
 
     }
 

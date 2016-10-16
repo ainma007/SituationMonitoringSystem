@@ -118,7 +118,6 @@ C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMoni
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\tr-TR\Kendo.Mvc.resources.dll
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\uk-UA\Kendo.Mvc.resources.dll
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\zh-CN\Kendo.Mvc.resources.dll
-C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.csprojResolveAssemblyReference.cache
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.dll
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.pdb
 C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.csprojResolveAssemblyReference.cache

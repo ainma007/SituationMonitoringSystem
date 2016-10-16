@@ -169,6 +169,7 @@
     <Compile Include="Models\Governorate_Table.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HoldingDataClass.cs" />
     <Compile Include="Models\Key_concernTable.cs">
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>

@@ -17,7 +17,8 @@ namespace SituationMonitoring.Controllers
             if (situationId != null)
             {
                 QueriesService.situationId = situationId;
-                Session["situationId"] = situationId;
+           
+                HoldingDataClass.situationId = situationId;
             }
             return View();
         }
@@ -36,7 +37,7 @@ namespace SituationMonitoring.Controllers
 
         public ActionResult Questionnair_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(Session["SituationID"].ToString())).ToDataSourceResult(request));
+            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId)).ToDataSourceResult(request));
         }
 
         // Insert New
