@@ -50,15 +50,15 @@
 
 
 
-    public  double     GetPer_Question1_2_1_Family_CommunityDisputes()
+    public  double      GetPer_Question1_2_1_Family_CommunityDisputes()
     {
-        double   FinalResult  =   0  ;
+
         int count = 0;
         int truecount = 0;
-
+        double  FinalResult = 0;
         using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
-            Func<int, int , double> ComputeIt = (x, y) => (x / y) * 100;
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
 
             count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
                        .Select(i => i.QuestionnaireID).Count();
