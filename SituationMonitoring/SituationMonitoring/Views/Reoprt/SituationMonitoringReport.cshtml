@@ -4,9 +4,91 @@
     ViewBag.Title = "SituationMonitoringReport";
     Layout = "~/Views/Shared/_LayoutQuestionnaire.cshtml";
 }
-@{ 
-   
-}
+@functions {
+
+
+        public double GetSum_Estimated_Number_Of_Individuals()
+        {
+
+
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                double avrg = 0;
+                avrg = entities.Questionnaire_Table.Where(c => c.SituationID == 10)
+                             .Select(i => i.Estimated_Number_Of_Individuals.Value).Average();
+
+                return avrg;
+
+
+            }
+        }
+
+
+        public double GetSum_Estimated_Number_Of_Families()
+        {
+
+
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                double avrg = 0;
+                avrg = entities.Questionnaire_Table.Where(c => c.SituationID == 10)
+                             .Select(i => i.Estimated_Number_Of_Families.Value).Average();
+
+                return avrg;
+
+
+            }
+        }
+
+        public double GetPer_Question1_2_1_Family_CommunityDisputes()
+        {
+
+
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+
+
+
+
+                int truecount = 0;
+                truecount = entities.Questionnaire_Table.Where(c => c.SituationID == 10 && c.Question1_2_1_Family_CommunityDisputes==true)
+                         .Select(i => i.QuestionnaireID).Count();
+
+                int count = 0;
+                count = entities.Questionnaire_Table.Where(c => c.SituationID == 10)
+                             .Select(i => i.QuestionnaireID).Count();
+
+
+                double finalresult = (truecount / count);
+
+
+
+
+
+                return finalresult;
+
+
+            }
+        }
+
+
+       
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h2>SituationMonitoringReport</h2>
 <div class="row">
@@ -60,8 +142,8 @@
                             <td colspan=4 class="alert alert-success"> <h5>وصف الموقع</h5></td>
                         </tr>
                         <tr>
-                            <td colspan=2 class="alert alert-warning"><h5>XXXXX</h5></td>
-                            <td colspan=2 class="alert alert-warning">وضع رقم العائلات</td>
+                            <td colspan=2 class="alert alert-warning"><h3>@GetSum_Estimated_Number_Of_Individuals()</h3></td>
+                            <td colspan=2 class="alert alert-warning">@GetSum_Estimated_Number_Of_Families()</td>
                             <td colspan=4 class="alert alert-warning"> <h5>وصف الموقع</h5></td>
                         </tr>
 
@@ -106,10 +188,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.1</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>خلافات عائلية</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h5>@GetPer_Question1_2_1_Family_CommunityDisputes()% </h5></td>
                             <td class="v-align-middle" colspan=2>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetSum_Estimated_Number_Of_Individuals()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
