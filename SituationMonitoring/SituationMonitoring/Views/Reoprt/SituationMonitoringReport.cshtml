@@ -4,6 +4,8 @@
     ViewBag.Title = "SituationMonitoringReport";
     Layout = "~/Views/Shared/_LayoutQuestionnaire.cshtml";
 }
+
+
 @functions {
 
 
@@ -18,14 +20,26 @@
 
         using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
+
+
             double avrg = 0;
-            avrg = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue )
-                         .Select(i => i.Estimated_Number_Of_Individuals.Value).Average();
+            try {
+                avrg = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                             .Select(i => i.Estimated_Number_Of_Individuals.Value).Average();
 
-            return avrg;
 
+
+                return Math.Round(avrg, 2);
+            }
+            catch
+            {
+                return 0;
+            }
 
         }
+
+
+
     }
 
 
@@ -35,27 +49,206 @@
 
         using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
-            double avrg = 0;
-            avrg = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
-                         .Select(i => i.Estimated_Number_Of_Families.Value).Average();
+            try
+            {
+                double avrg = 0;
+                avrg = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                             .Select(i => i.Estimated_Number_Of_Families.Value).Average();
 
-            return avrg;
-
-
+                return Math.Round(avrg, 2);
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 
 
 
 
-
-
-    public  double      GetPer_Question1_2_1_Family_CommunityDisputes()
+    #region (Question1.1)
+    public double GetPer_Question1_1Yes()
     {
 
         int count = 0;
         int truecount = 0;
-        double  FinalResult = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1 == "نعم")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_1No()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1 == "لا")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_1Dontknow()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1 == "غير متأكد")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    #region
+
+    public double GetPer_Question1_1_1Less10()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1_1 == "أقل من 10")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_1_1_10_50()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1_1 == "10-50")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_1_1_10_100()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1_1 == "100-50")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count),2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_1_1Over100()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_1_1 == "أكثر من 100")
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count),2);
+        };
+
+        return FinalResult;
+    }
+
+    #endregion
+
+    #endregion
+
+    #region  (Question1.2)
+    public double GetPer_Question1_2_1_Family_CommunityDisputes()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
         using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
         {
             Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -68,19 +261,511 @@
                                            && c.Question1_2_1_Family_CommunityDisputes == true)
                      .Select(i => i.QuestionnaireID).Count();
 
-            FinalResult = ComputeIt(truecount, count);
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_2_2()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question_1_2_2NotEnoughFood == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_3()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_3NotEnoughPrivacy == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_4()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_4NotEnoughDrinking == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_5()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_5UnsafeHousing == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_6()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_6Overcrowding == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_7()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_7InsufficientBedding == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_2_8()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_8NotEnoughWater == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_9()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_9Not_enough_humanitarian_assistance == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_2_10()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_10No_Access_to_essential_services == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_2_11()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_2_11Other == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
         };
 
         return FinalResult;
     }
 
 
-}
+    #endregion
+    #region  (Question1.3)
+    public double GetPer_Question1_3_1()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
 
 
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_1Family_CommunityDisputes == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_3_2()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_2NotEnoughFood == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_3()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_3NotEnoughPrivacy == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_4()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_4NotenoughDrinkingWater == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_5()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_5UnsafeHousing == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_6()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_6Overcrowding == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_7()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_7InsufficientBedding == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_3_8()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_8NotEnoughWater_otherThanDrinking == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_9()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_9Not_enough_humanitarian_assistance == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+    public double GetPer_Question1_3_10()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_10No_Access_to_essential_services == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+    public double GetPer_Question1_3_11()
+    {
+
+        int count = 0;
+        int truecount = 0;
+        double FinalResult = 0;
+        using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+        {
+            Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
+
+            count = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue)
+                       .Select(i => i.QuestionnaireID).Count();
+
+
+            truecount = entities.Questionnaire_Table.Where(c => c.SituationID == SessionValue
+                                           && c.Question1_3_11Other == true)
+                     .Select(i => i.QuestionnaireID).Count();
+
+            FinalResult = Math.Round(ComputeIt(truecount, count), 2);
+        };
+
+        return FinalResult;
+    }
+
+
+    #endregion
 
 
     }
+
 
 
 
@@ -162,12 +847,12 @@
                         </tr>
 
                         <tr>
-                            <td colspan=1 class="alert alert-success"><h5>نعم</h5></td>
-                            <td colspan=1 class="alert alert-warning"><h5>نسبة نعم</h5></td>
-                            <td colspan=1 class="alert alert-success"><h5>لا</h5></td>
-                            <td colspan=1 class="alert alert-warning"><h5>نسبة لا</h5></td>
-                            <td colspan=2 class="alert alert-success"><h5>غير متأكد</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>نسبة غير متأكد</h5></td>
+                            <td width="10%" class="alert alert-success"><h5>نعم</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1Yes()%</h4></td>
+                            <td width="10%" class="alert alert-success"><h5>لا</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1No()%</h4></td>
+                            <td width="10%" class="alert alert-success"><h5>غير متأكد</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1Dontknow()%</h4></td>
 
 
                         </tr>
@@ -176,15 +861,14 @@
                         </tr>
 
                         <tr>
-                            <td colspan=1 class="alert alert-success"><h5>اقل من 10</h5></td>
-                            <td colspan=1 class="alert alert-warning"><h5>نسبة الاقل من 10 </h5></td>
-                            <td colspan=1 class="alert alert-success"><h5>10 – 50</h5></td>
-                            <td colspan=1 class="alert alert-warning"><h5>10 – 50نسبة </h5></td>
-                            <td colspan=1 class="alert alert-success"><h5>50 – 100</h5></td>
-                            <td colspan=1 class="alert alert-warning"><h5>نسبة 50 – 100</h5></td>
-                            <td colspan=1 class="alert alert-success"><h5>أكثر من 100</h5></td>
-                            <td colspan=1 class="alert alert-warning"><h5>نسبة فوق 100</h5></td>
-
+                            <td width="10%" class="alert alert-success"><h5>اقل من 10</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1_1Less10()%</h4></td>
+                            <td width="10%" class="alert alert-success"><h5>10 – 50 من</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1_1_10_50()%</h4></td>
+                            <td width="10%" class="alert alert-success"><h5>50 – 100 من</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1_1_10_100()%</h4></td>
+                            <td width="10%" class="alert alert-success"><h5>أكثر من 100</h5></td>
+                            <td width="10%" class="alert alert-warning"><h4>@GetPer_Question1_1_1Over100()%</h4></td>
 
                         </tr>
                         <tr>
@@ -194,10 +878,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.1</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>خلافات عائلية</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>@GetPer_Question1_2_1_Family_CommunityDisputes()% </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_1_Family_CommunityDisputes()% </h4></td>
                             <td class="v-align-middle" colspan=2>
                                 <div class="progress">
-                                    <div data-percentage="@GetSum_Estimated_Number_Of_Individuals()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_1_Family_CommunityDisputes()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -207,10 +891,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.2</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>غذاء غير كافي</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_2()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_2()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -220,10 +904,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.3</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>خصوصية غير كافية</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_3()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_3()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -233,10 +917,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.4</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>مياه شرب غير كافية</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_4()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_4()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -246,10 +930,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.5</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>سكن غير آمن</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_5()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_5()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -259,12 +943,16 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.6</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>اكتظاظ في المسكن</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_6()% </h4></td>
                             <td class="v-align-middle" colspan=2>
-                                <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
-                                </div>
-                            </td>
+                               
+                                    <div class="progress">
+
+                                        <div data-percentage="@GetPer_Question1_2_6()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                              </div>
+
+
+</td>
 
                         </tr>
 
@@ -273,10 +961,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.7</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>فراش غير كافي</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_7()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_7()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -286,10 +974,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.8</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>مياه قليلة (غير مياه الشرب)</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_8()%</h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_8()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -299,10 +987,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.9</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>المساعدة الإنسانية غير كافية للأشخاص المحتاجين </h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_9()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_9()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
                         <tr>
@@ -316,10 +1004,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.10</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>عدم القدرة على الوصول إلى الخدمات الأساسية </h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_10()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_10()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
                         <tr>
@@ -335,10 +1023,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.2.11</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>غير ذلك  </h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_2_11()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_2_11()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
                         <tr>
@@ -356,10 +1044,10 @@
                             <td colspan=1 class="alert alert-error"><h5>1.3.1</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>خلافات عائلية</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_1()% </h4></td>
                             <td class="v-align-middle" colspan=2>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_1()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -369,10 +1057,23 @@
                             <td colspan=1 class="alert alert-error"><h5>1.3.2</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>غذاء غير كافي</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_2()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_2()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.3</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>خصوصية غير كافية</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_3()% </h4></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="@GetPer_Question1_3_3()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -381,11 +1082,11 @@
                         <tr>
                             <td colspan=1 class="alert alert-error"><h5>1.3.4</h5></td>
 
-                            <td colspan=3 class="alert alert-success"><h5>مياه شرب غير كافية</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=3 class="alert alert-success"><h5>ماء شرب غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_4()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_4()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
 
@@ -395,53 +1096,79 @@
                             <td colspan=1 class="alert alert-error"><h5>1.3.5</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>سكن غير آمن</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_5()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_5()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
-
-                        </tr>
-
-                        <tr>
-                            <td colspan=1 class="alert alert-error"><h5>1.3.5</h5></td>
-
-                            <td colspan=3 class="alert alert-success"><h5>مياه قليلة (غير مياه الشرب)</h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
-                            <td class="v-align-middle" colspan=3>
-                                <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
-                                </div>
-                            </td>
-
-                        </tr>
 
                         <tr>
                             <td colspan=1 class="alert alert-error"><h5>1.3.6</h5></td>
 
-                            <td colspan=3 class="alert alert-success"><h5>المساعدة الإنسانية غير كافية للأشخاص المحتاجين </h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=3 class="alert alert-success"><h5>إزدحام</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_6()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_6()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
-                        <tr>
-
-                            <td colspan=3><h5> حدد نوع المساعدة:</h5></td>
-                            <td colspan=5><h5> </h5></td>
 
                         </tr>
 
                         <tr>
                             <td colspan=1 class="alert alert-error"><h5>1.3.7</h5></td>
 
-                            <td colspan=3 class="alert alert-success"><h5>عدم القدرة على الوصول إلى الخدمات الأساسية </h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=3 class="alert alert-success"><h5>فراش غير كافي</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_7()% </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_7()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                       
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.8</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>لا يوجد ماء كافي (غير ماء الشرب)</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_8()% </h4></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="@GetPer_Question1_3_8()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.9</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>لا يوجد مساعدة إغاثية لجميع المحتاجين</h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_9()% </h4></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="@GetPer_Question1_3_9()% " class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                </div>
+                            </td>
+                        <tr>
+
+                            <td colspan=3><h5> اذكر أي المساعدات الإغاثية ناقصة:</h5></td>
+                            <td colspan=5><h5> </h5></td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.10</h5></td>
+
+                            <td colspan=3 class="alert alert-success"><h5>عدم القدرة على الوصول إلى الخدمات الأساسية </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_10()%  </h4></td>
+                            <td class="v-align-middle" colspan=3>
+                                <div class="progress">
+                                    <div data-percentage="@GetPer_Question1_3_10()% " class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
                         <tr>
@@ -454,13 +1181,13 @@
                         </tr>
 
                         <tr>
-                            <td colspan=1 class="alert alert-error"><h5>1.3.8</h5></td>
+                            <td colspan=1 class="alert alert-error"><h5>1.3.11</h5></td>
 
                             <td colspan=3 class="alert alert-success"><h5>غير ذلك  </h5></td>
-                            <td colspan=2 class="alert alert-warning"><h5>التقدير </h5></td>
+                            <td colspan=2 class="alert alert-warning"><h4>@GetPer_Question1_3_11()%  </h4></td>
                             <td class="v-align-middle" colspan=3>
                                 <div class="progress">
-                                    <div data-percentage="79%" class="progress-bar progress-bar-info animate-progress-bar"></div>
+                                    <div data-percentage="@GetPer_Question1_3_11()%" class="progress-bar progress-bar-info animate-progress-bar"></div>
                                 </div>
                             </td>
                         <tr>

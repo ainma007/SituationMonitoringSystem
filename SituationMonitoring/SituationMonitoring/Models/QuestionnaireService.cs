@@ -184,7 +184,7 @@ namespace SituationMonitoring.Models
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
             entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(HttpContext.Current.Session["situationId"].ToString());
+            entity.SituationID = int.Parse(HoldingDataClass.situationId.ToString());
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
@@ -357,7 +357,7 @@ namespace SituationMonitoring.Models
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
             entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(HttpContext.Current.Session["situationId"].ToString());
+            entity.SituationID = int.Parse(HoldingDataClass.situationId.ToString());
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
