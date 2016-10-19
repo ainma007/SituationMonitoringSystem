@@ -156,6 +156,8 @@ namespace SituationMonitoring.Models
                 Question3_18Male = db.Question3_18Male,
                 Question3_18Femal = db.Question3_18Femal,
                 Question3_19 = db.Question3_19,
+                Question3_19Femal=db.Question3_19Femal,
+                Question3_19Male=db.Question3_19Male,
                 Question3_20 = db.Question3_20,
                 Question3_21 = db.Question3_20,
 
@@ -319,7 +321,10 @@ namespace SituationMonitoring.Models
             entity.Question3_18 = db.Question3_18;
             entity.Question3_18Male = db.Question3_18Male;
             entity.Question3_18Femal = db.Question3_18Femal;
-            entity.Question3_19 = db.Question3_19;           
+            entity.Question3_19 = db.Question3_19;
+            entity.Question3_19Male = db.Question3_19Male;
+            entity.Question3_19Femal = db.Question3_19Femal;
+
             entity.Question3_20 = db.Question3_20;
             entity.Question3_21 = db.Question3_21;
             entity.Question3_21Text = db.Question3_21Text;
@@ -493,6 +498,8 @@ namespace SituationMonitoring.Models
             entity.Question3_18Male = db.Question3_18Male;
             entity.Question3_18Femal = db.Question3_18Femal;
             entity.Question3_19 = db.Question3_19;
+            entity.Question3_19Male = db.Question3_19Male;
+            entity.Question3_19Femal = db.Question3_19Femal;
             entity.Question3_20 = db.Question3_20;
             entity.Question3_21 = db.Question3_21;
             entity.Question3_21Text = db.Question3_21Text;
