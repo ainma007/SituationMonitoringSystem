@@ -184,6 +184,7 @@
       <DependentUpon>SMModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QueriesService.cs" />
+    <Compile Include="Models\QuerisViewModel.cs" />
     <Compile Include="Models\QuestionnaireService.cs" />
     <Compile Include="Models\QuestionnaireViewModel.cs" />
     <Compile Include="Models\Questionnaire_Table.cs">
@@ -1888,7 +1889,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1896,9 +1899,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\kendo\2016.2.607\jquery.min.map" />

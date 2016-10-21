@@ -16,8 +16,7 @@ namespace SituationMonitoring.Controllers
         {
             if (situationId != null)
             {
-                QueriesService.situationId = situationId;
-           
+                Session["situationId"] = situationId;
                 HoldingDataClass.situationId = situationId;
             }
             return View();
@@ -67,7 +66,7 @@ namespace SituationMonitoring.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
 
-        public ActionResult Municipality_Destroy([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        public ActionResult Questionnair_Destroy([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
         {
             if (db != null)
             {

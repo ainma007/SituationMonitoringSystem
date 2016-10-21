@@ -13,15 +13,20 @@
 <script>
     kendo.culture("en-GB");
 </script>
+
+     
+    
+      
+ 
 <h1> @Session["situationId"]</h1>
 @(Html.Kendo().Grid<QuestionnaireViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ");
-        columns.Bound(p => p.UserID).Width(50).Title("رقم ");
+        columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ").Hidden();
+        columns.Bound(p => p.UserID).Width(50).Title("رقم ").Hidden();
 
-        columns.Bound(p => p.SituationID).Width(50).Title("رقم ");
+        columns.Bound(p => p.SituationID).Width(50).Title("رقم ").Hidden();
 
         columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
 
@@ -58,8 +63,55 @@
             model.Field(p => p.QuestionnaireID).Editable(false);
             model.Field(p => p.UserID).Editable(false);
             model.Field(p => p.SituationID).Editable(false);
+            model.Field(p => p.Estimated_Number_Of_Individuals).DefaultValue(0);
+            model.Field(p => p.Estimated_Number_Of_Families).DefaultValue(0);
+
+
             model.Field(p => p.Question3_1Male).DefaultValue(0);
-            
+            model.Field(p => p.Question3_2Male).DefaultValue(0);
+            model.Field(p => p.Question3_3Male).DefaultValue(0);
+            model.Field(p => p.Question3_4Male).DefaultValue(0);
+            model.Field(p => p.Question3_5Male).DefaultValue(0);
+            model.Field(p => p.Question3_6Male).DefaultValue(0);
+            model.Field(p => p.Question3_7Male).DefaultValue(0);
+            model.Field(p => p.Question3_8Male).DefaultValue(0);
+            model.Field(p => p.Question3_9Male).DefaultValue(0);
+            model.Field(p => p.Question3_10Male).DefaultValue(0);
+            model.Field(p => p.Question3_11Male).DefaultValue(0);
+            model.Field(p => p.Question3_12Male).DefaultValue(0);
+            model.Field(p => p.Question3_13Male).DefaultValue(0);
+            model.Field(p => p.Question3_16Male).DefaultValue(0);
+            model.Field(p => p.Question3_17Male).DefaultValue(0);
+            model.Field(p => p.Question3_18Male).DefaultValue(0);
+            model.Field(p => p.Question3_19Male).DefaultValue(0);
+            model.Field(p => p.Question3_21Male).DefaultValue(0);
+            //
+            model.Field(p => p.Question3_1Femal).DefaultValue(0);
+            model.Field(p => p.Question3_2Femal).DefaultValue(0);
+            model.Field(p => p.Question3_3Femal).DefaultValue(0);
+            model.Field(p => p.Question3_4Femal).DefaultValue(0);
+            model.Field(p => p.Question3_5Femal).DefaultValue(0);
+            model.Field(p => p.Question3_6Femal).DefaultValue(0);
+            model.Field(p => p.Question3_7Femal).DefaultValue(0);
+            model.Field(p => p.Question3_8Femal).DefaultValue(0);
+            model.Field(p => p.Question3_9Femal).DefaultValue(0);
+            model.Field(p => p.Question3_10Femal).DefaultValue(0);
+            model.Field(p => p.Question3_11Femal).DefaultValue(0);
+            model.Field(p => p.Question3_12Femal).DefaultValue(0);
+            model.Field(p => p.Question3_13Femal).DefaultValue(0);
+            model.Field(p => p.Question3_14Femal).DefaultValue(0);
+
+            model.Field(p => p.Question3_15Femal).DefaultValue(0);
+
+            model.Field(p => p.Question3_16Femal).DefaultValue(0);
+            model.Field(p => p.Question3_17Femal).DefaultValue(0);
+            model.Field(p => p.Question3_18Femal).DefaultValue(0);
+            model.Field(p => p.Question3_19Femal).DefaultValue(0);
+            model.Field(p => p.Question3_21Femal).DefaultValue(0);
+
+
+
+
 
 
 
@@ -67,7 +119,7 @@
         .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
         .Update(update => update.Action("Questionnair_Update", "Questionnaire"))
         .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
-        .Destroy(destroy => destroy.Action("Situation_Destroy", "Questionnaire"))
+        .Destroy(destroy => destroy.Action("Questionnair_Destroy", "Questionnaire"))
     )
 )
 

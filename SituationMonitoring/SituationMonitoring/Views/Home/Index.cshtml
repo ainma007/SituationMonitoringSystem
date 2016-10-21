@@ -19,8 +19,8 @@
                 .Name("grid")
                 .Columns(columns =>
                 {
-                    columns.Bound(p => p.SituationID).Width(70).Title("رقم النموذج");
-                    columns.Bound(p => p.SituationDate).Width(100).HeaderHtmlAttributes(new { @title = "التاريخ " }).Width(100).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+                    columns.Bound(p => p.SituationID).Width(100).Title("رقم النموذج");
+                    columns.Bound(p => p.SituationDate).Width(120).HeaderHtmlAttributes(new { @title = "التاريخ " }).Width(120).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
 
                     columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate"], "GovernorateID", "GovernorateArName")
                                .Title("المحافظة").Width(150);
@@ -31,10 +31,10 @@
                               .Title("المنطقة").Width(150);
 
 
-                    columns.Bound(p => p.CollectiveCenter).Width(100).HeaderHtmlAttributes(new { @title = "مركز الايواء" }).Width(100).Title("مركز الايواء");
-                    columns.Bound(p => p.Site_Description).Width(200).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(100).Title("وصف الموقع");
+                    columns.Bound(p => p.CollectiveCenter).Width(200).HeaderHtmlAttributes(new { @title = "مركز الايواء" }).Width(200).Title("مركز الايواء");
+                    columns.Bound(p => p.Site_Description).Width(200).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(200).Title("وصف الموقع");
 
-                    columns.Command(command => command.Custom("الدخول للنموذج").Click("showDetails")).Width(100);
+                    columns.Command(command => command.Custom("الدخول للنموذج").Click("showDetails")).Width(70);
 
 
                 })
@@ -154,7 +154,7 @@
             e.preventDefault();
 
             var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-            SituationViewModel = dataItem.SituationtID
+            situationId = dataItem.SituationtID
             var url = "/Questionnaire/QuestionnaireManmanagement?situationId=" + situationId;
             window.location.href = url;
 
@@ -183,5 +183,4 @@
 
 }
 
-//
 
