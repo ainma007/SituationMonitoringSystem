@@ -39,6 +39,12 @@ namespace SituationMonitoring.Controllers
             return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId)).ToDataSourceResult(request));
         }
 
+
+        public ActionResult Questionnair_UserRead([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId) && u.UserID==int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+        }
+
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 

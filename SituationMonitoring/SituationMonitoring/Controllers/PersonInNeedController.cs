@@ -46,10 +46,14 @@ namespace SituationMonitoring.Controllers
         }
         public ActionResult PersonInNeed_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(PersonInNeedService.Read().ToDataSourceResult(request));
+            return Json(PersonInNeedService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId)).ToDataSourceResult(request));
         }
 
-
+        public ActionResult PersonInNeed_UserRead([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(PersonInNeedService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId) && u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+        }
+      
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 

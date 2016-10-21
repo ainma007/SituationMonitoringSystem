@@ -19,11 +19,11 @@ namespace SituationMonitoring.Models
         public IEnumerable<QuestionnaireViewModel> Read()
         {
             return entities.Questionnaire_Table.Select(db => new QuestionnaireViewModel
-{
-         QuestionnaireID = db.QuestionnaireID,
-          UserID = db.UserID,
-          SituationID=db.SituationID,
-
+            {
+                QuestionnaireID = db.QuestionnaireID,
+                UserID = db.UserID,
+                SituationID = db.SituationID,
+                UserFullName = db.Users_Table.FullName,
                 QuestionnaireDate = db.QuestionnaireDate.HasValue ? db.QuestionnaireDate.Value : default(DateTime),
                 EmployeeName = db.EmployeeName,
                 CenterName = db.CenterName,
@@ -89,11 +89,11 @@ namespace SituationMonitoring.Models
                 Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather = db.Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather,
                 Question2_1_15LackOfSafeSpacesForChildrenToPlay = db.Question2_1_15LackOfSafeSpacesForChildrenToPlay,
                 Question2_1_16LackOfAdequatelightingForToilets = db.Question2_1_16LackOfAdequatelightingForToilets,
+
                 Question2_1_17LackOfGenderSegregatedToilets = db.Question2_1_17LackOfGenderSegregatedToilets,
                 Question2_1_18LackOfGenderSegregatedBathingFacilitites = db.Question2_1_18LackOfGenderSegregatedBathingFacilitites,
                 Question2_1_19LackOfAccessibleBathrooms = db.Question2_1_19LackOfAccessibleBathrooms,
                 Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies = db.Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies,
-
                 Question2_1_21LackOfAssistiveDevices = db.Question2_1_21LackOfAssistiveDevices,
                 Question2_1_22ConcernOverFamilyMemberMissing = db.Question2_1_22ConcernOverFamilyMemberMissing,
                 Question2_1_23Other = db.Question2_1_23Other,
@@ -255,6 +255,7 @@ namespace SituationMonitoring.Models
             entity.Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather = db.Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather;
             entity.Question2_1_15LackOfSafeSpacesForChildrenToPlay = db.Question2_1_15LackOfSafeSpacesForChildrenToPlay;
             entity.Question2_1_16LackOfAdequatelightingForToilets = db.Question2_1_16LackOfAdequatelightingForToilets;
+
             entity.Question2_1_17LackOfGenderSegregatedToilets = db.Question2_1_17LackOfGenderSegregatedToilets;
             entity.Question2_1_18LackOfGenderSegregatedBathingFacilitites = db.Question2_1_18LackOfGenderSegregatedBathingFacilitites;
             entity.Question2_1_19LackOfAccessibleBathrooms = db.Question2_1_19LackOfAccessibleBathrooms;

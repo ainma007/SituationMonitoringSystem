@@ -23,6 +23,10 @@ namespace SituationMonitoring.Models
             {
                 ID = db.ID,
                 Name_of_Person_In_Need = db.Name_of_Person_In_Need,
+                UserID = db.UserID,
+                UserName=db.Users_Table.FullName,
+                SituationID =db.SituationID,
+
                 Contact_Details = db.Contact_Details,
                 KeyConcernID = db.KeyConcernID,
 
@@ -53,7 +57,8 @@ namespace SituationMonitoring.Models
             entity.ActionsTakenSoFar = db.ActionsTakenSoFar;
             entity.FollowUpRequired = db.FollowUpRequired;
             entity.SituationID =int.Parse( HttpContext.Current.Session["situationId"].ToString());
-          
+            entity.UserID= int.Parse(HttpContext.Current.Session["UserID"].ToString());
+
 
             entities.PersonInNeed_table.Add(entity);
             entities.SaveChanges();
@@ -66,6 +71,8 @@ namespace SituationMonitoring.Models
             var entity = new PersonInNeed_table();
 
             entity.ID = db.ID;
+            entity.SituationID = entity.SituationID;
+            entity.UserID = entity.UserID;
             entity.Name_of_Person_In_Need = db.Name_of_Person_In_Need;
             entity.Contact_Details = db.Contact_Details;
             entity.KeyConcernID = db.KeyConcernID;

@@ -209,6 +209,8 @@
 
 
 
+@if ((string)Session["UserType"]!=("مراق"))
+{
 
                     <li class="">
                         <a href="@Url.Action("PersonInNeedManage", "PersonInNeed")" class="elements">
@@ -216,7 +218,7 @@
                             <span class="title">حالات الافراد ذوي الهشاشة </span>
                         </a>
                     </li>
-
+}
 
                     <!-- END ONE LEVEL MENU -->
                     <!-- BEGIN TWO LEVEL MENU -->

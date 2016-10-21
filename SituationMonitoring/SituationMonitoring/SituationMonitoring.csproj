@@ -249,7 +249,6 @@
     <Content Include="Content\assets\css\themes\simple\style.css" />
     <Content Include="Content\assets\fonts\custom-set.dev.svg" />
     <Content Include="Content\assets\fonts\custom-set.svg" />
-    <Content Include="Content\assets\img\cover_pic.png" />
     <Content Include="Content\assets\img\icon\noti-cross-2x.png" />
     <Content Include="Content\assets\img\icon\noti-cross.png" />
     <Content Include="Content\assets\img\icon\online-2x.png" />
@@ -264,13 +263,7 @@
     <Content Include="Content\assets\img\icon\top-tray-bx2.png" />
     <Content Include="Content\assets\img\icon\top-tray.png" />
     <Content Include="Content\assets\img\icon\top-trayx2.png" />
-    <Content Include="Content\assets\img\invoicelogo.png" />
-    <Content Include="Content\assets\img\invoicelogo2x.png" />
-    <Content Include="Content\assets\img\logo-b.png" />
-    <Content Include="Content\assets\img\logo-b2x.png" />
     <Content Include="Content\assets\img\logo.png" />
-    <Content Include="Content\assets\img\logo2x.png" />
-    <Content Include="Content\assets\img\map.png" />
     <Content Include="Content\assets\img\map_svg.svg" />
     <Content Include="Content\assets\img\notification-alert.png" />
     <Content Include="Content\assets\img\others\1.jpg" />
@@ -297,8 +290,6 @@
     <Content Include="Content\assets\img\others\rob.jpg" />
     <Content Include="Content\assets\img\others\yellowstone.jpg" />
     <Content Include="Content\assets\img\others\zion.jpg" />
-    <Content Include="Content\assets\img\profile-pic-big.png" />
-    <Content Include="Content\assets\img\profile-pic.png" />
     <Content Include="Content\assets\img\profiles\1.png" />
     <Content Include="Content\assets\img\profiles\2.png" />
     <Content Include="Content\assets\img\profiles\3.png" />
@@ -333,16 +324,10 @@
     <Content Include="Content\assets\img\pullup.png" />
     <Content Include="Content\assets\img\pullup2x.png" />
     <Content Include="Content\assets\img\sidebar-menu-arrow.png" />
-    <Content Include="Content\assets\img\small-profile-pic.png" />
-    <Content Include="Content\assets\img\us-small.jpg" />
     <Content Include="Content\assets\img\us-states.svg" />
-    <Content Include="Content\assets\img\wea.jpg" />
-    <Content Include="Content\assets\img\Webarch_thumb.jpg" />
-    <Content Include="Content\assets\img\Webarch_thumb_retina.jpg" />
     <Content Include="Content\assets\img\widget-arrow-blue.png" />
     <Content Include="Content\assets\img\widget-arrow-green.png" />
     <Content Include="Content\assets\img\widget-arrow-orange.png" />
-    <Content Include="Content\assets\img\work.jpg" />
     <Content Include="Content\assets\js\calender.js" />
     <Content Include="Content\assets\js\charts.js" />
     <Content Include="Content\assets\js\chat.js" />

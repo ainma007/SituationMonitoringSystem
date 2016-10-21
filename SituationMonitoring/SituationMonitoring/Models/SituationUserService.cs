@@ -48,6 +48,7 @@ namespace SituationMonitoring.Models
                      .Where(i => i.Status != false).Select(control => new SituationViewModelForUsers
                      {
                          UserSituationID = control.ID,
+                         MYUserID=control.UserID,
                          SituationtID = control.SituationID,
                          GovernorateArName=control.Situation_Table.Governorate_Table.GovernorateArName,
                          AreaName=control.Situation_Table.Area_Table.AreaArName,

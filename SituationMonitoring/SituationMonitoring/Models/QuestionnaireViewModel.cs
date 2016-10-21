@@ -14,6 +14,10 @@ namespace SituationMonitoring.Models
         public int? UserID { get; set; }
         public int? SituationID { get; set; }
 
+
+        [DisplayName("مدخل البيانات:")]
+        public string UserFullName { get; set; }
+
         [DisplayName("التاريخ:")]
         [DataType(DataType.Date)]
         public DateTime QuestionnaireDate

@@ -6,6 +6,10 @@
 }
 
 
+@if (Session["UserId"] == null)
+{
+    Response.Redirect("~/Account/Login");
+}
 <div class="page-title">
     <i class="icon-custom-left"></i>
     <h3>إدارة - <span class="semi-bold"> الاستبانات الخاصة بالنموذج الشامل</span></h3>
@@ -19,108 +23,120 @@
       
  
 <h1> @Session["situationId"]</h1>
+
+@if (Session["UserType"].Equals("مدير"))
+{
 @(Html.Kendo().Grid<QuestionnaireViewModel>()
-    .Name("grid")
-    .Columns(columns =>
-    {
-        columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ").Hidden();
-        columns.Bound(p => p.UserID).Width(50).Title("رقم ").Hidden();
-
-        columns.Bound(p => p.SituationID).Width(50).Title("رقم ").Hidden();
-
-        columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
-
-        columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
-        columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
-        columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
-        columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
-        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
-    })
-
-    .ToolBar(toolBar =>
-    {
-        toolBar.Create().Text("اضافة استبانة جديدة");
-    })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(1000).Height(600)).TemplateName("QuestionnaireEditor"))
-     .Selectable(selectable => selectable
-            .Mode(GridSelectionMode.Multiple))
-           .Pageable()
-    .Sortable()
-     .Reorderable(reorderable => reorderable.Columns(true))
-    .Resizable(resizable => resizable.Columns(true))
-    .Scrollable(scrollable => scrollable.Height(540))
-    .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
-
-    .HtmlAttributes(new { style = "height:550px;" })
-    .DataSource(dataSource => dataSource
-        .Ajax()
-        .PageSize(20)
-        .ServerOperation(false)
-        .Events(events => events.Error("errorHandler"))
-        .Model(model =>
+        .Name("grid")
+        .Columns(columns =>
         {
-            model.Id(p => p.QuestionnaireID);
-            model.Field(p => p.QuestionnaireID).Editable(false);
-            model.Field(p => p.UserID).Editable(false);
-            model.Field(p => p.SituationID).Editable(false);
-            model.Field(p => p.Estimated_Number_Of_Individuals).DefaultValue(0);
-            model.Field(p => p.Estimated_Number_Of_Families).DefaultValue(0);
+            columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ").Hidden();
+            columns.Bound(p => p.UserID).Width(50).Title("رقم ").Hidden();
+
+            columns.Bound(p => p.SituationID).Width(50).Title("رقم ").Hidden();
+
+            columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+
+            columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
+            columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
+            columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
+            columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
+
+            columns.Bound(p => p.UserFullName).Width(150).HeaderHtmlAttributes(new { @title = "مدخل البيانات" }).Title("مدخل البيانات");
 
 
-            model.Field(p => p.Question3_1Male).DefaultValue(0);
-            model.Field(p => p.Question3_2Male).DefaultValue(0);
-            model.Field(p => p.Question3_3Male).DefaultValue(0);
-            model.Field(p => p.Question3_4Male).DefaultValue(0);
-            model.Field(p => p.Question3_5Male).DefaultValue(0);
-            model.Field(p => p.Question3_6Male).DefaultValue(0);
-            model.Field(p => p.Question3_7Male).DefaultValue(0);
-            model.Field(p => p.Question3_8Male).DefaultValue(0);
-            model.Field(p => p.Question3_9Male).DefaultValue(0);
-            model.Field(p => p.Question3_10Male).DefaultValue(0);
-            model.Field(p => p.Question3_11Male).DefaultValue(0);
-            model.Field(p => p.Question3_12Male).DefaultValue(0);
-            model.Field(p => p.Question3_13Male).DefaultValue(0);
-            model.Field(p => p.Question3_16Male).DefaultValue(0);
-            model.Field(p => p.Question3_17Male).DefaultValue(0);
-            model.Field(p => p.Question3_18Male).DefaultValue(0);
-            model.Field(p => p.Question3_19Male).DefaultValue(0);
-            model.Field(p => p.Question3_21Male).DefaultValue(0);
-            //
-            model.Field(p => p.Question3_1Femal).DefaultValue(0);
-            model.Field(p => p.Question3_2Femal).DefaultValue(0);
-            model.Field(p => p.Question3_3Femal).DefaultValue(0);
-            model.Field(p => p.Question3_4Femal).DefaultValue(0);
-            model.Field(p => p.Question3_5Femal).DefaultValue(0);
-            model.Field(p => p.Question3_6Femal).DefaultValue(0);
-            model.Field(p => p.Question3_7Femal).DefaultValue(0);
-            model.Field(p => p.Question3_8Femal).DefaultValue(0);
-            model.Field(p => p.Question3_9Femal).DefaultValue(0);
-            model.Field(p => p.Question3_10Femal).DefaultValue(0);
-            model.Field(p => p.Question3_11Femal).DefaultValue(0);
-            model.Field(p => p.Question3_12Femal).DefaultValue(0);
-            model.Field(p => p.Question3_13Femal).DefaultValue(0);
-            model.Field(p => p.Question3_14Femal).DefaultValue(0);
-
-            model.Field(p => p.Question3_15Femal).DefaultValue(0);
-
-            model.Field(p => p.Question3_16Femal).DefaultValue(0);
-            model.Field(p => p.Question3_17Femal).DefaultValue(0);
-            model.Field(p => p.Question3_18Femal).DefaultValue(0);
-            model.Field(p => p.Question3_19Femal).DefaultValue(0);
-            model.Field(p => p.Question3_21Femal).DefaultValue(0);
-
-
-
-
+            columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
 
 
 
         })
-        .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
-        .Update(update => update.Action("Questionnair_Update", "Questionnaire"))
-        .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
-        .Destroy(destroy => destroy.Action("Questionnair_Destroy", "Questionnaire"))
-    )
+
+        .ToolBar(toolBar =>
+        {
+            toolBar.Create().Text("اضافة استبانة جديدة");
+        })
+        .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(1000).Height(600)).TemplateName("QuestionnaireEditor"))
+         .Selectable(selectable => selectable
+                .Mode(GridSelectionMode.Multiple))
+               .Pageable()
+        .Sortable()
+         .Reorderable(reorderable => reorderable.Columns(true))
+        .Resizable(resizable => resizable.Columns(true))
+        .Scrollable(scrollable => scrollable.Height(540))
+        .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .ServerOperation(false)
+            .Events(events => events.Error("errorHandler"))
+            .Model(model =>
+            {
+                model.Id(p => p.QuestionnaireID);
+                model.Field(p => p.QuestionnaireID).Editable(false);
+                model.Field(p => p.UserID).Editable(false);
+                model.Field(p => p.SituationID).Editable(false);
+                model.Field(p => p.Estimated_Number_Of_Individuals).DefaultValue(0);
+                model.Field(p => p.Estimated_Number_Of_Families).DefaultValue(0);
+
+
+                model.Field(p => p.Question3_1Male).DefaultValue(0);
+                model.Field(p => p.Question3_2Male).DefaultValue(0);
+                model.Field(p => p.Question3_3Male).DefaultValue(0);
+                model.Field(p => p.Question3_4Male).DefaultValue(0);
+                model.Field(p => p.Question3_5Male).DefaultValue(0);
+                model.Field(p => p.Question3_6Male).DefaultValue(0);
+                model.Field(p => p.Question3_7Male).DefaultValue(0);
+                model.Field(p => p.Question3_8Male).DefaultValue(0);
+                model.Field(p => p.Question3_9Male).DefaultValue(0);
+                model.Field(p => p.Question3_10Male).DefaultValue(0);
+                model.Field(p => p.Question3_11Male).DefaultValue(0);
+                model.Field(p => p.Question3_12Male).DefaultValue(0);
+                model.Field(p => p.Question3_13Male).DefaultValue(0);
+                model.Field(p => p.Question3_16Male).DefaultValue(0);
+                model.Field(p => p.Question3_17Male).DefaultValue(0);
+                model.Field(p => p.Question3_18Male).DefaultValue(0);
+                model.Field(p => p.Question3_19Male).DefaultValue(0);
+                model.Field(p => p.Question3_21Male).DefaultValue(0);
+                //
+                model.Field(p => p.Question3_1Femal).DefaultValue(0);
+                model.Field(p => p.Question3_2Femal).DefaultValue(0);
+                model.Field(p => p.Question3_3Femal).DefaultValue(0);
+                model.Field(p => p.Question3_4Femal).DefaultValue(0);
+                model.Field(p => p.Question3_5Femal).DefaultValue(0);
+                model.Field(p => p.Question3_6Femal).DefaultValue(0);
+                model.Field(p => p.Question3_7Femal).DefaultValue(0);
+                model.Field(p => p.Question3_8Femal).DefaultValue(0);
+                model.Field(p => p.Question3_9Femal).DefaultValue(0);
+                model.Field(p => p.Question3_10Femal).DefaultValue(0);
+                model.Field(p => p.Question3_11Femal).DefaultValue(0);
+                model.Field(p => p.Question3_12Femal).DefaultValue(0);
+                model.Field(p => p.Question3_13Femal).DefaultValue(0);
+                model.Field(p => p.Question3_14Femal).DefaultValue(0);
+
+                model.Field(p => p.Question3_15Femal).DefaultValue(0);
+
+                model.Field(p => p.Question3_16Femal).DefaultValue(0);
+                model.Field(p => p.Question3_17Femal).DefaultValue(0);
+                model.Field(p => p.Question3_18Femal).DefaultValue(0);
+                model.Field(p => p.Question3_19Femal).DefaultValue(0);
+                model.Field(p => p.Question3_21Femal).DefaultValue(0);
+
+
+
+
+
+
+
+            })
+
+
+            .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
+            .Update(update => update.Action("Questionnair_Update", "Questionnaire"))
+            .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
+            .Destroy(destroy => destroy.Action("Questionnair_Destroy", "Questionnaire"))
+        )
 )
 
 <script type="text/javascript">
@@ -138,3 +154,213 @@
         }
     }
 </script>
+}
+
+else if (Session["UserType"].Equals("منسق"))
+{
+
+
+@(Html.Kendo().Grid<QuestionnaireViewModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ").Hidden();
+            columns.Bound(p => p.UserID).Width(50).Title("رقم ").Hidden();
+
+            columns.Bound(p => p.SituationID).Width(50).Title("رقم ").Hidden();
+
+            columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+
+            columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
+            columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
+            columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
+            columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
+
+
+
+            columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
+
+
+
+        })
+
+        .ToolBar(toolBar =>
+        {
+            toolBar.Create().Text("اضافة استبانة جديدة");
+        })
+        .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات استبانة").Width(1000).Height(600)).TemplateName("QuestionnaireEditor"))
+         .Selectable(selectable => selectable
+                .Mode(GridSelectionMode.Multiple))
+               .Pageable()
+        .Sortable()
+         .Reorderable(reorderable => reorderable.Columns(true))
+        .Resizable(resizable => resizable.Columns(true))
+        .Scrollable(scrollable => scrollable.Height(540))
+        .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .ServerOperation(false)
+            .Events(events => events.Error("errorHandler"))
+            .Model(model =>
+            {
+                model.Id(p => p.QuestionnaireID);
+                model.Field(p => p.QuestionnaireID).Editable(false);
+                model.Field(p => p.UserID).Editable(false);
+                model.Field(p => p.SituationID).Editable(false);
+                model.Field(p => p.Estimated_Number_Of_Individuals).DefaultValue(0);
+                model.Field(p => p.Estimated_Number_Of_Families).DefaultValue(0);
+
+
+                model.Field(p => p.Question3_1Male).DefaultValue(0);
+                model.Field(p => p.Question3_2Male).DefaultValue(0);
+                model.Field(p => p.Question3_3Male).DefaultValue(0);
+                model.Field(p => p.Question3_4Male).DefaultValue(0);
+                model.Field(p => p.Question3_5Male).DefaultValue(0);
+                model.Field(p => p.Question3_6Male).DefaultValue(0);
+                model.Field(p => p.Question3_7Male).DefaultValue(0);
+                model.Field(p => p.Question3_8Male).DefaultValue(0);
+                model.Field(p => p.Question3_9Male).DefaultValue(0);
+                model.Field(p => p.Question3_10Male).DefaultValue(0);
+                model.Field(p => p.Question3_11Male).DefaultValue(0);
+                model.Field(p => p.Question3_12Male).DefaultValue(0);
+                model.Field(p => p.Question3_13Male).DefaultValue(0);
+                model.Field(p => p.Question3_16Male).DefaultValue(0);
+                model.Field(p => p.Question3_17Male).DefaultValue(0);
+                model.Field(p => p.Question3_18Male).DefaultValue(0);
+                model.Field(p => p.Question3_19Male).DefaultValue(0);
+                model.Field(p => p.Question3_21Male).DefaultValue(0);
+                //
+                model.Field(p => p.Question3_1Femal).DefaultValue(0);
+                model.Field(p => p.Question3_2Femal).DefaultValue(0);
+                model.Field(p => p.Question3_3Femal).DefaultValue(0);
+                model.Field(p => p.Question3_4Femal).DefaultValue(0);
+                model.Field(p => p.Question3_5Femal).DefaultValue(0);
+                model.Field(p => p.Question3_6Femal).DefaultValue(0);
+                model.Field(p => p.Question3_7Femal).DefaultValue(0);
+                model.Field(p => p.Question3_8Femal).DefaultValue(0);
+                model.Field(p => p.Question3_9Femal).DefaultValue(0);
+                model.Field(p => p.Question3_10Femal).DefaultValue(0);
+                model.Field(p => p.Question3_11Femal).DefaultValue(0);
+                model.Field(p => p.Question3_12Femal).DefaultValue(0);
+                model.Field(p => p.Question3_13Femal).DefaultValue(0);
+                model.Field(p => p.Question3_14Femal).DefaultValue(0);
+
+                model.Field(p => p.Question3_15Femal).DefaultValue(0);
+
+                model.Field(p => p.Question3_16Femal).DefaultValue(0);
+                model.Field(p => p.Question3_17Femal).DefaultValue(0);
+                model.Field(p => p.Question3_18Femal).DefaultValue(0);
+                model.Field(p => p.Question3_19Femal).DefaultValue(0);
+                model.Field(p => p.Question3_21Femal).DefaultValue(0);
+
+
+
+
+
+
+
+            })
+
+
+            .Read(read => read.Action("Questionnair_UserRead", "Questionnaire"))
+            .Update(update => update.Action("Questionnair_Update", "Questionnaire"))
+            .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
+            .Destroy(destroy => destroy.Action("Questionnair_Destroy", "Questionnaire"))
+        )
+)
+
+    <script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    </script>
+
+
+}
+
+else {
+    @(Html.Kendo().Grid<QuestionnaireViewModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.QuestionnaireID).Width(50).Title("رقم ").Hidden();
+            columns.Bound(p => p.UserID).Width(50).Title("رقم ").Hidden();
+
+            columns.Bound(p => p.SituationID).Width(50).Title("رقم ").Hidden();
+
+            columns.Bound(p => p.QuestionnaireDate).Width(150).HeaderHtmlAttributes(new { @title = "التاريخ " }).Format("{0:dd/MM/yyyy}").Title("التاريخ ");
+
+            columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
+            columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
+            columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
+            columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
+
+            columns.Bound(p => p.UserFullName).Width(150).HeaderHtmlAttributes(new { @title = "مدخل البيانات" }).Title("مدخل البيانات");
+
+
+
+
+
+        })
+
+         .Selectable(selectable => selectable
+                .Mode(GridSelectionMode.Multiple))
+               .Pageable()
+        .Sortable()
+         .Reorderable(reorderable => reorderable.Columns(true))
+        .Resizable(resizable => resizable.Columns(true))
+        .Scrollable(scrollable => scrollable.Height(540))
+        .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .ServerOperation(false)
+            .Events(events => events.Error("errorHandler"))
+            .Model(model =>
+            {
+                model.Id(p => p.QuestionnaireID);
+                model.Field(p => p.QuestionnaireID).Editable(false);
+                model.Field(p => p.UserID).Editable(false);
+                model.Field(p => p.SituationID).Editable(false);
+               
+
+            })
+
+
+            .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
+           
+        )
+    )
+
+    <script type="text/javascript">
+    function errorHandler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    </script>
+
+}
