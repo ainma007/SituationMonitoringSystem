@@ -52,11 +52,14 @@ namespace SituationMonitoring.Controllers
                 catch (Exception)
                 {
                     //اذا كان المستخدم اساسا مش موجود في جدول المستخدمين او كلمة المرور خطأ
-                    ViewBag.Message = "Error";
+                    ModelState.AddModelError("", "خطأ في الدخول للنظام");
                 }
             }
             return View(user);
         }
+
+
+
 
         public ActionResult LoggedIn()
         {

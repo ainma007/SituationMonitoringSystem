@@ -49,7 +49,7 @@
             <div class="col-md-6">
                 <br>
                 @model SituationMonitoring.Models.Users_Table
-
+               
                 @using (Html.BeginForm())
             {
                     @Html.AntiForgeryToken()
@@ -57,7 +57,7 @@
                     <div class="form-horizontal">
                         <h4>تسجيل الدخول </h4>
                         <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, "خطأ في اسم المستخدم او كلمة المرور", new { @class = "text-danger" })
 
                         <div class="grid-body no-border">
                             <div class="row-fluid">
@@ -127,7 +127,9 @@
 
                             <br>
 
-
+                            <div   style ="color:white;text-align:center">
+                                © 1998-2016 PCDCR- Mohammed El-Habbash , All Rights Reserved
+</div>
                         </div>
 
                     </div>

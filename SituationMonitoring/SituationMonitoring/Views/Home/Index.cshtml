@@ -9,16 +9,23 @@
 {
     Response.Redirect("~/Account/Login");
 }
-<div class="alert alert-info">
-    <h2 style="text-align:center;">االرئيسية</h2>
-</div>
+
 <script>
     kendo.culture("en-GB");
 </script>
-
-    @if (Session["UserType"].Equals("مدير"))
-    {
-@(Html.Kendo().Grid<SituationViewModel>()
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple ">
+            <div class="grid-title no-border">
+                <div class="page-title">
+                    <i class="icon-custom-left"></i>
+                    <h3>الصفحة - <span class="semi-bold">  الرئيسية</span></h3>
+                </div>
+            </div>
+            <div class="grid-body no-border">
+                @if (Session["UserType"].Equals("مدير"))
+                {
+                    @(Html.Kendo().Grid<SituationViewModel>()
                 .Name("grid")
                 .Columns(columns =>
                 {
@@ -66,45 +73,45 @@
                     })
                     .Read(read => read.Action("Situation_Read", "Situation"))
                 )
-)
+                    )
 
 
 
-<script>
-        function showDetails(e) {
-            e.preventDefault();
+                    <script>
+                        function showDetails(e) {
+                            e.preventDefault();
 
-            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-            var situationId = dataItem.SituationID
-            var url = "/Questionnaire/QuestionnaireManmanagement?situationId=" + situationId;
-            window.location.href = url;
+                            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                            var situationId = dataItem.SituationID
+                            var url = "/Questionnaire/QuestionnaireManmanagement?situationId=" + situationId;
+                            window.location.href = url;
 
 
 
-        }
-</script>
+                        }
+                    </script>
 
-<script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
+                    <script type="text/javascript">
+                        function errorHandler(e) {
+                            if (e.errors) {
+                                var message = "Errors:\n";
+                                $.each(e.errors, function (key, value) {
+                                    if ('errors' in value) {
+                                        $.each(value.errors, function () {
+                                            message += this + "\n";
+                                        });
+                                    }
+                                });
+                                alert(message);
+                            }
+                        }
+                    </script>
+
                 }
-            });
-            alert(message);
-        }
-    }
-</script>
 
-    }
-
-    else
-    {
-@(Html.Kendo().Grid<SituationViewModelForUsers>()
+                else
+                {
+                    @(Html.Kendo().Grid<SituationViewModelForUsers>()
             .Name("grid")
             .Columns(columns =>
             {
@@ -148,41 +155,45 @@
                 })
                 .Read(read => read.Action("SituationMainUser_Read", "Home"))
             )
-)
+                    )
 
 
 
-        <script>
-        function showDetails(e) {
-            e.preventDefault();
+                    <script>
+                        function showDetails(e) {
+                            e.preventDefault();
 
-            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-            situationId = dataItem.SituationtID
-            var url = "/Questionnaire/QuestionnaireManmanagement?situationId=" + situationId;
-            window.location.href = url;
+                            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                            situationId = dataItem.SituationtID
+                            var url = "/Questionnaire/QuestionnaireManmanagement?situationId=" + situationId;
+                            window.location.href = url;
 
 
 
-        }
-        </script>
+                        }
+                    </script>
 
-        <script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
+                    <script type="text/javascript">
+                        function errorHandler(e) {
+                            if (e.errors) {
+                                var message = "Errors:\n";
+                                $.each(e.errors, function (key, value) {
+                                    if ('errors' in value) {
+                                        $.each(value.errors, function () {
+                                            message += this + "\n";
+                                        });
+                                    }
+                                });
+                                alert(message);
+                            }
+                        }
+                    </script>
+
                 }
-            });
-            alert(message);
-        }
-    }
-        </script>
-
-    }
 
 
 
+            </div>
+        </div>
+    </div>
+</div>

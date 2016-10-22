@@ -209,7 +209,7 @@
 
 
 
-@if ((string)Session["UserType"]!=("مراق"))
+@if ((string)Session["UserType"]!=("مراقب خارجي"))
 {
 
                     <li class="">
@@ -247,10 +247,20 @@
         <div class="footer-widget">
 
             <div class="pull-right">
+             
+                    <a href="@Url.Action("LogOff", "Account")" class="elements">
+                        <i class="fa fa-power-off"></i>
+                        <span class="title">خروج</span>
+                    </a>
+               
+               
+                </div>
 
-                <a href="#"><i class="fa fa-power-off"></i></a>
-            </div>
+
+
         </div>
+
+      
         <!-- END SIDEBAR FOOTER WIDGET -->
         <!-- END SIDEBAR -->
         <!-- BEGIN PAGE CONTAINER-->
@@ -276,7 +286,7 @@ else
 }
 
                 <!-- END PAGE TITLE -->
-                <!-- BEGIN PlACE PAGE CONTENT HERE -->
+              <!-- BEGIN PlACE PAGE CONTENT HERE -->
                 <!-- END PLACE PAGE CONTENT HERE -->
             </div>
         </div>
