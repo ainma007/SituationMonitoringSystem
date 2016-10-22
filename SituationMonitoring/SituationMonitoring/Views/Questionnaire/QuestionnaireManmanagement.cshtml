@@ -10,23 +10,54 @@
 {
     Response.Redirect("~/Account/Login");
 }
-<div class="page-title">
-    <i class="icon-custom-left"></i>
-    <h3>إدارة - <span class="semi-bold"> الاستبانات الخاصة بالنموذج الشامل</span></h3>
-</div>
+
 <script>
     kendo.culture("en-GB");
 </script>
 
-     
-    
-      
- 
-<h1> @Session["situationId"]</h1>
 
-@if (Session["UserType"].Equals("مدير"))
-{
-@(Html.Kendo().Grid<QuestionnaireViewModel>()
+
+
+
+<div class="row">
+<div class="col-md-12">
+    <div class="grid simple ">
+        <div class="grid-title no-border">
+            <div class="page-title">
+                <i class="icon-custom-left"></i>
+                <h3>إدارة - <span class="semi-bold"> الاستبانات الخاصة بالنموذج الشامل</span></h3>
+            </div>
+        </div>
+        <div class="grid-body no-border">
+            <table class="table table-bordered no-more-tables">
+
+                <tbody>
+                    <tr>
+                        <td width="10%" class="alert alert-info"><h4 style="color:red">رقم النموذج</h4></td>
+                        <td width="10%"><h4>@Session["situationId"]</h4></td>
+                        <td width="10%" class="alert alert-info"><h4 style="color:red">االتاريخ</h4></td>
+                        <td width="10%"><h4>@ViewBag.Date</h4></td>
+
+                    </tr>
+
+                    <tr>
+                        <td width="10%" class="alert alert-success"><h5> المحافظة</h5></td>
+                        <td width="10%" class="alert alert-warning">@ViewBag.GovernorateArName</td>
+                        <td width="10%" class="alert alert-success"><h5> البلدية</h5></td>
+                        <td width="10%" class="alert alert-warning">@ViewBag.MunicipalityArName</td>
+                        <td width="10%" class="alert alert-success"> <h5>المنطقة</h5></td>
+                        <td width="20%" class="alert alert-warning">@ViewBag.AreaArName</td>
+                        <td width="10%" class="alert alert-success"> <h5>اسم مركز الايواء</h5></td>
+                        <td width="20%" class="alert alert-warning">@ViewBag.CollectiveCenter</td>
+                    </tr>
+
+                </tbody>
+                </table>
+
+
+            @if (Session["UserType"].Equals("مدير"))
+            {
+                @(Html.Kendo().Grid<QuestionnaireViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -137,30 +168,30 @@
             .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
             .Destroy(destroy => destroy.Action("Questionnair_Destroy", "Questionnaire"))
         )
-)
+                )
 
-<script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
-    }
-</script>
-}
+                <script type="text/javascript">
+                            function errorHandler(e) {
+                                if (e.errors) {
+                                    var message = "Errors:\n";
+                                    $.each(e.errors, function (key, value) {
+                                        if ('errors' in value) {
+                                            $.each(value.errors, function () {
+                                                message += this + "\n";
+                                            });
+                                        }
+                                    });
+                                    alert(message);
+                                }
+                            }
+                </script>
+            }
 
-else if (Session["UserType"].Equals("منسق"))
-{
+            else if (Session["UserType"].Equals("منسق"))
+            {
 
 
-@(Html.Kendo().Grid<QuestionnaireViewModel>()
+                @(Html.Kendo().Grid<QuestionnaireViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -270,29 +301,29 @@ else if (Session["UserType"].Equals("منسق"))
             .Create(create => create.Action("Questionnair_Create", "Questionnaire"))
             .Destroy(destroy => destroy.Action("Questionnair_Destroy", "Questionnaire"))
         )
-)
+                )
 
-    <script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
-    }
-    </script>
+                <script type="text/javascript">
+                            function errorHandler(e) {
+                                if (e.errors) {
+                                    var message = "Errors:\n";
+                                    $.each(e.errors, function (key, value) {
+                                        if ('errors' in value) {
+                                            $.each(value.errors, function () {
+                                                message += this + "\n";
+                                            });
+                                        }
+                                    });
+                                    alert(message);
+                                }
+                            }
+                </script>
 
 
-}
+            }
 
-else {
-    @(Html.Kendo().Grid<QuestionnaireViewModel>()
+            else {
+                @(Html.Kendo().Grid<QuestionnaireViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -337,30 +368,36 @@ else {
                 model.Field(p => p.QuestionnaireID).Editable(false);
                 model.Field(p => p.UserID).Editable(false);
                 model.Field(p => p.SituationID).Editable(false);
-               
+
 
             })
 
 
             .Read(read => read.Action("Questionnair_Read", "Questionnaire"))
-           
+
         )
-    )
+                )
 
-    <script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
-    }
-    </script>
+                <script type="text/javascript">
+                            function errorHandler(e) {
+                                if (e.errors) {
+                                    var message = "Errors:\n";
+                                    $.each(e.errors, function (key, value) {
+                                        if ('errors' in value) {
+                                            $.each(value.errors, function () {
+                                                message += this + "\n";
+                                            });
+                                        }
+                                    });
+                                    alert(message);
+                                }
+                            }
+                </script>
 
-}
+            }
+
+
+            </div>
+        </div>
+    </div>
+    </div>

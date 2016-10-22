@@ -5,14 +5,22 @@
 }
 
 
-<div class="page-title">
-    <i class="icon-custom-left"></i>
-    <h3>إدارة - <span class="semi-bold">  المناطق</span></h3>
-</div>
+
 <script>
     kendo.culture("en-GB");
 </script>
-@(Html.Kendo().Grid<AreaViewModel>()
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple ">
+            <div class="grid-title no-border">
+                <div class="page-title">
+                    <i class="icon-custom-left"></i>
+                    <h3>إدارة - <span class="semi-bold">  المناطق</span></h3>
+                </div>
+            </div>
+            <div class="grid-body no-border">
+                @(Html.Kendo().Grid<AreaViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
@@ -54,20 +62,24 @@
         .Create(create => create.Action("Area_Create", "Area"))
         .Destroy(destroy => destroy.Action("Area_Destroy", "Area"))
     )
-)
+                )
 
-<script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
-    }
-</script>
+                <script type="text/javascript">
+                    function errorHandler(e) {
+                        if (e.errors) {
+                            var message = "Errors:\n";
+                            $.each(e.errors, function (key, value) {
+                                if ('errors' in value) {
+                                    $.each(value.errors, function () {
+                                        message += this + "\n";
+                                    });
+                                }
+                            });
+                            alert(message);
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

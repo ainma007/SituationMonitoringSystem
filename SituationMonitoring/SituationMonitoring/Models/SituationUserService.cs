@@ -123,7 +123,7 @@ namespace SituationMonitoring.Models
         {
             //  هنا كمان   تم التعديل على حالة المستخدم 
             return entities.Users_Table
-                .Where(i => i.Status != false).Select(user => new SessionForeignKey.UserForeingKey
+                .Where(i => i.Status != false && i.UserType!="مدير").Select(user => new SessionForeignKey.UserForeingKey
                 {
                     UserID = user.UserID,
                     UserFullName = user.FullName,

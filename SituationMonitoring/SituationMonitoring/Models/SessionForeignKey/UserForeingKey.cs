@@ -9,5 +9,6 @@ namespace SituationMonitoring.Models.SessionForeignKey
     {
         public int UserID { get; set; }
         public string UserFullName { get; set; }
+
     }
 }

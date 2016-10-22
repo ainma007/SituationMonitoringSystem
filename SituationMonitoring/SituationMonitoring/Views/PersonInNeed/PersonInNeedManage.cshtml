@@ -9,17 +9,24 @@
 {
     Response.Redirect("~/Account/Login");
 }
-<div class="page-title">
-    <i class="icon-custom-left"></i>
-    <h3>إدارة - <span class="semi-bold">  حالات الافراد ذوي الهشاشة</span></h3>
-</div>
+
 <script>
     kendo.culture("en-GB");
 </script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple ">
+            <div class="grid-title no-border">
+                <div class="page-title">
+                    <i class="icon-custom-left"></i>
+                    <h3>إدارة - <span class="semi-bold">  حالات الافراد ذوي الهشاشة</span></h3>
+                </div>
+            </div>
+            <div class="grid-body no-border">
 
-@if (Session["UserType"].Equals("مدير"))
-{
-@(Html.Kendo().Grid<PersonInNeedViewModel>()
+                @if (Session["UserType"].Equals("مدير"))
+                {
+                    @(Html.Kendo().Grid<PersonInNeedViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -43,6 +50,12 @@
         {
             toolBar.Create().Text("اضافة شخص جديد");
         })
+        .ToolBar(tools => tools.Excel())
+          .Excel(excel => excel
+        .FileName("Kendo UI Grid Export.xlsx")
+        .Filterable(true)
+        .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+    )
         .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات الشخص")).TemplateName("PersonEditor"))
          .Selectable(selectable => selectable
                 .Mode(GridSelectionMode.Multiple))
@@ -69,28 +82,28 @@
             .Create(create => create.Action("PersonInNeed_Create", "PersonInNeed"))
             .Destroy(destroy => destroy.Action("PersonInNeed_Destroy", "PersonInNeed"))
         )
-)
+                    )
 
-<script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
+                    <script type="text/javascript">
+                        function errorHandler(e) {
+                            if (e.errors) {
+                                var message = "Errors:\n";
+                                $.each(e.errors, function (key, value) {
+                                    if ('errors' in value) {
+                                        $.each(value.errors, function () {
+                                            message += this + "\n";
+                                        });
+                                    }
+                                });
+                                alert(message);
+                            }
+                        }
+                    </script>
                 }
-            });
-            alert(message);
-        }
-    }
-</script>
-}
 
-else {
+                else {
 
-    @(Html.Kendo().Grid<PersonInNeedViewModel>()
+                    @(Html.Kendo().Grid<PersonInNeedViewModel>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -116,6 +129,12 @@ else {
         .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات الشخص")).TemplateName("PersonEditor"))
          .Selectable(selectable => selectable
                 .Mode(GridSelectionMode.Multiple))
+                 .ToolBar(tools => tools.Excel())
+          .Excel(excel => excel
+        .FileName("الحالات.xlsx")
+        .Filterable(true)
+        .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+    )
                .Pageable()
         .Sortable()
          .Reorderable(reorderable => reorderable.Columns(true))
@@ -140,23 +159,29 @@ else {
             .Create(create => create.Action("PersonInNeed_Create", "PersonInNeed"))
             .Destroy(destroy => destroy.Action("PersonInNeed_Destroy", "PersonInNeed"))
         )
-    )
+                    )
 
-    <script type="text/javascript">
-    function errorHandler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function() {
-                        message += this + "\n";
-                    });
+                    <script type="text/javascript">
+                        function errorHandler(e) {
+                            if (e.errors) {
+                                var message = "Errors:\n";
+                                $.each(e.errors, function (key, value) {
+                                    if ('errors' in value) {
+                                        $.each(value.errors, function () {
+                                            message += this + "\n";
+                                        });
+                                    }
+                                });
+                                alert(message);
+                            }
+                        }
+                    </script>
+
+
                 }
-            });
-            alert(message);
-        }
-    }
-    </script>
 
 
-}
+                </div>
+            </div>
+        </div>
+    </div>

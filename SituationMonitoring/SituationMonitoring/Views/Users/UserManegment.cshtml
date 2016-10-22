@@ -7,13 +7,20 @@
 
 
 @*@if (Session["UserID"] != null)
-{*@
-    <div class="page-title">
-        <i class="icon-custom-left"></i>
-        <h3>إدارة - <span class="semi-bold">المستخدمين</span></h3>
-    </div>
+    {*@
 
-    @(Html.Kendo().Grid<UserViewModel>()
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple ">
+            <div class="grid-title no-border">
+                <div class="page-title">
+                    <i class="icon-custom-left"></i>
+                    <h3>إدارة - <span class="semi-bold">المستخدمين</span></h3>
+                </div>
+            </div>
+            <div class="grid-body no-border">
+                @(Html.Kendo().Grid<UserViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
@@ -57,18 +64,22 @@
         .Destroy(destroy => destroy.Action("User_Destroy", "Users"))
     )
 
-    )
+                )
 
 
-@*}*@
+                @*}*@
 
 
-@*else
-{
+                @*else
+                    {
 
-    Response.Redirect("~/Account/Login");
-
-
+                        Response.Redirect("~/Account/Login");
 
 
-}*@
+
+
+                    }*@
+            </div>
+        </div>
+    </div>
+</div>

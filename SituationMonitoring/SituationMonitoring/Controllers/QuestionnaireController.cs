@@ -19,7 +19,103 @@ namespace SituationMonitoring.Controllers
                 Session["situationId"] = situationId;
                 HoldingDataClass.situationId = situationId;
             }
+            GetDate();
+            GovernorateArName();
+            MunicipalityArName();
+            AreaArName();
+            CollectiveCenter();
             return View();
+        }
+
+        public string GetDate()
+        {
+            int H = 0;
+            H = int.Parse(Session["situationId"].ToString());
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.Date = xx.SituationDate.Value.ToShortDateString();
+
+
+            }
+
+            return ViewBag.Date;
+        }
+
+        public string GovernorateArName()
+        {
+            int H = 0;
+            H = int.Parse(Session["situationId"].ToString());
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.GovernorateArName = xx.Governorate_Table.GovernorateArName.ToString();
+
+
+            }
+
+            return ViewBag.GovernorateArName;
+        }
+
+
+        public string MunicipalityArName()
+        {
+            int H = 0;
+            H = int.Parse(Session["situationId"].ToString());
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.MunicipalityArName = xx.Municipality_Table.MunicipalityArName.ToString();
+
+
+            }
+
+            return ViewBag.MunicipalityArName;
+        }
+
+        public string AreaArName()
+        {
+            int H = 0;
+            H = int.Parse(Session["situationId"].ToString());
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.AreaArName = xx.Area_Table.AreaArName.ToString();
+
+
+            }
+
+            return ViewBag.AreaArName;
+        }
+
+        public string CollectiveCenter()
+        {
+            int H = 0;
+            H = int.Parse(Session["situationId"].ToString());
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.CollectiveCenter = xx.CollectiveCenter.ToString();
+
+
+            }
+
+            return ViewBag.CollectiveCenter;
         }
 
         private QuestionnaireService QuestionnaireService;

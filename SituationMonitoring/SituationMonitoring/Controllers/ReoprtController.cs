@@ -12,7 +12,7 @@ namespace SituationMonitoring.Controllers
         // GET: Reoprt
         public ActionResult SituationMonitoringReport()
         {
-
+            GetDate();
             GovernorateArName();
             MunicipalityArName();
             AreaArName();
@@ -263,7 +263,23 @@ namespace SituationMonitoring.Controllers
 
 
         #region(get SituationData)
+        public string GetDate()
+        {
+            int H = 0;
+            H = int.Parse(Session["situationId"].ToString());
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
 
+
+                ViewBag.Date = xx.SituationDate.Value.ToShortDateString();
+
+
+            }
+
+            return ViewBag.Date;
+        }
         public string GovernorateArName()
         {
             int H = 0;

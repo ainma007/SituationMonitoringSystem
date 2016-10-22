@@ -15,6 +15,7 @@ namespace SituationMonitoring.Controllers
         // GET: Account
         public ActionResult Login()
         {
+            ViewBag.PM = "© 1998-2016 PCDCR- Mohammed El-Habbash , All Rights Reserved";
             return View();
         }
         [HttpPost]
@@ -30,19 +31,23 @@ namespace SituationMonitoring.Controllers
                     {
                         // Check If Existed Or Not : 
                         var u = dc.Users_Table.Single(i => i.UserName == user.UserName
-                                                                    && i.Password == user.Password);
+                                                                    && i.Password == user.Password && i.Status==true);
                         if (u != null)
                         {
+                           
+                                Session["UserID"] = u.UserID;
+                                Session["UserName"] = u.UserName;
+                                Session["Password"] = u.Password;
+                                Session["UserType"] = u.UserType;
+
+
+
+                                return RedirectToAction("Index", "Home");
+
+                          
 
                             //  User Informations : 
-                            Session["UserID"] = u.UserID;
-                            Session["UserName"] = u.UserName;
-                            Session["Password"] = u.Password;
-                            Session["UserType"] = u.UserType;
-
-
-
-                            return RedirectToAction("Index", "Home");
+                           
 
 
                         }
