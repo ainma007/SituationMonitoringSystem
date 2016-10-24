@@ -100,7 +100,7 @@ namespace SituationMonitoring.Controllers
         }
         public ActionResult SituationMainUser_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(SituationService.Read().Where(u =>  u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+            return Json(SituationService.Read().Where(u =>  u.UserID == int.Parse(Session["UserID"].ToString()) && u.Status == true).ToDataSourceResult(request));
         }
         public ActionResult About()
         {
