@@ -17,7 +17,7 @@ namespace SituationMonitoring.Controllers
             PopulateGovernorate();
             PopulateMunicipality();
             PopulateArea();
-
+            PopulateUsers();
             return View();
         }
 
@@ -67,22 +67,40 @@ namespace SituationMonitoring.Controllers
             ViewData["defaultArea"] = Area.First();
         }
 
+        public void PopulateUsers()
+        {
+            var dataContext = new SituationMonitoringEntities();
+            var users = dataContext.Users_Table
 
-        private SituationUserService SituationUserService;
+                              .Select(c => new UserForeingKey
+                              {
+                                  UserID = c.UserID,
+                                  UserFullName = c.FullName
+                              })
+                              .OrderBy(e => e.UserID);
+
+            ViewData["users"] = users;
+            ViewData["defaultUser"] = users.First();
+        }
+
+        private SituationService SituationService;
 
 
         public HomeController()
         {
 
-            SituationUserService = new SituationUserService(new SituationMonitoringEntities());
+            SituationService = new SituationService(new SituationMonitoringEntities());
 
 
         }
 
-
+        public ActionResult SituationMainAdmin_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(SituationService.Read().ToDataSourceResult(request));
+        }
         public ActionResult SituationMainUser_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(SituationUserService.ReadSituationForUser().Where(u =>  u.MYUserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+            return Json(SituationService.Read().Where(u =>  u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
         }
         public ActionResult About()
         {

@@ -66,6 +66,23 @@ namespace SituationMonitoring.Models
         public int? AreaID { get; set; }
 
 
+        [UIHint("ClientUser")]
+        public SessionForeignKey.UserForeingKey Users
+        {
+            get;
+            set;
+        }
+
+
+        [UIHint("UserID")]
+        [DisplayName("اسم المستخدم:")]
+        public int? UserID { get; set; }
+
+
+        [DisplayName("الحالة")]
+        public bool Status { get; set; }
+
+
         [DisplayName("مركز الايواء")]
         public string CollectiveCenter { get; set; }
         [DisplayName("وصف الموقع")]

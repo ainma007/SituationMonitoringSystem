@@ -58,6 +58,10 @@
       <End EntitySet="Users_Table" Role="Users_Table" />
       <End EntitySet="SituationUser_Table" Role="SituationUser_Table" />
     </AssociationSet>
+    <AssociationSet Name="FK_Situation_Table_Users_Table" Association="SituationMonitoringModel.FK_Situation_Table_Users_Table">
+      <End Role="Users_Table" EntitySet="Users_Table" />
+      <End Role="Situation_Table" EntitySet="Situation_Table" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Area_Table">
     <Key>
@@ -141,61 +145,61 @@
     <Property Name="Site_Description" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_1" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_1_1" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question1_2_1_Family_CommunityDisputes" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question_1_2_2NotEnoughFood" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_3NotEnoughPrivacy" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_4NotEnoughDrinking" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_5UnsafeHousing" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_6Overcrowding" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_7InsufficientBedding" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_8NotEnoughWater" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question1_2_1_Family_CommunityDisputes" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question_1_2_2NotEnoughFood" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_3NotEnoughPrivacy" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_4NotEnoughDrinking" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_5UnsafeHousing" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_6Overcrowding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_7InsufficientBedding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_8NotEnoughWater" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_2_9Not_enough_humanitarian_assistance" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_9Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question1_2_10No_Access_to_essential_services" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question1_2_10No_Access_to_essential_services" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_10Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question1_2_11Other" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question1_2_11Other" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_11Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question1_3_1Family_CommunityDisputes" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_2NotEnoughFood" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_3NotEnoughPrivacy" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_4NotenoughDrinkingWater" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_5UnsafeHousing" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_6Overcrowding" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_7InsufficientBedding" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_8NotEnoughWater_otherThanDrinking" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question1_3_9Not_enough_humanitarian_assistance" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question1_3_1Family_CommunityDisputes" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_2NotEnoughFood" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_3NotEnoughPrivacy" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_4NotenoughDrinkingWater" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_5UnsafeHousing" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_6Overcrowding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_7InsufficientBedding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_8NotEnoughWater_otherThanDrinking" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question1_3_9Not_enough_humanitarian_assistance" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_3_9Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question1_3_10No_Access_to_essential_services" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question1_3_10No_Access_to_essential_services" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_3_10Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question1_3_11Other" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question1_3_11Other" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_3_11Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_4" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_4_1" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question2_1_1Family_CommunityDisputes" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_2NotEnoughFood" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_3enough_privacy_in_DES_rooms" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_4NotEnoughPrivacy" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_5NotDrinkingEnoughWater" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_6Unsafe_housing" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_7IOvercrowding" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_8Insufficient_bedding" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_9NotEnoughWater_OtherThanDrinking" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_10NotEnoughHumanitarianAssistanceForPeopleInNeed" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question2_1_1Family_CommunityDisputes" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_2NotEnoughFood" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_3enough_privacy_in_DES_rooms" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_4NotEnoughPrivacy" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_5NotDrinkingEnoughWater" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_6Unsafe_housing" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_7IOvercrowding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_8Insufficient_bedding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_9NotEnoughWater_OtherThanDrinking" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_10NotEnoughHumanitarianAssistanceForPeopleInNeed" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question2_1_10Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question2_1_11NoAccessToEssentialServices" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question2_1_11NoAccessToEssentialServices" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question2_1_11Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question2_1_12DistributionOfAssistanceExcludesChild_HeadedFamilies" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_13DistributionOfAssistanceExcludesWomen_HeadedFamilies" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_15LackOfSafeSpacesForChildrenToPlay" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_16LackOfAdequatelightingForToilets" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_17LackOfGenderSegregatedToilets" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_18LackOfGenderSegregatedBathingFacilitites" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_19LackOfAccessibleBathrooms" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_21LackOfAssistiveDevices" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_22ConcernOverFamilyMemberMissing" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question2_1_23Other" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question2_1_12DistributionOfAssistanceExcludesChild_HeadedFamilies" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_13DistributionOfAssistanceExcludesWomen_HeadedFamilies" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_14LackOfSafeSpacesForWomenAndGirlsToGather" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_15LackOfSafeSpacesForChildrenToPlay" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_16LackOfAdequatelightingForToilets" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_17LackOfGenderSegregatedToilets" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_18LackOfGenderSegregatedBathingFacilitites" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_19LackOfAccessibleBathrooms" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_20DistributionOfAssistanceExcludePersonsWithDisabilitiesAndTheirFamilies" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_21LackOfAssistiveDevices" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_22ConcernOverFamilyMemberMissing" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question2_1_23Other" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question2_1_23Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question2_2" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question2_2_1" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
@@ -261,17 +265,17 @@
     <Property Name="Question3_21Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question3_21Male" Type="Int32" />
     <Property Name="Question3_21Femal" Type="Int32" />
-    <Property Name="Question4_1_1" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_2" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_3" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_4" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_5" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_6" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_7" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_8" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
-    <Property Name="Question4_1_9" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question4_1_1" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_2" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_3" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_4" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_5" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_6" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_7" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_8" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
+    <Property Name="Question4_1_9" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question4_1_9Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Question4_1_10" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Boolean" />
+    <Property Name="Question4_1_10" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question_5" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" FromRole="Questionnaire_Table" ToRole="Situation_Table" />
     <NavigationProperty Name="Users_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" FromRole="Questionnaire_Table" ToRole="Users_Table" />
@@ -293,6 +297,9 @@
     <NavigationProperty Name="PersonInNeed_table" Relationship="SituationMonitoringModel.FK_PersonInNeed_table_Situation_Table" FromRole="Situation_Table" ToRole="PersonInNeed_table" />
     <NavigationProperty Name="Questionnaire_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Situation_Table" FromRole="Situation_Table" ToRole="Questionnaire_Table" />
     <NavigationProperty Name="SituationUser_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" FromRole="Situation_Table" ToRole="SituationUser_Table" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="satus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Users_Table" FromRole="Situation_Table" ToRole="Users_Table" />
   </EntityType>
   <EntityType Name="SituationUser_Table">
     <Key>
@@ -301,7 +308,7 @@
     <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Name="SituationID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
-    <Property Name="Status" Nullable="false" Type="Boolean" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Situation_Table" FromRole="SituationUser_Table" ToRole="Situation_Table" />
     <NavigationProperty Name="Users_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" FromRole="SituationUser_Table" ToRole="Users_Table" />
   </EntityType>
@@ -314,10 +321,11 @@
     <Property Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Password" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="UserType" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Status" Nullable="false" Type="Boolean" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="PersonInNeed_table" Relationship="SituationMonitoringModel.FK_PersonInNeed_table_Users_Table" FromRole="Users_Table" ToRole="PersonInNeed_table" />
     <NavigationProperty Name="Questionnaire_Table" Relationship="SituationMonitoringModel.FK_Questionnaire_Table_Users_Table" FromRole="Users_Table" ToRole="Questionnaire_Table" />
     <NavigationProperty Name="SituationUser_Table" Relationship="SituationMonitoringModel.FK_SituationUser_Table_Users_Table" FromRole="Users_Table" ToRole="SituationUser_Table" />
+    <NavigationProperty Name="Situation_Table" Relationship="SituationMonitoringModel.FK_Situation_Table_Users_Table" FromRole="Users_Table" ToRole="Situation_Table" />
   </EntityType>
   <Association Name="FK_Area_Table_Governorate_Table">
     <End Type="SituationMonitoringModel.Governorate_Table" Multiplicity="0..1" Role="Governorate_Table" />
@@ -459,6 +467,18 @@
         <PropertyRef Name="UserID" />
       </Principal>
       <Dependent Role="SituationUser_Table">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Situation_Table_Users_Table">
+    <End Type="SituationMonitoringModel.Users_Table" Role="Users_Table" Multiplicity="0..1" />
+    <End Type="SituationMonitoringModel.Situation_Table" Role="Situation_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Table">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Situation_Table">
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>

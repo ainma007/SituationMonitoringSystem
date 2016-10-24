@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
+using SituationMonitoring.Models.SessionForeignKey;
 
 namespace SituationMonitoring.Controllers
 {
@@ -17,10 +18,26 @@ namespace SituationMonitoring.Controllers
             PopulateGovernorate();
             PopulateMunicipality();
             PopulateArea();
+            PopulateUsers();
 
             return View();
         }
 
+        public void PopulateUsers()
+        {
+            var dataContext = new SituationMonitoringEntities();
+            var users = dataContext.Users_Table
+
+                              .Select(c => new UserForeingKey
+                              {
+                                  UserID = c.UserID,
+                                  UserFullName = c.FullName
+                              })
+                              .OrderBy(e => e.UserID);
+
+            ViewData["users"] = users;
+            ViewData["defaultUser"] = users.First();
+        }
         private void PopulateGovernorate()
         {
             var dataContext = new SituationMonitoringEntities();
@@ -124,15 +141,20 @@ namespace SituationMonitoring.Controllers
             return Json(SituationService.ReadGovernorate(), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetMunicipality()
+        public JsonResult GetMunicipality( int governorateID)
         {
-            return Json(SituationService.ReadMunicipality(), JsonRequestBehavior.AllowGet);
+            return Json(SituationService.ReadMunicipality(governorateID), JsonRequestBehavior.AllowGet);
         }
 
 
-        public JsonResult GetArea()
+        public JsonResult GetArea(int governorateID)
         {
-            return Json(SituationService.ReadArea(), JsonRequestBehavior.AllowGet);
+            return Json(SituationService.ReadArea(governorateID), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetUsers()
+        {
+            return Json(SituationService.GetUseres(), JsonRequestBehavior.AllowGet);
         }
     }
 }

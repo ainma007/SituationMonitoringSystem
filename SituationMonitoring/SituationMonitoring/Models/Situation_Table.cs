@@ -28,6 +28,8 @@ namespace SituationMonitoring.Models
         public Nullable<int> AreaID { get; set; }
         public string CollectiveCenter { get; set; }
         public string Site_Description { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public bool satus { get; set; }
     
         public virtual Area_Table Area_Table { get; set; }
         public virtual Governorate_Table Governorate_Table { get; set; }
@@ -35,5 +37,6 @@ namespace SituationMonitoring.Models
         public virtual ICollection<PersonInNeed_table> PersonInNeed_table { get; set; }
         public virtual ICollection<Questionnaire_Table> Questionnaire_Table { get; set; }
         public virtual ICollection<SituationUser_Table> SituationUser_Table { get; set; }
+        public virtual Users_Table Users_Table { get; set; }
     }
 }

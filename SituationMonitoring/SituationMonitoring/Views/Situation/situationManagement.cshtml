@@ -34,6 +34,10 @@
                   .Title("المنطقة").Width(100);
 
 
+        columns.ForeignKey(p => p.UserID, (System.Collections.IEnumerable)ViewData["users"], "UserID", "UserFullName")
+                  .Title("المسؤول").Width(100);
+
+
         columns.Bound(p => p.CollectiveCenter).Width(100).HeaderHtmlAttributes(new { @title = "مركز الايواء" }).Width(100).Title("مركز الايواء");
         columns.Bound(p => p.Site_Description).Width(100).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(100).Title("وصف الموقع");
 
@@ -43,9 +47,10 @@
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Create().Text("اضافة بلدية جديدة");
+        toolBar.Create().Text("اضافة نموذج جديد");
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية").Width(400).Height(600)).TemplateName("SituationEditor"))
+    .Events(e => e.Edit("onEdit"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()
@@ -58,6 +63,7 @@
         .PageSize(20)
         .ServerOperation(false)
         .Events(events => events.Error("errorHandler"))
+     
         .Model(model =>
         {
             model.Id(p => p.SituationID);
@@ -66,6 +72,7 @@
             model.Field(p => p.MunicipalityID).DefaultValue(1);
 
             model.Field(p => p.AreaID).DefaultValue(1);
+            model.Field(p => p.UserID).DefaultValue(3);
 
         })
         .Read(read => read.Action("Situation_Read", "Situation"))
@@ -74,6 +81,27 @@
         .Destroy(destroy => destroy.Action("Situation_Destroy", "Situation"))
     )
                 )
+
+                <script>
+    function onEdit(e) {
+        //attach validator to the PopUp window
+        $("[data-role=window]").kendoValidator();
+    }
+                </script>
+
+  <script>
+      function filtermunicipality() {
+        return {
+            governorateID: $("#GovernorateID").data("kendoDropDownList").value()
+        };
+    }
+
+    function filterProducts() {
+        return {
+            vendorId: $("#VendorId").data("kendoDropDownList").value()
+        };
+    }
+                </script>
 
                 <script type="text/javascript">
                     function errorHandler(e) {

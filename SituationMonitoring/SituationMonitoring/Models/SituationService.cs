@@ -47,7 +47,13 @@ namespace SituationMonitoring.Models
                     AreaID = db.Area_Table.AreaID,
                     AreaName = db.Area_Table.AreaArName
                 },
-
+                UserID= db.UserID,
+                Users = new Models.SessionForeignKey.UserForeingKey()
+                {
+                    UserID = db.Users_Table.UserID,
+                    UserFullName = db.Users_Table.FullName
+                },
+                Status =db.satus,
 
                 CollectiveCenter = db.CollectiveCenter,
                 Site_Description=db.Site_Description,
@@ -64,7 +70,8 @@ namespace SituationMonitoring.Models
             entity.AreaID = db.AreaID;
             entity.CollectiveCenter = db.CollectiveCenter;
             entity.Site_Description = db.Site_Description;
-
+            entity.UserID = db.UserID;
+            entity.satus = db.Status;
             entities.Situation_Table.Add(entity);
             entities.SaveChanges();
 
@@ -81,6 +88,8 @@ namespace SituationMonitoring.Models
             entity.GovernorateID = db.GovernorateID;
             entity.MunicipalityID = db.MunicipalityID;
             entity.AreaID = db.AreaID;
+            entity.UserID = db.UserID;
+            entity.satus = db.Status;
             entity.CollectiveCenter = db.CollectiveCenter;
             entity.Site_Description = db.Site_Description;
             entities.Situation_Table.Attach(entity);
@@ -113,9 +122,9 @@ namespace SituationMonitoring.Models
         }
 
 
-        public IEnumerable<SessionForeignKey.MunicipalityForeingKey> ReadMunicipality()
+        public IEnumerable<SessionForeignKey.MunicipalityForeingKey> ReadMunicipality( int governorateID)
         {
-            return entities.Municipality_Table.Select(province => new SessionForeignKey.MunicipalityForeingKey
+            return entities.Municipality_Table.Where(m => m.GovernorateID == governorateID).Select(province => new SessionForeignKey.MunicipalityForeingKey
             {
                 MunicipalityID = province.MunicipalityID,
                 MunicipalityName = province.MunicipalityArName
@@ -125,15 +134,29 @@ namespace SituationMonitoring.Models
         }
 
 
-        public IEnumerable<SessionForeignKey.AreaForeingKey> ReadArea()
+        public IEnumerable<SessionForeignKey.AreaForeingKey> ReadArea(int governorateID)
         {
-            return entities.Area_Table.Select(province => new SessionForeignKey.AreaForeingKey
+            return entities.Area_Table.Where(m => m.GovernorateID == governorateID).Select(province => new SessionForeignKey.AreaForeingKey
             {
                 AreaID = province.AreaID,
                 AreaName = province.AreaArName
 
 
             });
+        }
+
+        public IEnumerable<SessionForeignKey.UserForeingKey> GetUseres()
+        {
+            //  هنا كمان   تم التعديل على حالة المستخدم 
+            return entities.Users_Table
+                .Where(i => i.Status != false && i.UserType != "مدير").Select(user => new SessionForeignKey.UserForeingKey
+                {
+                    UserID = user.UserID,
+                    UserFullName = user.FullName,
+
+
+
+                });
         }
         public void Dispose()
         {

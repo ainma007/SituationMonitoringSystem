@@ -24,6 +24,34 @@
               
                                 
                 </div>
+
+      
+
+  <div class="form-group">
+
+                @Html.LabelFor(model => model.UserID)
+
+                @(Html.Kendo().DropDownListFor(model => model.UserID)
+    .HtmlAttributes(new { style = "width: 100%;" })
+     .DataTextField("UserFullName")
+          .DataValueField("UserID")
+    .Filter("contains")
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+
+            read.Action("GetUsers", "Situation");
+        })
+        .ServerFiltering(false);
+    })
+                )
+
+                @Html.ValidationMessageFor(model => model.UserID)
+
+
+            </div>
+
   <div class="form-group">
 
                 @Html.LabelFor(model => model.GovernorateID)
@@ -40,8 +68,10 @@
 
             read.Action("GetGovernorate", "Situation");
         })
-        .ServerFiltering(false);
+       .ServerFiltering(true);
     })
+        
+
                 )
 
                 @Html.ValidationMessageFor(model => model.GovernorateID)
@@ -63,10 +93,12 @@
         source.Read(read =>
         {
 
-            read.Action("GetMunicipality", "Situation");
+            read.Action("GetMunicipality", "Situation").Data("filtermunicipality");
         })
-        .ServerFiltering(false);
+
+       .ServerFiltering(true);
     })
+      .CascadeFrom("GovernorateID")
                 )
 
                 @Html.ValidationMessageFor(model => model.MunicipalityID)
@@ -89,10 +121,11 @@
         source.Read(read =>
         {
 
-            read.Action("GetArea", "Situation");
+            read.Action("GetArea", "Situation").Data("filtermunicipality");
         })
-        .ServerFiltering(false);
+        .ServerFiltering(true);
     })
+     .CascadeFrom("GovernorateID")
                 )
 
                 @Html.ValidationMessageFor(model => model.AreaID)
@@ -116,6 +149,17 @@
                 @Html.EditorFor(model => model.Site_Description)
                 @Html.ValidationMessageFor(model => model.Site_Description)
             </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status)
+
+
+                @Html.CheckBoxFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+
+
         </div>
        
     </div>

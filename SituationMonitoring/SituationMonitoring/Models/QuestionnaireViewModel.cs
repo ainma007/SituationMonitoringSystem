@@ -103,7 +103,7 @@ namespace SituationMonitoring.Models
         [DisplayName("سكن غير آمن")]
         public bool Question1_2_5UnsafeHousing { get; set; }
 
-        [DisplayName("اكتظاظ في المسكن")]
+        [DisplayName("ازدحام")]
         public bool Question1_2_6Overcrowding { get; set; }
         
         [DisplayName("فراش غير كافي")]
@@ -151,7 +151,7 @@ namespace SituationMonitoring.Models
         [DisplayName("سكن غير آمن")]
         public bool Question1_3_5UnsafeHousing { get; set; }
 
-        [DisplayName("اكتظاظ في المسكن")]
+        [DisplayName("ازدحام")]
         public bool Question1_3_6Overcrowding { get; set; }
 
         [DisplayName("فراش غير كافي")]

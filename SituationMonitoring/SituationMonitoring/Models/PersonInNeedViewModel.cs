@@ -13,11 +13,12 @@ namespace SituationMonitoring.Models
 
         public int ID { get; set; }
 
-        [DisplayName("اسم الشخص")]
 
         public int? SituationID { get; set; }
         public int? UserID { get; set; }
         public string UserName { get; set; }
+        [DisplayName("اسم الشخص")]
+
         public string Name_of_Person_In_Need { get; set; }
 
         [DisplayName("معلومات الاتصال")]

@@ -41,6 +41,7 @@ namespace SituationMonitoring.Models
         public int? UserID { get; set; }
 
 
+
         [DisplayName("الحالة:")]
         public bool Status { get; set; }
     }

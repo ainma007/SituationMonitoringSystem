@@ -147,24 +147,27 @@ namespace SituationMonitoring.Controllers
             GetPer_Question3_7No();
             GetPer_Question3_7Dontknow();
             GetSUmMale_Question3_7();
+            GetSUmFemal_Question3_7();
 
 
             GetPer_Question3_8Yes();
             GetPer_Question3_8No();
             GetPer_Question3_8Dontknow();
             GetSUmMale_Question3_8();
-
+            GetSUmFemal_Question3_8();
 
             GetPer_Question3_9Yes();
             GetPer_Question3_9No();
             GetPer_Question3_9Dontknow();
             GetSUmMale_Question3_9();
+            GetSUmFemal_Question3_9();
 
 
             GetPer_Question3_10Yes();
             GetPer_Question3_10No();
             GetPer_Question3_10Dontknow();
             GetSUmMale_Question3_10();
+            GetSUmFemal_Question3_10();
 
 
             GetPer_Question3_11Yes();
