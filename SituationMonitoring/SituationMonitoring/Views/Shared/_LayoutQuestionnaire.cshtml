@@ -193,10 +193,25 @@
                     <!-- END SELECTED LINK -->
                     <!-- BEGIN BADGE LINK -->
                     <li class="">
-                        <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire")" class="elements">
+
+                        @{ 
+                            // Abu Ehab :
+                            // Extract Number From Like and pass it to SitutionId At Controller
+                            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+                            string[] words = currentUrlPage.Split('=');
+                            string s = "";
+                            foreach (string word in words)
+                            {
+                                s = word.ToString();
+                            }
+                            int x = int.Parse(s);
+
+                        <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire", new { situationId = x})" class="elements">
                             <i class="fa fa-edit"></i>
                             <span class="title">ادارة الاستبانات</span>
                         </a>
+                         }
                     </li>
 
             

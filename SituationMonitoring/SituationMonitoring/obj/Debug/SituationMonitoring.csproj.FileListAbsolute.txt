@@ -121,3 +121,5 @@ C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMoni
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.dll
 C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.pdb
 C:\Users\BlackSword\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\SimpleCrypto.dll
+C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\bin\SimpleCrypto.dll
+C:\Users\MyGla\OneDrive\Documents\GitHub\SituationMonitoringSystem\SituationMonitoring\SituationMonitoring\obj\Debug\SituationMonitoring.csprojResolveAssemblyReference.cache

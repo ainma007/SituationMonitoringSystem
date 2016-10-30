@@ -11,13 +11,30 @@ namespace SituationMonitoring.Controllers
 {
     public class QuestionnaireController : Controller
     {
+
+        // TempData
+        public string  LocalSituationId { get; set; }
+        
         // GET: Questionnaire
         public ActionResult QuestionnaireManmanagement(string situationId)
         {
             if (situationId != null)
             {
+                LocalSituationId = null;
                 Session["situationId"] = situationId;
+
+
+                //==================================================
+                HoldingDataClass.situationId = null;
                 HoldingDataClass.situationId = situationId;
+                //--------------------------------------------------
+
+
+
+                LocalSituationId = null;
+                LocalSituationId = situationId;
+               
+                //==================================================
             }
             GetDate();
             GovernorateArName();
@@ -30,7 +47,7 @@ namespace SituationMonitoring.Controllers
         public string GetDate()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = int.Parse(LocalSituationId);
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -48,7 +65,7 @@ namespace SituationMonitoring.Controllers
         public string GovernorateArName()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = int.Parse(LocalSituationId);
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -67,7 +84,7 @@ namespace SituationMonitoring.Controllers
         public string MunicipalityArName()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = int.Parse(LocalSituationId);
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -85,7 +102,7 @@ namespace SituationMonitoring.Controllers
         public string AreaArName()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = int.Parse(LocalSituationId);
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -103,7 +120,7 @@ namespace SituationMonitoring.Controllers
         public string CollectiveCenter()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = int.Parse(LocalSituationId);
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -132,34 +149,36 @@ namespace SituationMonitoring.Controllers
 
         public ActionResult Questionnair_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId)).ToDataSourceResult(request));
+            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(LocalSituationId)).ToDataSourceResult(request));
         }
 
 
         public ActionResult Questionnair_UserRead([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId) && u.UserID==int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+            return Json(QuestionnaireService.Read().Where(u => u.SituationID == int.Parse(LocalSituationId) && u.UserID==int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
         }
 
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 
-        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db, string xsituationvalue)
         {
             if (db != null && ModelState.IsValid)
             {
-                QuestionnaireService.Create(db);
+                xsituationvalue = LocalSituationId;
+                QuestionnaireService.Create(db, xsituationvalue);
             }
 
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
-        public ActionResult Questionnair_Update([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        public ActionResult Questionnair_Update([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db, string xsituationvalue)
         {
             if (db != null && ModelState.IsValid)
             {
-                QuestionnaireService.Update(db);
+                xsituationvalue = LocalSituationId;
+                QuestionnaireService.Update(db, xsituationvalue);
             }
 
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));

@@ -180,13 +180,13 @@ namespace SituationMonitoring.Models
         }
 
 
-        public void Create(QuestionnaireViewModel db)
+        public void Create(QuestionnaireViewModel db, string situationvalue)
         {
             var entity = new Questionnaire_Table();
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
             entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(HoldingDataClass.situationId.ToString());
+            entity.SituationID = int.Parse(situationvalue.ToString()); /// <<<<<<__
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
@@ -352,7 +352,7 @@ namespace SituationMonitoring.Models
             db.QuestionnaireID = entity.QuestionnaireID;
         }
 
-        public void Update(QuestionnaireViewModel db)
+        public void Update(QuestionnaireViewModel db, string situationvalue)
         {
             
             var entity = new Questionnaire_Table();
@@ -363,7 +363,7 @@ namespace SituationMonitoring.Models
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
             entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(HoldingDataClass.situationId.ToString());
+            entity.SituationID = int.Parse(situationvalue.ToString()); // <<<<<<------
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
