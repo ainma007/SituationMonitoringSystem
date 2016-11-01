@@ -206,11 +206,13 @@
                                 s = word.ToString();
                             }
                             int x = int.Parse(s);
-
-                        <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire", new { situationId = x})" class="elements">
+                            SituationMonitoring.Models.HoldingDataClass.situationId = s;
+                            SituationMonitoring.Models.QuestionnaireService.situationvalue = s;
+                      
+                       <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire", new { situationId = x})" class="elements">
                             <i class="fa fa-edit"></i>
                             <span class="title">ادارة الاستبانات</span>
-                        </a>
+                       </a>
                          }
                     </li>
 

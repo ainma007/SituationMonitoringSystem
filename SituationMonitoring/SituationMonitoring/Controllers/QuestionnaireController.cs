@@ -13,28 +13,23 @@ namespace SituationMonitoring.Controllers
     {
 
         // TempData
-        public string  LocalSituationId { get; set; }
+        public  static  string  LocalSituationId { get; set; }
         
         // GET: Questionnaire
         public ActionResult QuestionnaireManmanagement(string situationId)
         {
             if (situationId != null)
             {
-                LocalSituationId = null;
+       
                 Session["situationId"] = situationId;
-
-
                 //==================================================
                 HoldingDataClass.situationId = null;
                 HoldingDataClass.situationId = situationId;
                 //--------------------------------------------------
-
-
-
-                LocalSituationId = null;
+                //LocalSituationId = null;
                 LocalSituationId = situationId;
-               
-                //==================================================
+
+                ////==================================================
             }
             GetDate();
             GovernorateArName();
@@ -161,26 +156,26 @@ namespace SituationMonitoring.Controllers
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 
-        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db, string xsituationvalue)
+        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
         {
             if (db != null && ModelState.IsValid)
             {
-                xsituationvalue = LocalSituationId;
-                QuestionnaireService.Create(db, xsituationvalue);
-            }
 
+                QuestionnaireService.Create(db);
+            }
+            LocalSituationId = QuestionnaireService.situationvalue;
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
-        public ActionResult Questionnair_Update([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db, string xsituationvalue)
+        public ActionResult Questionnair_Update([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
         {
             if (db != null && ModelState.IsValid)
             {
-                xsituationvalue = LocalSituationId;
-                QuestionnaireService.Update(db, xsituationvalue);
+               
+                QuestionnaireService.Update(db);
             }
-
+            LocalSituationId = QuestionnaireService.situationvalue;
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
         }
 

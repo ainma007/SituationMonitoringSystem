@@ -16,6 +16,8 @@ namespace SituationMonitoring.Models
             this.entities = entities;
         }
 
+
+
         public IEnumerable<QuestionnaireViewModel> Read()
         {
             return entities.Questionnaire_Table.Select(db => new QuestionnaireViewModel
@@ -179,8 +181,9 @@ namespace SituationMonitoring.Models
             });
         }
 
+        public static  string situationvalue  { get; set; }
 
-        public void Create(QuestionnaireViewModel db, string situationvalue)
+        public void Create(QuestionnaireViewModel db)
         {
             var entity = new Questionnaire_Table();
 
@@ -352,7 +355,7 @@ namespace SituationMonitoring.Models
             db.QuestionnaireID = entity.QuestionnaireID;
         }
 
-        public void Update(QuestionnaireViewModel db, string situationvalue)
+        public void Update(QuestionnaireViewModel db)
         {
             
             var entity = new Questionnaire_Table();
