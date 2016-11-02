@@ -156,14 +156,13 @@ namespace SituationMonitoring.Controllers
         // Insert New
         [AcceptVerbs(HttpVerbs.Post)]
 
-        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db)
+        public ActionResult Questionnair_Create([DataSourceRequest] DataSourceRequest request, QuestionnaireViewModel db,string situationId)
         {
             if (db != null && ModelState.IsValid)
             {
 
-                QuestionnaireService.Create(db);
+                QuestionnaireService.Create(db, situationId);
             }
-            LocalSituationId = QuestionnaireService.situationvalue;
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -175,7 +174,6 @@ namespace SituationMonitoring.Controllers
                
                 QuestionnaireService.Update(db);
             }
-            LocalSituationId = QuestionnaireService.situationvalue;
             return Json(new[] { db }.ToDataSourceResult(request, ModelState));
         }
 

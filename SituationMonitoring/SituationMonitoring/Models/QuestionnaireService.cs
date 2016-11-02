@@ -181,15 +181,15 @@ namespace SituationMonitoring.Models
             });
         }
 
-        public static  string situationvalue  { get; set; }
+  
 
-        public void Create(QuestionnaireViewModel db)
+        public void Create(QuestionnaireViewModel db, string situationId)
         {
             var entity = new Questionnaire_Table();
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
             entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(situationvalue.ToString()); /// <<<<<<__
+            entity.SituationID = int.Parse(situationId.ToString()); /// <<<<<<__
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
@@ -365,8 +365,7 @@ namespace SituationMonitoring.Models
             entity.SituationID = db.SituationID;
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
-            entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(situationvalue.ToString()); // <<<<<<------
+           // <<<<<<------
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
