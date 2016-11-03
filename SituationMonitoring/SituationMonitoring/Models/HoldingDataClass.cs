@@ -8,6 +8,6 @@ namespace SituationMonitoring.Models
     public class HoldingDataClass
     {
 
-        public static string  situationId { get; set; }
+        public static int  situationId { get; set; }
     }
 }

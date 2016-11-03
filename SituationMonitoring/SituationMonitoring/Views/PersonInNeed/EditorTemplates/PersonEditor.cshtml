@@ -90,5 +90,9 @@
             @Html.EditorFor(model => model.FollowUpRequired)
             @Html.ValidationMessageFor(model => model.FollowUpRequired)
         </div>
+
+        @Html.TextBoxFor(model => model.SituationID, new { style = "display:none" })
+
+
     </div>
 </div>

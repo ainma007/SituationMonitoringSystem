@@ -185,56 +185,61 @@
                     <!-- BEGIN SELECTED LINK -->
                     <li class="start active">
                         <a href="@Url.Action("Index", "Home")" class="elements">
-                            <i class="icon-custom-home"></i>
-                            <span class="title">الرئيسية</span>
+                            <i class="fa fa-reply-all"></i>
+                            <span class="title">عودة الى الرئيسية</span>
 
                         </a>
                     </li>
                     <!-- END SELECTED LINK -->
                     <!-- BEGIN BADGE LINK -->
+
+    @{
+        // Abu Ehab :
+        // Extract Number From Like and pass it to SitutionId At Controller
+        string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+        string[] words = currentUrlPage.Split('=');
+        string s = "";
+        foreach (string word in words)
+        {
+            s = word.ToString();
+        }
+
+        int x = int.Parse(s);
+    <li class="">
+        <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire", new { situationId = x })" class="elements">
+            <i class="fa fa-edit"></i>
+            <span class="title">ادارة الاستبانات</span>
+        </a>
+
+    </li>
+
+
                     <li class="">
+                        
+                        <a href="@Url.Action("SituationMonitoringReport", "Reoprt",new { situationId = x})" class="elements">
 
-                        @{ 
-                            // Abu Ehab :
-                            // Extract Number From Like and pass it to SitutionId At Controller
-                            string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+                                <i class="fa fa-bar-chart-o"></i>
 
-                            string[] words = currentUrlPage.Split('=');
-                            string s = "";
-                            foreach (string word in words)
-                            {
-                                s = word.ToString();
-                            }
-                            int x = int.Parse(s);
-                            SituationMonitoring.Models.HoldingDataClass.situationId = s;
+                                <span class="title">تقرير النموذج الشامل </span>
+                            </a>
+                    </li>
+
+
+                        
+
+
+                    <li class="">
                       
-                       <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire", new { situationId = x})" class="elements">
-                            <i class="fa fa-edit"></i>
-                            <span class="title">ادارة الاستبانات</span>
-                       </a>
-                         }
-                    </li>
-
-            
-                    <li class="">
-                        <a href="@Url.Action("SituationMonitoringReport", "Reoprt")" class="elements">
-                            <i class="fa fa-bar-chart-o"></i>
-                            <span class="title">تقرير النموذج الشامل </span>
-                        </a>
-                    </li>
-
-
-
-@if ((string)Session["UserType"]!=("مراقب خارجي"))
-{
-
-                    <li class="">
-                        <a href="@Url.Action("PersonInNeedManage", "PersonInNeed")" class="elements">
+                        <a href="@Url.Action("PersonInNeedManage", "PersonInNeed",new { situationId = x})" class="elements">
                             <i class="fa fa-male"></i>
                             <span class="title">حالات الافراد ذوي الهشاشة </span>
                         </a>
                     </li>
-}
+
+        SituationMonitoring.Models.HoldingDataClass.situationId = x;
+
+                        }
 
                     <!-- END ONE LEVEL MENU -->
                     <!-- BEGIN TWO LEVEL MENU -->

@@ -23,6 +23,8 @@
                 <td colspan=1 class="alert alert-info"><h4>االتاريخ</h4></td>
                 <td colspan=3>@Html.Kendo().DatePickerFor(model => model.QuestionnaireDate)@Html.ValidationMessageFor(model => model.QuestionnaireDate)</td>
 
+                <td colspan=3>@Html.Kendo().NumericTextBoxFor(model => model.SituationID) @Html.ValidationMessageFor(model => model.SituationID)</td>
+    
             </tr>
         </tbody>
         </table>
@@ -53,7 +55,7 @@
                     <td><span>@Html.EditorFor(model => model.EmployeeName) @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
                     <td><span>@Html.EditorFor(model => model.CenterName) @Html.ValidationMessageFor(model => model.CenterName)</span>
                     <td><span>@Html.EditorFor(model => model.EmployeeMail) @Html.ValidationMessageFor(model => model.EmployeeMail)</span>
-                    <td><span>@Html.EditorFor(model => model.EmployeePhone) @Html.ValidationMessageFor(model => model.EmployeePhone)</span>
+                    <td><span>@Html.TextBoxFor(model => model.EmployeePhone, new { type = "number", min = "0", step = "0.01", value = "0" }) @Html.ValidationMessageFor(model => model.EmployeePhone)</span>
 
 
                 </tr>
@@ -105,7 +107,7 @@
                     </td>
                     <td><span>@Html.EditorFor(model => model.RoleInCommunity) @Html.ValidationMessageFor(model => model.EmployeeMail)</span></td>
                     <td><span>@Html.EditorFor(model => model.Place_of_origin) @Html.ValidationMessageFor(model => model.EmployeePhone)</span></td>
-                    <td><span>@Html.EditorFor(model => model.PersonMobile) @Html.ValidationMessageFor(model => model.EmployeePhone)</span></td>
+                    <td><span>@Html.TextBoxFor(model => model.PersonMobile,new { type = "number", min = "0", step = "0.01", value = "0" } ) @Html.ValidationMessageFor(model => model.EmployeePhone)</span></td>
 
 
                 </tr>
@@ -1026,7 +1028,7 @@
                         </span>
 
                     </td>
-                    <td><span>@Html.LabelFor(model => model.Question3_19Male) @Html.Kendo().NumericTextBoxFor(model => model.Question3_19Male) @Html.ValidationMessageFor(model => model.Question3_19Male)</span></td>
+                    <td><span>-</span></td>
                     <td><span> @Html.LabelFor(model => model.Question3_19Femal) @Html.Kendo().NumericTextBoxFor(model => model.Question3_19Femal) @Html.ValidationMessageFor(model => model.Question3_19Femal)</span></td>
 
 

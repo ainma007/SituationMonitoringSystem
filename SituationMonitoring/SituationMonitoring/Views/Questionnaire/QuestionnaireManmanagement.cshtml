@@ -34,9 +34,11 @@
                 <tbody>
                     <tr>
                         <td width="10%" class="alert alert-info"><h4 style="color:red">رقم النموذج</h4></td>
-                        <td width="10%"><h4>@Session["situationId"]</h4></td>
+                        <td width="10%"><h4>@HoldingDataClass.situationId </h4></td>
                         <td width="10%" class="alert alert-info"><h4 style="color:red">االتاريخ</h4></td>
                         <td width="10%"><h4>@ViewBag.Date</h4></td>
+                        <td width="10%" class="alert alert-info"><h4 style="color:red">الموظف المسؤول</h4></td>
+                        <td width="10%"><h4>@ViewBag.UserFullName</h4></td>
 
                     </tr>
 
@@ -70,8 +72,11 @@
 
             columns.Bound(p => p.EmployeeName).Width(170).HeaderHtmlAttributes(new { @title = "اسم الموظف" }).Title("اسم الموظف");
             columns.Bound(p => p.CenterName).Width(170).HeaderHtmlAttributes(new { @title = " اسم المؤسسة" }).Title("اسم المؤسسة");
-            columns.Bound(p => p.EmployeeMail).Width(150).HeaderHtmlAttributes(new { @title = "البريد الالكتروني" }).Title("البريد الالكتروني");
-            columns.Bound(p => p.EmployeePhone).Width(150).HeaderHtmlAttributes(new { @title = "رقم الجوال" }).Title("رقم الجوال");
+            columns.Bound(p => p.PersonName).Width(170).HeaderHtmlAttributes(new { @title = " اسم الشخص المقابل" }).Title("اسم الشخص المقابل");
+            columns.Bound(p => p.PersonGEnder).Width(170).HeaderHtmlAttributes(new { @title = " الجنس" }).Title("الجنس");
+
+            columns.Bound(p => p.PersonName).Width(170).HeaderHtmlAttributes(new { @title = " دوره في المجتمع" }).Title("دوره في المجتمع");
+
 
             columns.Bound(p => p.UserFullName).Width(150).HeaderHtmlAttributes(new { @title = "مدخل البيانات" }).Title("مدخل البيانات");
 
@@ -154,6 +159,18 @@
                 model.Field(p => p.Question3_19Femal).DefaultValue(0);
                 model.Field(p => p.Question3_21Femal).DefaultValue(0);
 
+                // Abu Ehab :
+                // Extract Number From Like and pass it to SitutionId At Controller
+                string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+                string[] words = currentUrlPage.Split('=');
+                string s = "";
+                foreach (string word in words)
+                {
+                    s = word.ToString();
+                }
+                int x = int.Parse(s);
+                model.Field(p => p.SituationID).DefaultValue(x);
 
 
 
@@ -288,7 +305,7 @@
                 model.Field(p => p.Question3_21Femal).DefaultValue(0);
 
 
-
+           
 
 
 

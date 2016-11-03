@@ -56,7 +56,7 @@ namespace SituationMonitoring.Models
             entity.Gender = db.Gender;
             entity.ActionsTakenSoFar = db.ActionsTakenSoFar;
             entity.FollowUpRequired = db.FollowUpRequired;
-            entity.SituationID =int.Parse( HttpContext.Current.Session["situationId"].ToString());
+            entity.SituationID = db.SituationID;
             entity.UserID= int.Parse(HttpContext.Current.Session["UserID"].ToString());
 
 

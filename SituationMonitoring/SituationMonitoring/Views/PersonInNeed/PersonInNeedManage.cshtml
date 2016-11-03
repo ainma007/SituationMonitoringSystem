@@ -24,6 +24,33 @@
             </div>
             <div class="grid-body no-border">
 
+                <table class="table table-bordered no-more-tables">
+
+                    <tbody>
+                        <tr>
+                            <td width="10%" class="alert alert-info"><h4 style="color:red">رقم النموذج</h4></td>
+                            <td width="10%"><h4>@HoldingDataClass.situationId </h4></td>
+                            <td width="10%" class="alert alert-info"><h4 style="color:red">االتاريخ</h4></td>
+                            <td width="10%"><h4>@ViewBag.Date</h4></td>
+                            <td width="10%" class="alert alert-info"><h4 style="color:red">الموظف المسؤول</h4></td>
+                            <td width="10%"><h4>@ViewBag.UserFullName</h4></td>
+
+                        </tr>
+
+                        <tr>
+                            <td width="10%" class="alert alert-success"><h5> المحافظة</h5></td>
+                            <td width="10%" class="alert alert-warning">@ViewBag.GovernorateArName</td>
+                            <td width="10%" class="alert alert-success"><h5> البلدية</h5></td>
+                            <td width="10%" class="alert alert-warning">@ViewBag.MunicipalityArName</td>
+                            <td width="10%" class="alert alert-success"> <h5>المنطقة</h5></td>
+                            <td width="20%" class="alert alert-warning">@ViewBag.AreaArName</td>
+                            <td width="10%" class="alert alert-success"> <h5>اسم مركز الايواء</h5></td>
+                            <td width="20%" class="alert alert-warning">@ViewBag.CollectiveCenter</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
                 @if (Session["UserType"].Equals("مدير"))
                 {
                     @(Html.Kendo().Grid<PersonInNeedViewModel>()
@@ -76,6 +103,20 @@
                 model.Field(p => p.UserID).Editable(false);
                 model.Field(p => p.SituationID).Editable(false);
                 model.Field(p => p.KeyConcernID).DefaultValue(1);
+                // Abu Ehab :
+                // Extract Number From Like and pass it to SitutionId At Controller
+                string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+                string[] words = currentUrlPage.Split('=');
+                string s = "";
+                foreach (string word in words)
+                {
+                    s = word.ToString();
+                }
+
+                int x = int.Parse(s);
+                SituationMonitoring.Models.HoldingDataClass.situationId = x;
+                model.Field(p => p.SituationID).DefaultValue(x);
             })
             .Read(read => read.Action("PersonInNeed_Read", "PersonInNeed"))
             .Update(update => update.Action("PersonInNeed_Update", "PersonInNeed"))
@@ -153,6 +194,23 @@
                 model.Field(p => p.UserID).Editable(false);
                 model.Field(p => p.SituationID).Editable(false);
                 model.Field(p => p.KeyConcernID).DefaultValue(1);
+
+                 
+                    // Abu Ehab :
+                    // Extract Number From Like and pass it to SitutionId At Controller
+                    string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
+
+                    string[] words = currentUrlPage.Split('=');
+                    string s = "";
+                    foreach (string word in words)
+                    {
+                        s = word.ToString();
+                    }
+
+                    int x = int.Parse(s);
+                    SituationMonitoring.Models.HoldingDataClass.situationId = x;
+                    model.Field(p => p.SituationID).DefaultValue(x);
+
             })
             .Read(read => read.Action("PersonInNeed_UserRead", "PersonInNeed"))
             .Update(update => update.Action("PersonInNeed_Update", "PersonInNeed"))

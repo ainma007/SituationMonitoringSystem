@@ -15,8 +15,122 @@ namespace SituationMonitoring.Controllers
         // GET: PersonInNeed
         public ActionResult PersonInNeedManage()
         {
+            GetDate();
+            GovernorateArName();
+            MunicipalityArName();
+            AreaArName();
+            CollectiveCenter();
+            UserFullName();
             PopulateKey_concern();
             return View();
+        }
+
+        public string UserFullName()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.UserFullName = xx.Users_Table.FullName.ToString();
+
+
+            }
+
+            return ViewBag.UserFullName;
+        }
+        public string GetDate()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.Date = xx.SituationDate.Value.ToShortDateString();
+
+
+            }
+
+            return ViewBag.Date;
+        }
+
+        public string GovernorateArName()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.GovernorateArName = xx.Governorate_Table.GovernorateArName.ToString();
+
+
+            }
+
+            return ViewBag.GovernorateArName;
+        }
+
+
+        public string MunicipalityArName()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.MunicipalityArName = xx.Municipality_Table.MunicipalityArName.ToString();
+
+
+            }
+
+            return ViewBag.MunicipalityArName;
+        }
+
+        public string AreaArName()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.AreaArName = xx.Area_Table.AreaArName.ToString();
+
+
+            }
+
+            return ViewBag.AreaArName;
+        }
+
+        public string CollectiveCenter()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.CollectiveCenter = xx.CollectiveCenter.ToString();
+
+
+            }
+
+            return ViewBag.CollectiveCenter;
         }
 
         private void PopulateKey_concern()
@@ -46,12 +160,12 @@ namespace SituationMonitoring.Controllers
         }
         public ActionResult PersonInNeed_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(PersonInNeedService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId)).ToDataSourceResult(request));
+            return Json(PersonInNeedService.Read().Where(u => u.SituationID == HoldingDataClass.situationId).ToDataSourceResult(request));
         }
 
         public ActionResult PersonInNeed_UserRead([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(PersonInNeedService.Read().Where(u => u.SituationID == int.Parse(HoldingDataClass.situationId) && u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+            return Json(PersonInNeedService.Read().Where(u => u.SituationID == HoldingDataClass.situationId && u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
         }
       
         // Insert New

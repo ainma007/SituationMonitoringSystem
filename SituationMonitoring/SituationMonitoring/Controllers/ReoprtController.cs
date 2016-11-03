@@ -12,12 +12,14 @@ namespace SituationMonitoring.Controllers
         // GET: Reoprt
         public ActionResult SituationMonitoringReport()
         {
+            
             GetDate();
             GovernorateArName();
             MunicipalityArName();
             AreaArName();
             CollectiveCenter();
             Site_Description();
+            UserFullName();
             //
             SumQuestionnaire();
             GetSum_Male();
@@ -269,7 +271,7 @@ namespace SituationMonitoring.Controllers
         public string GetDate()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -283,10 +285,28 @@ namespace SituationMonitoring.Controllers
 
             return ViewBag.Date;
         }
+
+        public string UserFullName()
+        {
+            int H = 0;
+            H = HoldingDataClass.situationId;
+            using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
+            {
+                Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
+                               .Select(i => i).Single();
+
+
+                ViewBag.UserFullName = xx.Users_Table.FullName.ToString();
+
+
+            }
+
+            return ViewBag.UserFullName;
+        }
         public string GovernorateArName()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -305,7 +325,7 @@ namespace SituationMonitoring.Controllers
         public string MunicipalityArName()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -323,7 +343,7 @@ namespace SituationMonitoring.Controllers
         public string AreaArName()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -341,7 +361,7 @@ namespace SituationMonitoring.Controllers
         public string CollectiveCenter()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -359,7 +379,7 @@ namespace SituationMonitoring.Controllers
         public string Site_Description()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -381,7 +401,7 @@ namespace SituationMonitoring.Controllers
         {
                          
                 int H = 0;
-                H = int.Parse(Session["situationId"].ToString());
+                H = HoldingDataClass.situationId;
                 using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
                 {
                    ViewBag.SumQuestionnaire = (from m in entities.Questionnaire_Table where m.SituationID == H select new { m.SituationID }).Count();
@@ -398,7 +418,7 @@ namespace SituationMonitoring.Controllers
         {
 
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 ViewBag.GetSum_Male = entities.Questionnaire_Table.Where(c => c.SituationID == H && c.PersonGEnder == "ذكر")
@@ -413,7 +433,7 @@ namespace SituationMonitoring.Controllers
         {
 
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 ViewBag.GetSum_Femal = entities.Questionnaire_Table.Where(c => c.SituationID == H && c.PersonGEnder == "أنثى")
@@ -432,7 +452,7 @@ namespace SituationMonitoring.Controllers
             {
 
                 int H = 0;
-                H = int.Parse(Session["situationId"].ToString());
+                H = HoldingDataClass.situationId;
                 try
                 {
                     ViewBag.GetSum_Estimated_Number_Of_Individuals = entities.Questionnaire_Table.Where(c => c.SituationID == H)
@@ -458,7 +478,7 @@ namespace SituationMonitoring.Controllers
         {
 
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 try
@@ -481,7 +501,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1Yes()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -515,7 +535,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1No()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -548,7 +568,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1Dontknow()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -583,7 +603,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1_1Less10()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
 
@@ -617,7 +637,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1_1_10_50()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
           
@@ -651,7 +671,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1_1_10_100()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -685,7 +705,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_1_1Over100()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -723,7 +743,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_1_Family_CommunityDisputes()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -756,7 +776,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_2()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -788,7 +808,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_3()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -820,7 +840,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_4()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
           
@@ -852,7 +872,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_5()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -884,7 +904,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_6()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -916,7 +936,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_7()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -949,7 +969,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_8()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -981,7 +1001,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_9()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -1014,7 +1034,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_10()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -1047,7 +1067,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_2_11()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -1083,7 +1103,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_1()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -1114,7 +1134,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_2()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -1145,7 +1165,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_3()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -1176,7 +1196,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_4()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -1207,7 +1227,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_5()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -1238,7 +1258,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_6()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1269,7 +1289,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_7()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             try
@@ -1301,7 +1321,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_8()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1324,7 +1344,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_9()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1348,7 +1368,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_10()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1371,7 +1391,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_3_11()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1400,7 +1420,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_4Yes()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1424,7 +1444,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_4No()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1448,7 +1468,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question1_4Dontknow()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1478,7 +1498,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_1()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1502,7 +1522,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_2()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1525,7 +1545,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_3()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1548,7 +1568,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_4()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1571,7 +1591,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_5()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1594,7 +1614,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_6()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1617,7 +1637,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_7()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1641,7 +1661,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_8()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -1665,7 +1685,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_9()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -1690,7 +1710,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_10()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1713,7 +1733,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_11()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1736,7 +1756,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_12()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1759,7 +1779,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_13()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1782,7 +1802,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_14()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1805,7 +1825,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_15()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -1829,7 +1849,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_16()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             
@@ -1853,7 +1873,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_17()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1876,7 +1896,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_18()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -1900,7 +1920,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_19()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
            
@@ -1924,7 +1944,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_20()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
 
             int count = 0;
             int truecount = 0;
@@ -1949,7 +1969,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_21()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1972,7 +1992,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_22()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -1995,7 +2015,7 @@ namespace SituationMonitoring.Controllers
         public double GetPer_Question2_1_23()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             int count = 0;
             int truecount = 0;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
@@ -2027,7 +2047,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2052,7 +2072,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2077,7 +2097,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2108,7 +2128,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2133,7 +2153,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2158,7 +2178,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2188,7 +2208,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2213,7 +2233,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2238,7 +2258,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2260,7 +2280,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_1()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2287,7 +2307,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_1()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
                 
@@ -2322,7 +2342,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2347,7 +2367,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2372,7 +2392,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2394,7 +2414,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_2()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2421,7 +2441,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_2()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2456,7 +2476,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2481,7 +2501,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2506,7 +2526,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2528,7 +2548,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_3()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2555,7 +2575,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_3()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2590,7 +2610,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2615,7 +2635,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2640,7 +2660,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2662,7 +2682,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_4()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2689,7 +2709,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_4()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2724,7 +2744,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2749,7 +2769,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2774,7 +2794,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2796,7 +2816,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_5()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2823,7 +2843,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_5()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2858,7 +2878,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2883,7 +2903,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2908,7 +2928,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -2930,7 +2950,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_6()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2957,7 +2977,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_6()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -2992,7 +3012,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3017,7 +3037,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3042,7 +3062,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3064,7 +3084,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_7()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3091,7 +3111,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_7()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3126,7 +3146,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3151,7 +3171,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3176,7 +3196,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3198,7 +3218,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_8()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3225,7 +3245,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_8()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3260,7 +3280,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3285,7 +3305,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3310,7 +3330,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3332,7 +3352,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_9()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3359,7 +3379,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_9()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3394,7 +3414,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3419,7 +3439,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3444,7 +3464,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3466,7 +3486,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_10()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3493,7 +3513,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_10()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3528,7 +3548,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3553,7 +3573,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3578,7 +3598,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3600,7 +3620,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_11()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3627,7 +3647,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_11()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3662,7 +3682,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3687,7 +3707,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3712,7 +3732,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3734,7 +3754,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_12()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3761,7 +3781,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_12()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3796,7 +3816,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3821,7 +3841,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3846,7 +3866,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3868,7 +3888,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_13()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3895,7 +3915,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_13()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -3930,7 +3950,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3955,7 +3975,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -3980,7 +4000,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4004,7 +4024,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_14()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4039,7 +4059,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4064,7 +4084,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4089,7 +4109,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4113,7 +4133,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_15()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4148,7 +4168,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4173,7 +4193,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4198,7 +4218,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4220,7 +4240,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_16()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4247,7 +4267,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_16()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4282,7 +4302,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4307,7 +4327,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4332,7 +4352,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4354,7 +4374,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_17()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4381,7 +4401,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_17()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4416,7 +4436,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4441,7 +4461,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4466,7 +4486,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4488,7 +4508,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_18()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4515,7 +4535,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_18()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4551,7 +4571,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4576,7 +4596,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4601,7 +4621,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4623,7 +4643,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_19()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4650,7 +4670,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_19()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4685,7 +4705,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4710,7 +4730,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4735,7 +4755,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4769,7 +4789,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4794,7 +4814,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4819,7 +4839,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4841,7 +4861,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmMale_Question3_21()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4868,7 +4888,7 @@ namespace SituationMonitoring.Controllers
         public int GetSUmFemal_Question3_21()
         {
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             try
             {
 
@@ -4905,7 +4925,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4930,7 +4950,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4954,7 +4974,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -4978,7 +4998,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -5002,7 +5022,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -5026,7 +5046,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -5050,7 +5070,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -5075,7 +5095,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -5099,7 +5119,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;
@@ -5124,7 +5144,7 @@ namespace SituationMonitoring.Controllers
             int count = 0;
             int truecount = 0;
             int H = 0;
-            H = int.Parse(Session["situationId"].ToString());
+            H = HoldingDataClass.situationId;
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Func<int, int, double> ComputeIt = (x, y) => ((double)x / y) * 100;

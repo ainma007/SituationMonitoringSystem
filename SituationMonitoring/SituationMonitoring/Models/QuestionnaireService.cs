@@ -183,13 +183,13 @@ namespace SituationMonitoring.Models
 
   
 
-        public void Create(QuestionnaireViewModel db, string situationId)
+        public void Create(QuestionnaireViewModel db )
         {
             var entity = new Questionnaire_Table();
 
             entity.QuestionnaireDate = (DateTime)db.QuestionnaireDate.Date;
             entity.UserID = int.Parse(HttpContext.Current.Session["UserID"].ToString());
-            entity.SituationID = int.Parse(situationId.ToString()); /// <<<<<<__
+            entity.SituationID = db.SituationID; /// <<<<<<__
             entity.EmployeeName = db.EmployeeName;
             entity.CenterName = db.CenterName;
             entity.EmployeeMail = db.EmployeeMail;
