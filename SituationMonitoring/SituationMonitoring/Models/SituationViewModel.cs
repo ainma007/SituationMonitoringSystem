@@ -15,6 +15,7 @@ namespace SituationMonitoring.Models
             get;
             set;
         }
+        [Required]
 
         [DisplayName("التاريخ:")]
         [DataType(DataType.Date)]
@@ -31,6 +32,8 @@ namespace SituationMonitoring.Models
             get;
             set;
         }
+        [Required]
+
         [UIHint("GovernorateID")]
         [DisplayName("المحافظة")]
         public int? GovernorateID { get; set; }
@@ -46,6 +49,7 @@ namespace SituationMonitoring.Models
         }
 
 
+        [Required]
 
         [UIHint("MunicipalityID")]
         [DisplayName("البلدية")]
@@ -60,7 +64,8 @@ namespace SituationMonitoring.Models
             set;
         }
 
-        
+        [Required]
+
         [UIHint("AreaID")]
         [DisplayName("المنطقة")]
         public int? AreaID { get; set; }
@@ -73,6 +78,7 @@ namespace SituationMonitoring.Models
             set;
         }
 
+        
 
         [UIHint("UserID")]
         [DisplayName("اسم المستخدم:")]
@@ -82,9 +88,10 @@ namespace SituationMonitoring.Models
         [DisplayName("الحالة")]
         public bool Status { get; set; }
 
-
+        [Required]
         [DisplayName("مركز الايواء")]
         public string CollectiveCenter { get; set; }
+        [Required]
         [DisplayName("وصف الموقع")]
         public string Site_Description { get; set; }
 
