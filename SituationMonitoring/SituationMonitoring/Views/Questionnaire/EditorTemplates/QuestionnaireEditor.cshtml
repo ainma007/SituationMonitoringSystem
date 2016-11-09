@@ -14,7 +14,6 @@
 <div class="k-edit-form-container" style="margin:auto;">
     <div class="grid-title">
         
-        <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
     </div>
     <table class="table table-bordered no-more-tables">
         
@@ -23,7 +22,7 @@
                 <td colspan=1 class="alert alert-info"><h4>االتاريخ</h4></td>
                 <td colspan=3>@Html.Kendo().DatePickerFor(model => model.QuestionnaireDate)@Html.ValidationMessageFor(model => model.QuestionnaireDate)</td>
 
-                <td colspan=3>@Html.Kendo().NumericTextBoxFor(model => model.SituationID) @Html.ValidationMessageFor(model => model.SituationID)</td>
+                <td colspan=3>@Html.TextBoxFor(model => model.SituationID, new { style = "display:none" }) @Html.ValidationMessageFor(model => model.SituationID)</td>
     
             </tr>
         </tbody>

@@ -36,7 +36,7 @@ namespace SituationMonitoring.Controllers
                         {
                            
                                 Session["UserID"] = u.UserID;
-                                Session["UserName"] = u.UserName;
+                                Session["UserName"] = u.FullName;
                                 Session["Password"] = u.Password;
                                 Session["UserType"] = u.UserType;
 

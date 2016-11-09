@@ -57,7 +57,7 @@ namespace SituationMonitoring.Models
             entity.ActionsTakenSoFar = db.ActionsTakenSoFar;
             entity.FollowUpRequired = db.FollowUpRequired;
             entity.SituationID = db.SituationID;
-            entity.UserID= int.Parse(HttpContext.Current.Session["UserID"].ToString());
+            entity.UserID= db.UserID;
 
 
             entities.PersonInNeed_table.Add(entity);
@@ -71,8 +71,7 @@ namespace SituationMonitoring.Models
             var entity = new PersonInNeed_table();
 
             entity.ID = db.ID;
-            entity.SituationID = entity.SituationID;
-            entity.UserID = entity.UserID;
+           
             entity.Name_of_Person_In_Need = db.Name_of_Person_In_Need;
             entity.Contact_Details = db.Contact_Details;
             entity.KeyConcernID = db.KeyConcernID;
@@ -80,7 +79,8 @@ namespace SituationMonitoring.Models
             entity.Gender = db.Gender;
             entity.ActionsTakenSoFar = db.ActionsTakenSoFar;
             entity.FollowUpRequired = db.FollowUpRequired;
-
+            entity.SituationID = db.SituationID;
+            entity.UserID = db.UserID;
             entities.PersonInNeed_table.Attach(entity);
             entities.Entry(entity).State = EntityState.Modified;
             entities.SaveChanges();

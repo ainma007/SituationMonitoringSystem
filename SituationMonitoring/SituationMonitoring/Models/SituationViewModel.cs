@@ -15,6 +15,7 @@ namespace SituationMonitoring.Models
             get;
             set;
         }
+
         [Required]
 
         [DisplayName("التاريخ:")]

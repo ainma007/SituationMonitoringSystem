@@ -139,10 +139,10 @@
     <Property Name="RoleInCommunity" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Place_of_origin" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="PersonMobile" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="CollectiveCenter" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="CollectiveCenter" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Estimated_Number_Of_Individuals" Type="Int32" />
     <Property Name="Estimated_Number_Of_Families" Type="Int32" />
-    <Property Name="Site_Description" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Site_Description" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_1" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_1_1" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_2_1_Family_CommunityDisputes" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
@@ -154,7 +154,7 @@
     <Property Name="Question1_2_7InsufficientBedding" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_8NotEnoughWater" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_9Not_enough_humanitarian_assistance" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
-    <Property Name="Question1_2_9Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Question1_2_9Text" FixedLength="false" Unicode="true" Type="String" MaxLength="Max" />
     <Property Name="Question1_2_10No_Access_to_essential_services" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />
     <Property Name="Question1_2_10Text" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Question1_2_11Other" annotation:StoreGeneratedPattern="None" Type="Boolean" Nullable="false" />

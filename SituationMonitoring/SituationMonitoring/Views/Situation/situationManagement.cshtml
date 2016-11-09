@@ -40,16 +40,17 @@
 
         columns.Bound(p => p.CollectiveCenter).Width(100).HeaderHtmlAttributes(new { @title = "مركز الايواء" }).Width(100).Title("مركز الايواء");
         columns.Bound(p => p.Site_Description).Width(100).HeaderHtmlAttributes(new { @title = "وصف الموقع" }).Width(100).Title("وصف الموقع");
+        columns.Bound(p => p.Status).Width(50).HeaderHtmlAttributes(new { @title = "الحالة" }).ClientTemplate("<input type='checkbox' disabled='disabled' #= Status ? checked='checked': '' # class='chkbx' />").HtmlAttributes(new { style = "text-align: center" }).Title("الحالة");
 
 
 
-        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
     })
     .ToolBar(toolBar =>
     {
         toolBar.Create().Text("اضافة نموذج جديد");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية").Width(400).Height(600)).TemplateName("SituationEditor"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات النموذج").Width(400).Height(600)).TemplateName("SituationEditor"))
     .Events(e => e.Edit("onEdit"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
@@ -63,7 +64,7 @@
         .PageSize(20)
         .ServerOperation(false)
         .Events(events => events.Error("errorHandler"))
-     
+
         .Model(model =>
         {
             model.Id(p => p.SituationID);
@@ -73,6 +74,11 @@
 
             model.Field(p => p.AreaID).DefaultValue(1);
             model.Field(p => p.UserID).DefaultValue(3);
+            model.Field(p => p.CollectiveCenter).DefaultValue("-");
+            model.Field(p => p.Site_Description).DefaultValue("-");
+            model.Field(p => p.Status).DefaultValue(true);
+
+
 
         })
         .Read(read => read.Action("Situation_Read", "Situation"))
@@ -96,11 +102,7 @@
         };
     }
 
-    function filterProducts() {
-        return {
-            vendorId: $("#VendorId").data("kendoDropDownList").value()
-        };
-    }
+    
                 </script>
 
                 <script type="text/javascript">

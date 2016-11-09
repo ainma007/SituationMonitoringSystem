@@ -17,10 +17,12 @@ namespace SituationMonitoring.Models
         public int? SituationID { get; set; }
         public int? UserID { get; set; }
 
-        [Required]
 
         public string UserName { get; set; }
+
+
         [DisplayName("اسم الشخص")]
+        [Required]
 
         public string Name_of_Person_In_Need { get; set; }
 
@@ -34,20 +36,23 @@ namespace SituationMonitoring.Models
             get;
             set;
         }
-        [Required]
 
         [UIHint("KeyConcernID")]
+        [Required]
+
         [DisplayName("الاهتمام الرئيسي")]
         public int? KeyConcernID { get; set; }
-        [Required]
 
 
         [DisplayName("الجنس")]
-
-        public string Gender { get; set; }
         [Required]
 
+
+        public string Gender { get; set; }
+
         [DisplayName("العمر")]
+        [Required]
+
 
         public int? Age { get; set; }
 

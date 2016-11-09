@@ -33,13 +33,13 @@
         columns.ForeignKey(p => p.GovernorateID, (System.Collections.IEnumerable)ViewData["Governorate"], "GovernorateID", "GovernorateArName")
                    .Title("المحافظة").Width(100);
 
-        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
+        columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(200);
     })
     .ToolBar(toolBar =>
     {
         toolBar.Create().Text("اضافة بلدية جديدة");
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("تعديل بيانات بلدية")).TemplateName("MunicipalityEditor"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title(" بيانات بلدية")).TemplateName("MunicipalityEditor"))
      .Selectable(selectable => selectable
             .Mode(GridSelectionMode.Multiple))
            .Pageable()
