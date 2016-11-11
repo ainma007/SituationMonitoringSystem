@@ -206,6 +206,8 @@
         }
 
         int x = int.Parse(s);
+        Session["situationId"] = null;
+        Session["situationId"] = s;
     <li class="">
         <a href="@Url.Action("QuestionnaireManmanagement", "Questionnaire", new { situationId = x })" class="elements">
             <i class="fa fa-edit"></i>
@@ -217,7 +219,7 @@
 
                     <li class="">
                         
-                        <a href="@Url.Action("SituationMonitoringReport", "Reoprt",new { situationId = x})" class="elements">
+                        <a href="@Url.Action("SituationMonitoringReport", "Reoprt",new { situationId = s})" class="elements">
 
                                 <i class="fa fa-bar-chart-o"></i>
 
@@ -231,13 +233,12 @@
 
                     <li class="">
                       
-                        <a href="@Url.Action("PersonInNeedManage", "PersonInNeed",new { situationId = x})" class="elements">
+                        <a href="@Url.Action("PersonInNeedManage", "PersonInNeed",new { situationId = s})" class="elements">
                             <i class="fa fa-male"></i>
                             <span class="title">حالات الافراد ذوي الهشاشة </span>
                         </a>
                     </li>
-
-        SituationMonitoring.Models.HoldingDataClass.situationId = x;
+      
 
                         }
 

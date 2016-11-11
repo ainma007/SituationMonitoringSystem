@@ -13,8 +13,9 @@ namespace SituationMonitoring.Controllers
     public class PersonInNeedController : Controller
     {
         // GET: PersonInNeed
-        public ActionResult PersonInNeedManage()
+        public ActionResult PersonInNeedManage(string situationId)
         {
+            Session["situationId"] = situationId;
             GetDate();
             GovernorateArName();
             MunicipalityArName();
@@ -28,7 +29,7 @@ namespace SituationMonitoring.Controllers
         public string UserFullName()
         {
             int H = 0;
-            H = HoldingDataClass.situationId;
+            H =int.Parse(Session["situationId"].ToString());
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -45,7 +46,7 @@ namespace SituationMonitoring.Controllers
         public string GetDate()
         {
             int H = 0;
-            H = HoldingDataClass.situationId;
+            H =int.Parse(Session["situationId"].ToString());
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -63,7 +64,7 @@ namespace SituationMonitoring.Controllers
         public string GovernorateArName()
         {
             int H = 0;
-            H = HoldingDataClass.situationId;
+            H =int.Parse(Session["situationId"].ToString());
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -82,7 +83,7 @@ namespace SituationMonitoring.Controllers
         public string MunicipalityArName()
         {
             int H = 0;
-            H = HoldingDataClass.situationId;
+            H =int.Parse(Session["situationId"].ToString());
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -100,7 +101,7 @@ namespace SituationMonitoring.Controllers
         public string AreaArName()
         {
             int H = 0;
-            H = HoldingDataClass.situationId;
+            H =int.Parse(Session["situationId"].ToString());
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -118,7 +119,7 @@ namespace SituationMonitoring.Controllers
         public string CollectiveCenter()
         {
             int H = 0;
-            H = HoldingDataClass.situationId;
+            H =int.Parse(Session["situationId"].ToString());
             using (SituationMonitoringEntities entities = new SituationMonitoringEntities())
             {
                 Situation_Table xx = entities.Situation_Table.Where(c => c.SituationID == H)
@@ -160,12 +161,12 @@ namespace SituationMonitoring.Controllers
         }
         public ActionResult PersonInNeed_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(PersonInNeedService.Read().Where(u => u.SituationID == HoldingDataClass.situationId).ToDataSourceResult(request));
+            return Json(PersonInNeedService.Read().Where(u => u.SituationID ==int.Parse(Session["situationId"].ToString())).ToDataSourceResult(request));
         }
 
         public ActionResult PersonInNeed_UserRead([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(PersonInNeedService.Read().Where(u => u.SituationID == HoldingDataClass.situationId && u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
+            return Json(PersonInNeedService.Read().Where(u => u.SituationID == int.Parse(Session["situationId"].ToString()) && u.UserID == int.Parse(Session["UserID"].ToString())).ToDataSourceResult(request));
         }
       
         // Insert New

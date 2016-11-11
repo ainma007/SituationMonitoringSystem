@@ -49,7 +49,7 @@
                         <td width="10%" class="alert alert-warning">@ViewBag.MunicipalityArName</td>
                         <td width="10%" class="alert alert-success"> <h5>المنطقة</h5></td>
                         <td width="20%" class="alert alert-warning">@ViewBag.AreaArName</td>
-                        <td width="10%" class="alert alert-success"> <h5>اسم مركز الايواء</h5></td>
+                        <td width="10%" class="alert alert-success"> <h5>اسم مركز الطورائ الحكومي</h5></td>
                         <td width="20%" class="alert alert-warning">@ViewBag.CollectiveCenter</td>
                     </tr>
 
@@ -57,7 +57,7 @@
                 </table>
 
 
-            @if (Session["UserType"].Equals("مدير"))
+           @if (Session["UserType"].Equals("مدير")) 
             {
                 @(Html.Kendo().Grid<QuestionnaireViewModel>()
         .Name("grid")

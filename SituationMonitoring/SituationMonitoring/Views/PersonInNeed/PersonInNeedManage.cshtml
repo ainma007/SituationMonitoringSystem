@@ -20,6 +20,8 @@
                 <div class="page-title">
                     <i class="icon-custom-left"></i>
                     <h3>إدارة - <span class="semi-bold">  حالات الافراد ذوي الهشاشة</span></h3>
+
+                    @ViewBag.teset
                 </div>
             </div>
             <div class="grid-body no-border">
@@ -29,7 +31,7 @@
                     <tbody>
                         <tr>
                             <td width="10%" class="alert alert-info"><h4 style="color:red">رقم النموذج</h4></td>
-                            <td width="10%"><h4>@HoldingDataClass.situationId </h4></td>
+                            <td width="10%"><h4>@Session["situationId"] </h4></td>
                             <td width="10%" class="alert alert-info"><h4 style="color:red">االتاريخ</h4></td>
                             <td width="10%"><h4>@ViewBag.Date</h4></td>
                             <td width="10%" class="alert alert-info"><h4 style="color:red">الموظف المسؤول</h4></td>
@@ -192,21 +194,22 @@
                 model.Field(p => p.SituationID).Editable(false);
                 model.Field(p => p.KeyConcernID).DefaultValue(1);
 
-                 
-                    // Abu Ehab :
-                    // Extract Number From Like and pass it to SitutionId At Controller
-                    string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
 
-                    string[] words = currentUrlPage.Split('=');
-                    string s = "";
-                    foreach (string word in words)
-                    {
-                        s = word.ToString();
-                    }
+                // Abu Ehab :
+                // Extract Number From Like and pass it to SitutionId At Controller
+                string currentUrlPage = HttpContext.Current.Request.Url.PathAndQuery;
 
-                    int x = int.Parse(s);
-                    SituationMonitoring.Models.HoldingDataClass.situationId = x;
-                    model.Field(p => p.SituationID).DefaultValue(x);
+                string[] words = currentUrlPage.Split('=');
+                string s = "";
+                foreach (string word in words)
+                {
+                    s = word.ToString();
+                }
+
+                int x = int.Parse(s);
+                SituationMonitoring.Models.HoldingDataClass.situationId = x;
+                model.Field(p => p.SituationID).DefaultValue(x);
+                model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"].ToString()));
 
             })
             .Read(read => read.Action("PersonInNeed_UserRead", "PersonInNeed"))
@@ -237,7 +240,7 @@
 
 
 
-                else if (Session["UserType"].Equals("منسق"))
+                else if (Session["UserType"].Equals("مدير"))
                 {
 
                     @(Html.Kendo().Grid<PersonInNeedViewModel>()
@@ -255,6 +258,7 @@
             columns.Bound(p => p.Age).Width(150).HeaderHtmlAttributes(new { @title = "العمر" }).Title("العمر");
             columns.Bound(p => p.ActionsTakenSoFar).Width(200).HeaderHtmlAttributes(new { @title = "الإجراءات المتخذة حتى الآن" }).Title("الإجراءات المتخذة حتى الآن");
             columns.Bound(p => p.FollowUpRequired).Width(200).HeaderHtmlAttributes(new { @title = "المتابعة المطلوبة" }).Title("المتابعة المطلوبة");
+            columns.Bound(p => p.UserName).Width(200).HeaderHtmlAttributes(new { @title = "مدخل البيانات" }).Title("مدخل البيانات");
 
 
             columns.Command(command => { command.Edit().Text("تعديل"); command.Destroy().Text("حذف"); }).Width(100);
@@ -306,9 +310,11 @@
                 int x = int.Parse(s);
                 SituationMonitoring.Models.HoldingDataClass.situationId = x;
                 model.Field(p => p.SituationID).DefaultValue(x);
+                model.Field(p => p.UserID).DefaultValue(int.Parse(Session["UserID"].ToString()));
+
 
             })
-            .Read(read => read.Action("PersonInNeed_UserRead", "PersonInNeed"))
+            .Read(read => read.Action("PersonInNeed_Read", "PersonInNeed"))
             .Update(update => update.Action("PersonInNeed_Update", "PersonInNeed"))
             .Create(create => create.Action("PersonInNeed_Create", "PersonInNeed"))
             .Destroy(destroy => destroy.Action("PersonInNeed_Destroy", "PersonInNeed"))
